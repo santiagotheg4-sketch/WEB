@@ -230,7 +230,7 @@ def check_line_registries(w, line):
     for m in re.finditer(r'id:"minecraft:([a-z_]+)"(?!,Count)', line):
         if m.group(1) not in ITEMS and m.group(1) not in ENTS:
             err(w, f'id inexistente en NBT: {m.group(1)}')
-    for m in re.finditer(r'(?<!effect )(?<!loot )\bgive\s+(@\S+)\s+(?:minecraft:)?([a-z_]+)', line):
+    for m in re.finditer(r'(?<!effect )(?<!loot )(?<!recipe )\bgive\s+(@\S+)\s+(?:minecraft:)?([a-z_]+)', line):
         if m.group(2) not in ITEMS:
             err(w, f'ítem inexistente en give: {m.group(2)}')
     for m in re.finditer(r'\bwith\s+(?:minecraft:)?([a-z_]+)', line):
