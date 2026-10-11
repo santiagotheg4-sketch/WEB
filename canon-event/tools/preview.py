@@ -1,7 +1,7 @@
 """Vista frontal rápida de modelos (ignora rotaciones). Uso: preview.py out.png body.json [head.json] ..."""
 import json, sys, os
 from PIL import Image
-R = os.path.join(os.path.dirname(__file__), '..', 'src', 'assets')
+R = os.path.join(os.path.dirname(__file__), '..', 'build', 'out', 'assets')
 S = 12
 def tex(path):
     ns, p = path.split(':'); return Image.open(os.path.join(R, ns, 'textures', p + '.png')).convert('RGBA')

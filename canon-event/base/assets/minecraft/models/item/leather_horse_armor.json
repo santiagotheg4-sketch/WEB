@@ -1,0 +1,704 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/leather_horse_armor"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 7319999
+      },
+      "model": "canon:modelo/vacio"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320000
+      },
+      "model": "canon:modelo/devota_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320001
+      },
+      "model": "canon:modelo/devota_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320002
+      },
+      "model": "canon:modelo/devota_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320003
+      },
+      "model": "canon:modelo/devota_reach_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320004
+      },
+      "model": "canon:modelo/devota_reach_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320005
+      },
+      "model": "canon:modelo/devota_wave_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320006
+      },
+      "model": "canon:modelo/devota_wave_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320007
+      },
+      "model": "canon:modelo/devota_offer"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320008
+      },
+      "model": "canon:modelo/devota_cover"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320009
+      },
+      "model": "canon:modelo/devota_arms_out"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320010
+      },
+      "model": "canon:modelo/devota_sit"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320011
+      },
+      "model": "canon:modelo/devota_cabeza_neutral"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320012
+      },
+      "model": "canon:modelo/devota_cabeza_grin"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320013
+      },
+      "model": "canon:modelo/devota_cabeza_scream"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320014
+      },
+      "model": "canon:modelo/devota_cabeza_cry"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320015
+      },
+      "model": "canon:modelo/devota_cabeza_love"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320016
+      },
+      "model": "canon:modelo/devota_cabeza_stare"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320017
+      },
+      "model": "canon:modelo/mariana_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320018
+      },
+      "model": "canon:modelo/mariana_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320019
+      },
+      "model": "canon:modelo/mariana_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320020
+      },
+      "model": "canon:modelo/mariana_dance_l"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320021
+      },
+      "model": "canon:modelo/mariana_dance_r"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320022
+      },
+      "model": "canon:modelo/mariana_dance_up"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320023
+      },
+      "model": "canon:modelo/mariana_dance_out"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320024
+      },
+      "model": "canon:modelo/mariana_stare"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320025
+      },
+      "model": "canon:modelo/vagabundo_0_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320026
+      },
+      "model": "canon:modelo/vagabundo_0_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320027
+      },
+      "model": "canon:modelo/vagabundo_0_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320028
+      },
+      "model": "canon:modelo/vagabundo_1_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320029
+      },
+      "model": "canon:modelo/vagabundo_1_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320030
+      },
+      "model": "canon:modelo/vagabundo_1_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320031
+      },
+      "model": "canon:modelo/vagabundo_2_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320032
+      },
+      "model": "canon:modelo/vagabundo_2_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320033
+      },
+      "model": "canon:modelo/vagabundo_2_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320034
+      },
+      "model": "canon:modelo/vidente_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320035
+      },
+      "model": "canon:modelo/farmaceuta_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320036
+      },
+      "model": "canon:modelo/empenista_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320037
+      },
+      "model": "canon:modelo/gato_zombi_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320038
+      },
+      "model": "canon:modelo/gato_zombi_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320039
+      },
+      "model": "canon:modelo/gato_zombi_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320040
+      },
+      "model": "canon:modelo/perro_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320041
+      },
+      "model": "canon:modelo/perro_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320042
+      },
+      "model": "canon:modelo/perro_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320043
+      },
+      "model": "canon:modelo/cuervo_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320044
+      },
+      "model": "canon:modelo/cuervo_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320045
+      },
+      "model": "canon:modelo/cuervo_fly_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320046
+      },
+      "model": "canon:modelo/cuervo_fly_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320047
+      },
+      "model": "canon:modelo/rata_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320048
+      },
+      "model": "canon:modelo/rata_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320049
+      },
+      "model": "canon:modelo/rata_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320050
+      },
+      "model": "canon:modelo/tv_s1"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320051
+      },
+      "model": "canon:modelo/tv_s2"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320052
+      },
+      "model": "canon:modelo/tv_s3"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320053
+      },
+      "model": "canon:modelo/tv_off"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320054
+      },
+      "model": "canon:modelo/tv_heart"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320055
+      },
+      "model": "canon:modelo/radio_antigua_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320056
+      },
+      "model": "canon:modelo/rocola_on"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320057
+      },
+      "model": "canon:modelo/rocola_off"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320058
+      },
+      "model": "canon:modelo/nevera_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320059
+      },
+      "model": "canon:modelo/lavadora_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320060
+      },
+      "model": "canon:modelo/expendedora_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320061
+      },
+      "model": "canon:modelo/telefono_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320062
+      },
+      "model": "canon:modelo/lampara_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320063
+      },
+      "model": "canon:modelo/sillon_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320064
+      },
+      "model": "canon:modelo/farola_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320065
+      },
+      "model": "canon:modelo/carro_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320066
+      },
+      "model": "canon:modelo/basurero_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320067
+      },
+      "model": "canon:modelo/hidrante_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320068
+      },
+      "model": "canon:modelo/buzon_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320069
+      },
+      "model": "canon:modelo/semaforo_r"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320070
+      },
+      "model": "canon:modelo/semaforo_y"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320071
+      },
+      "model": "canon:modelo/semaforo_g"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320072
+      },
+      "model": "canon:modelo/semaforo_off"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320073
+      },
+      "model": "canon:modelo/bola_cristal_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320074
+      },
+      "model": "canon:modelo/caja_registradora_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320075
+      },
+      "model": "canon:modelo/guitarra_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320076
+      },
+      "model": "canon:modelo/maniqui_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320077
+      },
+      "model": "canon:modelo/muneca_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320078
+      },
+      "model": "canon:modelo/diana_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320079
+      },
+      "model": "canon:modelo/diana_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320080
+      },
+      "model": "canon:modelo/diana_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320081
+      },
+      "model": "canon:modelo/diana_reach_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320082
+      },
+      "model": "canon:modelo/diana_reach_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320083
+      },
+      "model": "canon:modelo/diana_twist_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320084
+      },
+      "model": "canon:modelo/diana_twist_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320085
+      },
+      "model": "canon:modelo/diana_crawl_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320086
+      },
+      "model": "canon:modelo/diana_crawl_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320087
+      },
+      "model": "canon:modelo/diana_cabeza_blank"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320088
+      },
+      "model": "canon:modelo/diana_cabeza_grin"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320089
+      },
+      "model": "canon:modelo/diana_cabeza_scream"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320090
+      },
+      "model": "canon:modelo/diana_cabeza_twisted"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320091
+      },
+      "model": "canon:modelo/diana_cabeza_crawl"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320092
+      },
+      "model": "canon:modelo/diana_cabeza_crawl_scream"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320093
+      },
+      "model": "canon:modelo/diana_cuello_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320094
+      },
+      "model": "canon:modelo/juli_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320095
+      },
+      "model": "canon:modelo/juli_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320096
+      },
+      "model": "canon:modelo/juli_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320097
+      },
+      "model": "canon:modelo/juli_reach"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320098
+      },
+      "model": "canon:modelo/juli_float"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320099
+      },
+      "model": "canon:modelo/juli_cabeza_smile"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320100
+      },
+      "model": "canon:modelo/juli_cabeza_soft"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320101
+      },
+      "model": "canon:modelo/juli_cabeza_sad"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320102
+      },
+      "model": "canon:modelo/juli_cabeza_surprised"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320103
+      },
+      "model": "canon:modelo/puerta_sueno_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320104
+      },
+      "model": "canon:modelo/luna_idle"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320105
+      },
+      "model": "canon:modelo/luna_walk_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320106
+      },
+      "model": "canon:modelo/luna_walk_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320107
+      },
+      "model": "canon:modelo/luna_run_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320108
+      },
+      "model": "canon:modelo/luna_run_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320109
+      },
+      "model": "canon:modelo/luna_bark"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320110
+      },
+      "model": "canon:modelo/luna_wag_a"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320111
+      },
+      "model": "canon:modelo/luna_wag_b"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320112
+      },
+      "model": "canon:modelo/luna_hide"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320113
+      },
+      "model": "canon:modelo/luna_sit"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7320114
+      },
+      "model": "canon:modelo/luna_sleep"
+    }
+  ]
+}

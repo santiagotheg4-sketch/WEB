@@ -1,5 +1,0 @@
-execute facing entity @a[tag=dv_talker,limit=1] feet run tp @s ~ ~ ~ ~ 0
-playsound canon:kevin.hey neutral @a[distance=..12] ~ ~1.6 ~ 0.6 1.1
-execute if score #kev dv.dev matches 1 run function canon:kevin/fiesta/clicked
-execute if score #kev dv.dev matches 3 run function canon:kevin/cata/clicked
-execute unless score #kev dv.dev matches 1.. run tellraw @a[tag=dv_talker] ["",{"text": "\nKEVIN\n", "color": "#ffb347"},{"text": " [Cuéntame un chiste] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 1"}},{"text": " [¿Qué hacemos hoy?] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 2"}},{"text": " [¿Cómo estás?] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 3"}},{"text": " [Baila] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 4"}},{"text": " [¿Tienes algo para mí?] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 6"}},{"text": " [Chao] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 5"}}]
