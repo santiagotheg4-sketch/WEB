@@ -1,0 +1,15 @@
+scoreboard players operation #c dv.tmp = @s dv.anim
+scoreboard players operation #c dv.tmp %= #12 dv.math
+execute if entity @s[tag=dv_walking] if score #c dv.tmp matches 0..5 run scoreboard players set #frame dv.tmp 1
+execute if entity @s[tag=dv_walking] if score #c dv.tmp matches 6..11 run scoreboard players set #frame dv.tmp 2
+execute if entity @s[tag=dv_waving] if score #c dv.tmp matches 0..5 run scoreboard players set #frame dv.tmp 5
+execute if entity @s[tag=dv_waving] if score #c dv.tmp matches 6..11 run scoreboard players set #frame dv.tmp 6
+execute if entity @s[tag=dv_fastwave] if score #c dv.tmp matches 0..2 run scoreboard players set #frame dv.tmp 5
+execute if entity @s[tag=dv_fastwave] if score #c dv.tmp matches 3..5 run scoreboard players set #frame dv.tmp 6
+execute if entity @s[tag=dv_fastwave] if score #c dv.tmp matches 6..8 run scoreboard players set #frame dv.tmp 5
+execute if entity @s[tag=dv_fastwave] if score #c dv.tmp matches 9..11 run scoreboard players set #frame dv.tmp 6
+execute if entity @s[tag=dv_offering] run scoreboard players set #frame dv.tmp 7
+execute if entity @s[tag=dv_covering] run scoreboard players set #frame dv.tmp 8
+execute if entity @s[tag=dv_openarms] run scoreboard players set #frame dv.tmp 9
+execute if entity @s[tag=dv_sitting] run scoreboard players set #frame dv.tmp 10
+execute if score #moving dv.tmp matches 1 unless entity @s[tag=dv_walking] run scoreboard players set #frame dv.tmp 1

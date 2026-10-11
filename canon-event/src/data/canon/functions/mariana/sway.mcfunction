@@ -1,0 +1,13 @@
+tag @s add dv_swayed
+scoreboard players operation #sw dv.tmp = #c dv.tmp
+scoreboard players operation #sw dv.tmp %= #2 dv.math
+execute if score @s dv.talk matches 0 if score #sw dv.tmp matches 0 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:12,transformation:{left_rotation:[0f,0f,0.0436f,0.999f]}}
+execute if score @s dv.talk matches 0 if score #sw dv.tmp matches 1 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:12,transformation:{left_rotation:[0f,0f,-0.0436f,0.999f]}}
+execute if score @s dv.talk matches 1 if score #sw dv.tmp matches 0 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:10,transformation:{left_rotation:[0f,0f,0.0698f,0.9976f]}}
+execute if score @s dv.talk matches 1 if score #sw dv.tmp matches 1 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:10,transformation:{left_rotation:[0f,0f,-0.0698f,0.9976f]}}
+execute if score @s dv.talk matches 2 if score #sw dv.tmp matches 0 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:8,transformation:{left_rotation:[0f,0f,0.0958f,0.9954f]}}
+execute if score @s dv.talk matches 2 if score #sw dv.tmp matches 1 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:8,transformation:{left_rotation:[0f,0f,-0.0958f,0.9954f]}}
+execute if score @s dv.talk matches 3 if score #sw dv.tmp matches 0 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:6,transformation:{left_rotation:[0f,0f,0.1305f,0.9914f]}}
+execute if score @s dv.talk matches 3 if score #sw dv.tmp matches 1 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:6,transformation:{left_rotation:[0f,0f,-0.1305f,0.9914f]}}
+execute if score @s dv.talk matches 4.. if score #sw dv.tmp matches 0 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:4,transformation:{left_rotation:[0f,0f,0.1736f,0.9848f]}}
+execute if score @s dv.talk matches 4.. if score #sw dv.tmp matches 1 on passengers if entity @s[tag=dv_body,tag=dv_ready] run data merge entity @s {start_interpolation:0,interpolation_duration:4,transformation:{left_rotation:[0f,0f,-0.1736f,0.9848f]}}

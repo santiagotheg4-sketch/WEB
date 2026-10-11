@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:item_frame",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310026,canon:{id:\"m_radio\"},display:{Name:'{\"text\":\"Radio antigua\",\"italic\":false,\"color\":\"#d9c39a\"}',Lore:['{\"text\":\"Mueble. Colócalo en el suelo.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"Golpéalo para recogerlo.\",\"italic\":false,\"color\":\"gray\"}']},EntityTag:{Invisible:1b,Fixed:1b,Tags:[\"dv_place\",\"dv_place_radio\"]}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

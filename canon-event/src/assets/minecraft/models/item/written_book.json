@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/written_book"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 7310023
+      },
+      "model": "canon:item/carta"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310024
+      },
+      "model": "canon:item/diario"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310039
+      },
+      "model": "canon:item/diario_diana"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310041
+      },
+      "model": "canon:item/carta_juli"
+    }
+  ]
+}

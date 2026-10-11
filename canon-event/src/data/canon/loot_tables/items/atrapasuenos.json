@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310037,canon:{id:\"atrapasuenos\"},display:{Name:'{\"text\":\"Atrapasueños\",\"italic\":false,\"color\":\"#9ab8f0\"}',Lore:['{\"text\":\"Llévalo contigo al dormir.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"Te salva de una pesadilla. Solo una.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

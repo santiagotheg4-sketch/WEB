@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310024,canon:{id:\"diario\"},display:{Name:'{\"text\":\"Diario de Valle Quieto\",\"italic\":false,\"color\":\"#c9a23c\"}',Lore:['{\"text\":\"Léelo. Te puede salvar la vida.\",\"italic\":false,\"color\":\"gray\"}']},title:\"Diario de Valle Quieto\",author:\"Alguien que ya no está\",generation:3,pages:['[{\"text\":\"DIARIO DE VALLE QUIETO\\\\n\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Si estás leyendo esto, ya te eligieron.\\\\n\\\\nAquí van las reglas que aprendí. Léelas todas.\",\"color\":\"black\"}]','[{\"text\":\"EL HUESO\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"El Hueso de los Deseos concede UN deseo. Siempre se cumple.\\\\n\\\\nNunca como tú quieres.\",\"color\":\"black\"}]','[{\"text\":\"ELLA\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Si pides amor, alguien te amará. Se llama la Devota. Te seguirá a todas partes.\\\\n\\\\nNo la mires mucho tiempo.\",\"color\":\"black\"}]','[{\"text\":\"EL OÍDO\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Te oye cuando caminas. Te oye más cuando corres. Si caminas agachado casi no te oye.\\\\n\\\\nUn disparo se oye desde muy lejos.\",\"color\":\"black\"}]','[{\"text\":\"EL RADIO\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"No te acerques a menos de 4 bloques. Si estás muy cerca, te abraza.\\\\n\\\\nSus abrazos matan.\",\"color\":\"black\"}]','[{\"text\":\"VALLE QUIETO\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"El boleto te lleva al pueblo. No hay autobús de vuelta.\\\\n\\\\nLa única salida es el descapotable del taller.\",\"color\":\"black\"}]','[{\"text\":\"EL CARRO\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Le faltan cuatro piezas:\\\\n- Batería\\\\n- Gasolina\\\\n- Bujías\\\\n- Llaves\\\\n\\\\nSúbete con ellas en el inventario.\",\"color\":\"black\"}]','[{\"text\":\"PISTAS\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Las llaves están en el sótano de la casa del parque.\\\\nLa batería, en el taller.\\\\nLas bujías, en la tienda de discos.\\\\nLa gasolina, en la gasolinera.\",\"color\":\"black\"}]','[{\"text\":\"MARIANA\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Hay una chica que baila sola en el parque. No habla.\\\\n\\\\nNo insistas. De verdad, no insistas.\",\"color\":\"black\"}]','[{\"text\":\"LA ÚNICA REGLA\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"El amor que pediste dura hasta que mueras.\\\\n\\\\nO hasta que escapes.\\\\n\\\\nSuerte.\",\"color\":\"black\"}]']}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

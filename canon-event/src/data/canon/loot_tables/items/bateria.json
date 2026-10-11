@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310014,canon:{id:\"bateria\"},display:{Name:'{\"text\":\"Batería de carro\",\"italic\":false,\"color\":\"#e0b43a\"}',Lore:['{\"text\":\"Pieza para el descapotable.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

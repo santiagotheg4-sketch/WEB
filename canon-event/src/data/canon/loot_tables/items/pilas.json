@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310036,canon:{id:\"pilas\"},display:{Name:'{\"text\":\"Pilas\",\"italic\":false,\"color\":\"#d8a83a\"}',Lore:['{\"text\":\"La linterna las usa sola\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"cuando se está agotando.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+summon minecraft:horse ~ ~ ~ {Tags:["dv_car","dv_car_new"],Tame:1b,SaddleItem:{id:"minecraft:saddle",Count:1b},Silent:1b,Invulnerable:1b,PersistenceRequired:1b,Variant:0,CustomName:'{"text":"Descapotable","color":"#c9ced6"}'}
+summon minecraft:item_display ~ ~ ~ {Tags:["dv_carbody_new","dv_carbody"],item_display:"none",view_range:1.2f,item:{id:"minecraft:leather_horse_armor",Count:1b,tag:{CustomModelData:7319999,display:{color:7217712}}},transformation:{translation:[0f,0.75f,0f],left_rotation:[0f,0f,0f,1f],scale:[1.5f,1.5f,1.5f],right_rotation:[0f,0f,0f,1f]}}
+execute as @e[type=horse,tag=dv_car_new,distance=..1,limit=1] run function canon:car/init

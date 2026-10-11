@@ -1,0 +1,85 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_grito.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_torcida.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_ojos.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_vineta.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_petalos.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_parpado.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_vineta_roja.png",
+      "ascent": 66,
+      "height": 128,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_blanco.png",
+      "ascent": 82,
+      "height": 160,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/susto_negro.png",
+      "ascent": 82,
+      "height": 160,
+      "chars": [
+        ""
+      ]
+    }
+  ]
+}

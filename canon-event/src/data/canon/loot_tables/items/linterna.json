@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:carrot_on_a_stick",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310035,canon:{id:\"linterna\"},display:{Name:'{\"text\":\"Linterna\",\"italic\":false,\"color\":\"#f2c94c\"}',Lore:['{\"text\":\"Clic derecho: prender o apagar.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"Apúntale a ella. La luz la lastima.\",\"italic\":false,\"color\":\"gray\"}']},Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

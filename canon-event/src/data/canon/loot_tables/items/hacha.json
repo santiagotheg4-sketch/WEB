@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_axe",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310007,canon:{id:\"hacha\"},display:{Name:'{\"text\":\"Hacha de bombero\",\"italic\":false,\"color\":\"#c0221c\"}',Lore:['{\"text\":\"Derriba puertas de madera y tablas.\",\"italic\":false,\"color\":\"gray\"}']},CanDestroy:[\"minecraft:bamboo_mosaic\",\"minecraft:cobweb\",\"minecraft:bamboo_planks\",\"#minecraft:wooden_doors\"],AttributeModifiers:[{AttributeName:\"generic.attack_damage\",Name:\"dv\",Amount:8.0d,Operation:0,Slot:\"mainhand\",UUID:[I;1146507075,1229934086,4096,29456]},{AttributeName:\"generic.attack_speed\",Name:\"dv\",Amount:-3.1d,Operation:0,Slot:\"mainhand\",UUID:[I;1146507075,1229934086,4097,29456]}]}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

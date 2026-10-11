@@ -1,0 +1,12 @@
+scoreboard players set #ok dv.tmp 0
+execute if score #ok dv.tmp matches 0 positioned ~ ~0 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~1 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~-1 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~2 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~-2 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~3 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~-3 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~4 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~-4 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~6 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark
+execute if score #ok dv.tmp matches 0 positioned ~ ~-6 ~ if block ~ ~ ~ #canon:pasable if block ~ ~1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:pasable unless block ~ ~-1 ~ #canon:liquido run function canon:util/spot_mark

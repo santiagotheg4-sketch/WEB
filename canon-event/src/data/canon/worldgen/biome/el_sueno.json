@@ -1,0 +1,73 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.7,
+  "downfall": 0.6,
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:patch_tall_grass_2",
+      "minecraft:patch_grass_plain",
+      "minecraft:flower_cherry",
+      "minecraft:trees_cherry"
+    ],
+    []
+  ],
+  "effects": {
+    "ambient_sound": {
+      "sound_id": "canon:sueno.ambient"
+    },
+    "additions_sound": {
+      "sound": {
+        "sound_id": "canon:juli.chime"
+      },
+      "tick_chance": 0.0015
+    },
+    "music": {
+      "sound": {
+        "sound_id": "canon:music.el_sueno"
+      },
+      "min_delay": 400,
+      "max_delay": 1800,
+      "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:cherry_leaves"
+      },
+      "probability": 0.006
+    },
+    "fog_color": 16766696,
+    "sky_color": 15972054,
+    "water_color": 13148912,
+    "water_fog_color": 10518736,
+    "grass_color": 11069088,
+    "foliage_color": 16230600
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "minecraft:rabbit",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  }
+}

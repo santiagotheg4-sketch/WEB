@@ -1,0 +1,50 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "minecraft:item/carrot_on_a_stick"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 7310001
+      },
+      "model": "canon:item/hueso_deseo"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310002
+      },
+      "model": "canon:item/revolver"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310017
+      },
+      "model": "canon:item/llaves"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310018
+      },
+      "model": "canon:item/boleto"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310019
+      },
+      "model": "canon:item/radio"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310035
+      },
+      "model": "canon:item/linterna"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310040
+      },
+      "model": "canon:item/petalo"
+    }
+  ]
+}

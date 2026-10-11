@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310015,canon:{id:\"gasolina\"},display:{Name:'{\"text\":\"Bidón de gasolina\",\"italic\":false,\"color\":\"#c4251f\"}',Lore:['{\"text\":\"Pieza para el descapotable.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

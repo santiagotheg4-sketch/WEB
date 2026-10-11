@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:carrot_on_a_stick",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310002,canon:{id:\"revolver\"},display:{Name:'{\"text\":\"Revólver .38\",\"italic\":false,\"color\":\"#b9bec5\"}',Lore:['{\"text\":\"Clic derecho: disparar.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"Usa Balas .38. Hace mucho ruido.\",\"italic\":false,\"color\":\"gray\"}']},Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

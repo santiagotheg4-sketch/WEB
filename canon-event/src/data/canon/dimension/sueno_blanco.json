@@ -1,0 +1,22 @@
+{
+  "type": "canon:sueno_blanco",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "canon:sueno_blanco",
+      "lakes": false,
+      "features": false,
+      "structure_overrides": [],
+      "layers": [
+        {
+          "block": "minecraft:barrier",
+          "height": 1
+        },
+        {
+          "block": "minecraft:white_concrete",
+          "height": 63
+        }
+      ]
+    }
+  }
+}

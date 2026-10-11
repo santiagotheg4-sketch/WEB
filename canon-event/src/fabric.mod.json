@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "canonevent",
+  "version": "2.0.0",
+  "name": "Canon Event",
+  "description": "Un deseo. Un precio. Mod de horror (datapack + resource pack) para Minecraft 1.20.1: la Devota, Valle Quieto, Mariana, Diana la Zunga, Juli y El Sueño.",
+  "authors": [
+    "Aevo Spect"
+  ],
+  "license": "All-Rights-Reserved",
+  "icon": "canon_logo.png",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "1.20.1",
+    "fabric-resource-loader-v0": "*"
+  }
+}

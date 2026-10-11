@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/sopa",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/pizza",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/analgesicos",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cookie",
+          "weight": 3
+        }
+      ]
+    }
+  ]
+}

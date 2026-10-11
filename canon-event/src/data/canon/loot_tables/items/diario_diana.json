@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310039,canon:{id:\"diario_diana\"},display:{Name:'{\"text\":\"Diario de Diana\",\"italic\":false,\"color\":\"#b3261e\"}',Lore:['{\"text\":\"Léelo de día.\",\"italic\":false,\"color\":\"gray\"}']},title:\"Diario de Diana\",author:\"Alguien que despertó\",generation:3,pages:['[{\"text\":\"DIANA\\\\n\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"En el pueblo le decían «la Zunga». Nadie se acuerda de quién empezó.\\\\n\\\\nTodos se acuerdan de cómo se reían.\",\"color\":\"black\"}]','[{\"text\":\"Una noche dejó de contestar. Su cama apareció vacía, con pelo rojo enredado en la almohada.\\\\n\\\\nNunca la encontraron.\",\"color\":\"black\"}]','[{\"text\":\"Desde entonces visita a los que duermen. Se para al pie de la cama.\\\\n\\\\nY espera a que abras los ojos.\",\"color\":\"black\"}]','[{\"text\":\"REGLAS\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"- No duermas a oscuras.\\\\n- Si oyes tu nombre, no contestes.\\\\n- Si sientes que alguien te mira, no voltees.\\\\n- Devuélvele lo que es suyo.\",\"color\":\"black\"}]','[{\"text\":\"LA LUZ\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"La luz la lastima. Si se arrastra hacia ti, busca antorchas o apúntale con una linterna.\\\\n\\\\nUn atrapasueños te salva una noche. Solo una.\",\"color\":\"black\"}]','[{\"text\":\"SU ALTAR\\\\n\",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"Hay altares con velas rojas en el bosque. Si le dejas un mechón de su pelo, se calma.\\\\n\\\\nPor un tiempo.\",\"color\":\"black\"}]','[{\"text\":\"Si la ves de lejos, entre los árboles, no te acerques.\\\\n\\\\nSi la ves de cerca, ya es tarde.\",\"color\":\"black\"}]']}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

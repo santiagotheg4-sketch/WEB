@@ -1,0 +1,63 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.8,
+  "downfall": 0.0,
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "effects": {
+    "fog_color": 16777215,
+    "sky_color": 16777215,
+    "water_color": 15790320,
+    "water_fog_color": 16777215,
+    "grass_color": 15263976,
+    "foliage_color": 15263976,
+    "ambient_sound": {
+      "sound_id": "canon:sueno.blanco"
+    },
+    "mood_sound": {
+      "sound": {
+        "sound_id": "canon:sueno.blanco_eco"
+      },
+      "tick_delay": 2400,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "music": {
+      "sound": {
+        "sound_id": "canon:music.casa_blanca"
+      },
+      "min_delay": 600,
+      "max_delay": 2400,
+      "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:white_ash"
+      },
+      "probability": 0.004
+    }
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  }
+}

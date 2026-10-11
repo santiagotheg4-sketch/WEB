@@ -1,0 +1,9 @@
+execute if entity @s[tag=dv_furn_tv] run function canon:furn/use_tv
+execute if entity @s[tag=dv_furn_radio_antigua] run function canon:furn/use_radio
+execute if entity @s[tag=dv_furn_rocola] run function canon:furn/use_rocola
+execute if entity @s[tag=dv_furn_nevera] run function canon:furn/use_nevera
+execute if entity @s[tag=dv_furn_lavadora] run function canon:furn/use_lavadora
+execute if entity @s[tag=dv_furn_expendedora] run function canon:furn/use_expendedora
+execute if entity @s[tag=dv_furn_telefono] run function canon:furn/use_telefono
+execute if entity @s[tag=dv_furn_lampara] run function canon:furn/use_lampara
+execute if entity @s[tag=dv_furn_sillon] run function canon:furn/use_sillon

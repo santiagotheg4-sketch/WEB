@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310020,canon:{id:\"clavel\"},display:{Name:'{\"text\":\"Clavel marchito\",\"italic\":false,\"color\":\"#a54a63\"}',Lore:['{\"text\":\"Lo dejó para ti.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

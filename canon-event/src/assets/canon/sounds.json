@@ -1,0 +1,868 @@
+{
+  "music.valle_quieto": {
+    "sounds": [
+      {
+        "name": "canon:music/valle_quieto",
+        "stream": true
+      }
+    ]
+  },
+  "music.mariana_baile": {
+    "sounds": [
+      {
+        "name": "canon:music/mariana_baile",
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "music.rocola": {
+    "sounds": [
+      {
+        "name": "canon:music/rocola",
+        "stream": true,
+        "attenuation_distance": 28
+      }
+    ]
+  },
+  "ambient.drone": {
+    "sounds": [
+      {
+        "name": "canon:ambient/drone",
+        "volume": 0.6
+      }
+    ]
+  },
+  "ambient.additions": {
+    "sounds": [
+      {
+        "name": "canon:ambient/creak1"
+      },
+      {
+        "name": "canon:ambient/creak2"
+      },
+      {
+        "name": "canon:ambient/creak3"
+      },
+      {
+        "name": "canon:ambient/bell",
+        "volume": 0.5
+      },
+      {
+        "name": "canon:ambient/wind",
+        "volume": 0.6
+      },
+      {
+        "name": "canon:devota/whisper1",
+        "volume": 0.25
+      },
+      {
+        "name": "ambient/cave/cave13",
+        "volume": 0.4
+      }
+    ],
+    "subtitle": "subtitles.devocion.creak"
+  },
+  "ambient.mood": {
+    "sounds": [
+      {
+        "name": "canon:devota/whisper1",
+        "volume": 0.5
+      },
+      {
+        "name": "canon:devota/whisper2",
+        "volume": 0.5
+      },
+      {
+        "name": "canon:ambient/creak2",
+        "volume": 0.7
+      },
+      {
+        "name": "canon:ambient/bell",
+        "volume": 0.4
+      }
+    ]
+  },
+  "fx.heartbeat": {
+    "sounds": [
+      {
+        "name": "canon:fx/heartbeat"
+      }
+    ],
+    "subtitle": "subtitles.devocion.heartbeat"
+  },
+  "fx.heartbeat_fast": {
+    "sounds": [
+      {
+        "name": "canon:fx/heartbeat_fast"
+      }
+    ],
+    "subtitle": "subtitles.devocion.heartbeat"
+  },
+  "fx.bus": {
+    "sounds": [
+      {
+        "name": "canon:fx/bus"
+      }
+    ],
+    "subtitle": "subtitles.devocion.bus"
+  },
+  "fx.stinger": {
+    "sounds": [
+      {
+        "name": "canon:fx/stinger"
+      }
+    ]
+  },
+  "fx.blackout": {
+    "sounds": [
+      {
+        "name": "canon:fx/blackout"
+      }
+    ],
+    "subtitle": "subtitles.devocion.blackout"
+  },
+  "fx.gift": {
+    "sounds": [
+      {
+        "name": "canon:fx/gift"
+      }
+    ],
+    "subtitle": "subtitles.devocion.gift"
+  },
+  "fx.sub_hit": {
+    "sounds": [
+      {
+        "name": "canon:fx/sub_hit"
+      }
+    ],
+    "subtitle": "subtitles.devocion.silence"
+  },
+  "fx.music_box_end": {
+    "sounds": [
+      {
+        "name": "canon:fx/music_box_end"
+      }
+    ],
+    "subtitle": "subtitles.devocion.gift"
+  },
+  "devota.whisper": {
+    "sounds": [
+      {
+        "name": "canon:devota/whisper1",
+        "attenuation_distance": 12
+      },
+      {
+        "name": "canon:devota/whisper2",
+        "attenuation_distance": 12
+      },
+      {
+        "name": "canon:devota/whisper3",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "subtitles.devocion.whisper"
+  },
+  "devota.scream": {
+    "sounds": [
+      {
+        "name": "canon:devota/scream",
+        "attenuation_distance": 64
+      }
+    ],
+    "subtitle": "subtitles.devocion.scream"
+  },
+  "devota.scream_layer": {
+    "sounds": [
+      {
+        "name": "mob/ghast/scream1",
+        "pitch": 1.45,
+        "attenuation_distance": 48
+      },
+      {
+        "name": "mob/ghast/scream3",
+        "pitch": 1.5,
+        "attenuation_distance": 48
+      },
+      {
+        "name": "mob/ghast/affectionate_scream",
+        "pitch": 1.35,
+        "attenuation_distance": 48
+      }
+    ]
+  },
+  "devota.giggle": {
+    "sounds": [
+      {
+        "name": "entity/witch/celebrate",
+        "pitch": 1.35
+      },
+      {
+        "name": "entity/witch/ambient1",
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/witch/ambient4",
+        "pitch": 1.45
+      }
+    ],
+    "subtitle": "subtitles.devocion.giggle"
+  },
+  "devota.hum": {
+    "sounds": [
+      {
+        "name": "canon:devota/hum",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.devocion.hum"
+  },
+  "devota.step": {
+    "sounds": [
+      {
+        "name": "canon:devota/step1"
+      },
+      {
+        "name": "canon:devota/step2"
+      }
+    ],
+    "subtitle": "subtitles.devocion.step"
+  },
+  "items.wish_crack": {
+    "sounds": [
+      {
+        "name": "canon:items/wish_crack"
+      }
+    ],
+    "subtitle": "subtitles.devocion.wish"
+  },
+  "items.wish_granted": {
+    "sounds": [
+      {
+        "name": "canon:items/wish_granted"
+      }
+    ],
+    "subtitle": "subtitles.devocion.granted"
+  },
+  "items.revolver_shot": {
+    "sounds": [
+      {
+        "name": "canon:items/revolver_shot",
+        "attenuation_distance": 96
+      }
+    ],
+    "subtitle": "subtitles.devocion.shot"
+  },
+  "items.revolver_click": {
+    "sounds": [
+      {
+        "name": "canon:items/revolver_click"
+      }
+    ],
+    "subtitle": "subtitles.devocion.click"
+  },
+  "items.revolver_reload": {
+    "sounds": [
+      {
+        "name": "canon:items/revolver_reload"
+      }
+    ],
+    "subtitle": "subtitles.devocion.click"
+  },
+  "items.radio_static": {
+    "sounds": [
+      {
+        "name": "canon:items/radio_static"
+      }
+    ],
+    "subtitle": "subtitles.devocion.radio"
+  },
+  "items.radio_voice": {
+    "sounds": [
+      {
+        "name": "canon:items/radio_voice"
+      }
+    ],
+    "subtitle": "subtitles.devocion.voice"
+  },
+  "car.start": {
+    "sounds": [
+      {
+        "name": "canon:car/start",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "subtitles.devocion.car"
+  },
+  "car.idle": {
+    "sounds": [
+      {
+        "name": "canon:car/idle",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.devocion.car"
+  },
+  "car.horn": {
+    "sounds": [
+      {
+        "name": "canon:car/horn",
+        "attenuation_distance": 48
+      }
+    ],
+    "subtitle": "subtitles.devocion.horn"
+  },
+  "furniture.phone_ring": {
+    "sounds": [
+      {
+        "name": "canon:furniture/phone_ring",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.devocion.phone"
+  },
+  "furniture.tv_static": {
+    "sounds": [
+      {
+        "name": "canon:furniture/tv_static"
+      }
+    ],
+    "subtitle": "subtitles.devocion.tv"
+  },
+  "animals.crow": {
+    "sounds": [
+      {
+        "name": "canon:animals/crow",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "subtitles.devocion.crow"
+  },
+  "gato.hiss": {
+    "sounds": [
+      {
+        "name": "mob/cat/hiss1",
+        "pitch": 0.75
+      },
+      {
+        "name": "mob/cat/hiss2",
+        "pitch": 0.7
+      },
+      {
+        "name": "mob/cat/hiss3",
+        "pitch": 0.8
+      }
+    ],
+    "subtitle": "subtitles.devocion.cat"
+  },
+  "gato.growl": {
+    "sounds": [
+      {
+        "name": "mob/zombie/say1",
+        "pitch": 1.7,
+        "volume": 0.6
+      },
+      {
+        "name": "mob/cat/stray/idle1",
+        "pitch": 0.6
+      },
+      {
+        "name": "mob/zombie/say3",
+        "pitch": 1.8,
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.devocion.cat"
+  },
+  "rata.squeak": {
+    "sounds": [
+      {
+        "name": "mob/silverfish/say1",
+        "pitch": 1.5,
+        "volume": 0.6
+      },
+      {
+        "name": "mob/silverfish/say2",
+        "pitch": 1.6,
+        "volume": 0.6
+      },
+      {
+        "name": "mob/silverfish/say3",
+        "pitch": 1.55,
+        "volume": 0.6
+      }
+    ],
+    "subtitle": "subtitles.devocion.rat"
+  },
+  "diana.scream": {
+    "sounds": [
+      {
+        "name": "canon:diana/scream",
+        "attenuation_distance": 64
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.scream"
+  },
+  "diana.jumpscare": {
+    "sounds": [
+      {
+        "name": "canon:diana/jumpscare"
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.scream"
+  },
+  "diana.crack": {
+    "sounds": [
+      {
+        "name": "canon:diana/crack1"
+      },
+      {
+        "name": "canon:diana/crack2"
+      },
+      {
+        "name": "canon:diana/crack3"
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.crack"
+  },
+  "diana.crawl": {
+    "sounds": [
+      {
+        "name": "canon:diana/crawl",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.crawl"
+  },
+  "diana.name": {
+    "sounds": [
+      {
+        "name": "canon:diana/name1",
+        "attenuation_distance": 12
+      },
+      {
+        "name": "canon:diana/name2",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.name"
+  },
+  "diana.laugh": {
+    "sounds": [
+      {
+        "name": "canon:diana/laugh"
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.laugh"
+  },
+  "diana.breath": {
+    "sounds": [
+      {
+        "name": "canon:diana/breath",
+        "attenuation_distance": 8
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.breath"
+  },
+  "diana.step": {
+    "sounds": [
+      {
+        "name": "canon:diana/step1"
+      },
+      {
+        "name": "canon:diana/step2"
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.step"
+  },
+  "diana.pasos": {
+    "sounds": [
+      {
+        "name": "canon:diana/pasos",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.step"
+  },
+  "diana.paralysis": {
+    "sounds": [
+      {
+        "name": "canon:diana/paralysis"
+      }
+    ]
+  },
+  "diana.knock": {
+    "sounds": [
+      {
+        "name": "canon:diana/knock"
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.knock"
+  },
+  "diana.hum": {
+    "sounds": [
+      {
+        "name": "canon:diana/hum",
+        "attenuation_distance": 20
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.hum"
+  },
+  "diana.flicker": {
+    "sounds": [
+      {
+        "name": "canon:diana/flicker"
+      }
+    ],
+    "subtitle": "subtitles.devocion.diana.flicker"
+  },
+  "juli.theme": {
+    "sounds": [
+      {
+        "name": "canon:juli/theme",
+        "attenuation_distance": 48
+      }
+    ],
+    "subtitle": "subtitles.devocion.juli.theme"
+  },
+  "juli.hum": {
+    "sounds": [
+      {
+        "name": "canon:juli/hum",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "subtitles.devocion.juli.hum"
+  },
+  "juli.chime": {
+    "sounds": [
+      {
+        "name": "canon:juli/chime1"
+      },
+      {
+        "name": "canon:juli/chime2"
+      }
+    ],
+    "subtitle": "subtitles.devocion.juli.chime"
+  },
+  "juli.encuentro": {
+    "sounds": [
+      {
+        "name": "canon:juli/encuentro",
+        "attenuation_distance": 40
+      }
+    ],
+    "subtitle": "subtitles.devocion.juli.encuentro"
+  },
+  "music.el_sueno": {
+    "sounds": [
+      {
+        "name": "canon:music/el_sueno",
+        "stream": true
+      }
+    ]
+  },
+  "sueno.ambient": {
+    "sounds": [
+      {
+        "name": "canon:sueno/ambient",
+        "volume": 0.7
+      }
+    ]
+  },
+  "fx.whoosh_white": {
+    "sounds": [
+      {
+        "name": "canon:fx/whoosh_white"
+      }
+    ],
+    "subtitle": "subtitles.devocion.whoosh"
+  },
+  "fx.wake_gasp": {
+    "sounds": [
+      {
+        "name": "canon:fx/wake_gasp"
+      }
+    ],
+    "subtitle": "subtitles.devocion.gasp"
+  },
+  "ui.blip": {
+    "sounds": [
+      {
+        "name": "canon:ui/blip",
+        "volume": 0.8
+      }
+    ]
+  },
+  "kevin.techno": {
+    "sounds": [
+      {
+        "name": "canon:kevin/techno",
+        "stream": true,
+        "attenuation_distance": 48
+      }
+    ],
+    "subtitle": "subtitles.canon.techno"
+  },
+  "kevin.drugged": {
+    "sounds": [
+      {
+        "name": "canon:kevin/drugged",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.canon.drugged"
+  },
+  "kevin.laugh": {
+    "sounds": [
+      {
+        "name": "canon:kevin/laugh"
+      }
+    ],
+    "subtitle": "subtitles.canon.kevin.laugh"
+  },
+  "kevin.hey": {
+    "sounds": [
+      {
+        "name": "canon:kevin/hey"
+      }
+    ],
+    "subtitle": "subtitles.canon.kevin.hey"
+  },
+  "bosque.viento": {
+    "sounds": [
+      {
+        "name": "canon:bosque/viento",
+        "volume": 0.8
+      }
+    ]
+  },
+  "bosque.rama": {
+    "sounds": [
+      {
+        "name": "canon:bosque/rama1"
+      },
+      {
+        "name": "canon:bosque/rama2"
+      },
+      {
+        "name": "canon:bosque/rama3"
+      }
+    ],
+    "subtitle": "subtitles.canon.twig"
+  },
+  "bosque.pasos": {
+    "sounds": [
+      {
+        "name": "canon:bosque/pasos1"
+      },
+      {
+        "name": "canon:bosque/pasos2"
+      }
+    ],
+    "subtitle": "subtitles.canon.leafsteps"
+  },
+  "bosque.buho": {
+    "sounds": [
+      {
+        "name": "canon:bosque/buho",
+        "attenuation_distance": 48
+      }
+    ],
+    "subtitle": "subtitles.canon.owl"
+  },
+  "music.bosque": {
+    "sounds": [
+      {
+        "name": "canon:music/bosque",
+        "stream": true
+      }
+    ]
+  },
+  "miron.aparece": {
+    "sounds": [
+      {
+        "name": "canon:miron/aparece"
+      }
+    ],
+    "subtitle": "subtitles.canon.miron"
+  },
+  "miron.estatica": {
+    "sounds": [
+      {
+        "name": "canon:miron/estatica"
+      }
+    ],
+    "subtitle": "subtitles.canon.static"
+  },
+  "miron.grito": {
+    "sounds": [
+      {
+        "name": "canon:miron/grito"
+      }
+    ],
+    "subtitle": "subtitles.canon.miron.scream"
+  },
+  "miron.respira": {
+    "sounds": [
+      {
+        "name": "canon:miron/respira",
+        "attenuation_distance": 8
+      }
+    ],
+    "subtitle": "subtitles.canon.breath"
+  },
+  "cata.ambient": {
+    "sounds": [
+      {
+        "name": "canon:cata/ambient",
+        "volume": 0.8
+      }
+    ]
+  },
+  "masa.rugido": {
+    "sounds": [
+      {
+        "name": "canon:masa/rugido",
+        "attenuation_distance": 64
+      }
+    ],
+    "subtitle": "subtitles.canon.masa.roar"
+  },
+  "masa.arrastre": {
+    "sounds": [
+      {
+        "name": "canon:masa/arrastre",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.canon.masa.slide"
+  },
+  "cata.derrumbe": {
+    "sounds": [
+      {
+        "name": "canon:cata/derrumbe",
+        "attenuation_distance": 40
+      }
+    ],
+    "subtitle": "subtitles.canon.collapse"
+  },
+  "cata.reja": {
+    "sounds": [
+      {
+        "name": "canon:cata/reja",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.canon.gate"
+  },
+  "music.persecucion": {
+    "sounds": [
+      {
+        "name": "canon:music/persecucion",
+        "stream": true
+      }
+    ]
+  },
+  "alto.pasos": {
+    "sounds": [
+      {
+        "name": "canon:alto/pasos",
+        "attenuation_distance": 40
+      }
+    ],
+    "subtitle": "subtitles.canon.alto.steps"
+  },
+  "alto.silbido": {
+    "sounds": [
+      {
+        "name": "canon:alto/silbido",
+        "attenuation_distance": 64
+      }
+    ],
+    "subtitle": "subtitles.canon.alto.whistle"
+  },
+  "alto.golpe": {
+    "sounds": [
+      {
+        "name": "canon:alto/golpe",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "subtitles.canon.alto.knock"
+  },
+  "alto.aparece": {
+    "sounds": [
+      {
+        "name": "canon:alto/aparece"
+      }
+    ],
+    "subtitle": "subtitles.canon.alto"
+  },
+  "nicolas.maldito": {
+    "sounds": [
+      {
+        "name": "canon:nicolas/maldito"
+      }
+    ],
+    "subtitle": "subtitles.canon.nicolas.shout"
+  },
+  "nicolas.risa": {
+    "sounds": [
+      {
+        "name": "canon:nicolas/risa",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.canon.nicolas.laugh"
+  },
+  "nicolas.pasos": {
+    "sounds": [
+      {
+        "name": "canon:nicolas/pasos",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.canon.nicolas.steps"
+  },
+  "mina.ambient": {
+    "sounds": [
+      {
+        "name": "canon:mina/ambient",
+        "volume": 0.8
+      }
+    ]
+  },
+  "mina.derrumbe": {
+    "sounds": [
+      {
+        "name": "canon:mina/derrumbe",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "subtitles.canon.rocks"
+  },
+  "sueno.blanco": {
+    "sounds": [
+      {
+        "name": "canon:sueno/blanco",
+        "volume": 0.6
+      }
+    ]
+  },
+  "sueno.blanco_eco": {
+    "sounds": [
+      {
+        "name": "canon:sueno/blanco_eco"
+      }
+    ],
+    "subtitle": "subtitles.canon.creak"
+  },
+  "music.casa_blanca": {
+    "sounds": [
+      {
+        "name": "canon:music/casa_blanca",
+        "stream": true
+      }
+    ]
+  }
+}

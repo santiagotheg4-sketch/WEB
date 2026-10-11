@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "c": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:dried_kelp"
+          ],
+          "nbt": "{canon:{id:\"somniferos\"}}"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "canon:items/comer/somniferos"
+  }
+}

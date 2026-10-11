@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310021,canon:{id:\"billete\"},display:{Name:'{\"text\":\"Billete arrugado\",\"italic\":false,\"color\":\"#a9c08f\"}',Lore:['{\"text\":\"Dinero de Valle Quieto.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

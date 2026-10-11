@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_forest",
+    "#minecraft:is_taiga",
+    "minecraft:plains",
+    "minecraft:swamp",
+    "minecraft:meadow",
+    "minecraft:dark_forest",
+    "minecraft:old_growth_birch_forest",
+    "minecraft:windswept_forest"
+  ]
+}

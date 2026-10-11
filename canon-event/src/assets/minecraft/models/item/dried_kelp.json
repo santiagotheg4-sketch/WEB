@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/dried_kelp"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 7310009
+      },
+      "model": "canon:item/analgesicos"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310010
+      },
+      "model": "canon:item/somniferos"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310011
+      },
+      "model": "canon:item/pastillas_negras"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/item_frame"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 7310025
+      },
+      "model": "canon:item/m_tv"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310026
+      },
+      "model": "canon:item/m_radio"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310027
+      },
+      "model": "canon:item/m_rocola"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310028
+      },
+      "model": "canon:item/m_nevera"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310029
+      },
+      "model": "canon:item/m_lavadora"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310030
+      },
+      "model": "canon:item/m_expendedora"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310031
+      },
+      "model": "canon:item/m_telefono"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310032
+      },
+      "model": "canon:item/m_lampara"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310033
+      },
+      "model": "canon:item/m_sillon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310034
+      },
+      "model": "canon:item/m_farola"
+    }
+  ]
+}

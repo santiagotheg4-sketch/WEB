@@ -1,0 +1,3 @@
+execute unless predicate canon:en_pueblo run tellraw @s {"text":"Usa el boleto (clic derecho) para ir a Valle Quieto. El vagabundo de paso vende más boletos y huesos por esmeraldas.","color":"#9ab8f0","italic":true}
+execute if predicate canon:en_pueblo if score #parts dv.parts matches 0..14 run tellraw @s [{"text":"Piezas del descapotable: ","color":"#9ab8f0"},{"score":{"name":"#parts","objective":"dv.parts"},"color":"white"},{"text":" (1 batería · 2 gasolina · 4 bujías · 8 llaves). Lee el diario: tiene las pistas.","color":"gray","italic":true}]
+execute if predicate canon:en_pueblo if score #parts dv.parts matches 15 run tellraw @s {"text":"El descapotable está listo. Súbete y maneja hacia el norte, por la salida del pueblo.","color":"#9fd8b0","italic":true}

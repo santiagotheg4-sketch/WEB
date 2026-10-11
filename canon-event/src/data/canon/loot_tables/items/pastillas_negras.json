@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:dried_kelp",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310011,canon:{id:\"pastillas_negras\"},display:{Name:'{\"text\":\"Pastillas negras\",\"italic\":false,\"color\":\"#6e0f16\"}',Lore:['{\"text\":\"No tienen etiqueta.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"No deberías tomarlas.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

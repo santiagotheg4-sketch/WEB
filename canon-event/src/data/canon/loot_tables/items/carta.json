@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310023,canon:{id:\"carta\"},title:'Para ti',author:\"???\",generation:3,pages:['{\"text\":\"Te vi hoy desde la ventana.\\\\n\\\\nCaminas tan bonito cuando crees que nadie te mira.\",\"color\":\"dark_red\"}','{\"text\":\"Pero yo siempre te miro.\\\\n\\\\nSiempre.\",\"color\":\"dark_red\"}'],display:{Lore:['{\"text\":\"Huele a perfume dulce.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310023,canon:{id:\"carta\"},title:'Perdón',author:\"???\",generation:3,pages:['{\"text\":\"Perdón por lo de anoche.\\\\n\\\\nNo quería asustarte. Solo quería verte dormir.\",\"color\":\"dark_red\"}','{\"text\":\"Respirabas tan despacio.\\\\n\\\\nConté cada respiración.\\\\nFueron 4.211.\",\"color\":\"dark_red\"}'],display:{Lore:['{\"text\":\"Huele a perfume dulce.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310023,canon:{id:\"carta\"},title:'No me dejes',author:\"???\",generation:3,pages:['{\"text\":\"¿Por qué te escondes de mí?\\\\n\\\\nYo nunca me escondería de ti.\",\"color\":\"dark_red\"}','{\"text\":\"Si te vas, te encuentro.\\\\nSi te escondes, te encuentro.\\\\n\\\\nTe encuentro porque te amo.\",\"color\":\"dark_red\"}'],display:{Lore:['{\"text\":\"Huele a perfume dulce.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310023,canon:{id:\"carta\"},title:'Nuestra casa',author:\"???\",generation:3,pages:['{\"text\":\"Ya elegí nuestra casa.\\\\nTiene un sótano grande.\\\\n\\\\nAhí nadie nos va a molestar.\",\"color\":\"dark_red\"}','{\"text\":\"Le puse candado por dentro.\\\\n\\\\nPara que estemos juntos para siempre.\",\"color\":\"dark_red\"}'],display:{Lore:['{\"text\":\"Huele a perfume dulce.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

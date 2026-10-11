@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:carrot_on_a_stick",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310018,canon:{id:\"boleto\"},display:{Name:'{\"text\":\"Boleto a Valle Quieto\",\"italic\":false,\"color\":\"#efe2bd\"}',Lore:['{\"text\":\"Solo ida.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"Clic derecho para subir al autobús.\",\"italic\":false,\"color\":\"gray\"}']},Unbreakable:1b}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

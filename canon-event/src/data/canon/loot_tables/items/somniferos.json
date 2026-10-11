@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:dried_kelp",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310010,canon:{id:\"somniferos\"},display:{Name:'{\"text\":\"Somníferos\",\"italic\":false,\"color\":\"#9ab8f0\"}',Lore:['{\"text\":\"30 segundos en silencio total.\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"Nadie te oirá. Ni ella.\",\"italic\":false,\"color\":\"gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

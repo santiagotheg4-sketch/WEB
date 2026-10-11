@@ -1,0 +1,2 @@
+setblock ~ ~ ~ minecraft:dark_oak_sign[rotation=11,waterlogged=false]{front_text:{messages:['{"text":"NO DIGAS","color":"dark_red"}','{"text":"MI NOMBRE","color":"dark_red"}','{"text":"","color":"dark_red"}','{"text":"","color":"dark_red"}'],color:"red",has_glowing_text:1b},back_text:{messages:['{"text":"NO DIGAS","color":"dark_red"}','{"text":"MI NOMBRE","color":"dark_red"}','{"text":"","color":"dark_red"}','{"text":"","color":"dark_red"}'],color:"red",has_glowing_text:1b},is_waxed:1b}
+scoreboard players set #k dv.tmp 1

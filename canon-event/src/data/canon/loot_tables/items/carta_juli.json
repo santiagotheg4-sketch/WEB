@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310041,canon:{id:\"carta_juli\"},display:{Name:'{\"text\":\"Carta de Juli\",\"italic\":false,\"color\":\"#f2a7c3\"}',Lore:['{\"text\":\"Para Santi.\",\"italic\":false,\"color\":\"gray\"}']},title:\"Para Santi\",author:\"Juli\",generation:3,pages:['[{\"text\":\"Santi:\\\\n\\\\n\",\"color\":\"#b0406a\"},{\"text\":\"No sé si esto lo vas a leer despierto o dormido. Aquí no se nota la diferencia.\",\"color\":\"black\"}]','[{\"text\":\"Te busco en todos los sueños. A veces llego tarde y ya te fuiste. A veces llego y no me ves.\",\"color\":\"black\"}]','[{\"text\":\"No estoy enojada. Solo quería decirte que me acuerdo de ti.\\\\n\\\\nDe verdad.\",\"color\":\"black\"}]','[{\"text\":\"Si alguna vez me encuentras, quédate un rato. No tienes que decir nada.\\\\n\\\\n\",\"color\":\"black\"},{\"text\":\"— Juli\",\"color\":\"#b0406a\"}]']}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

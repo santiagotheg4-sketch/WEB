@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 3
+      },
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/carta",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/clavel",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/analgesicos",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:loot_table",
+          "name": "canon:items/balas",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

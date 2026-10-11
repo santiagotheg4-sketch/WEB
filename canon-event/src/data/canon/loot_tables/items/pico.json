@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stone_pickaxe",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:7310008,canon:{id:\"pico\"},display:{Name:'{\"text\":\"Pico oxidado\",\"italic\":false,\"color\":\"#8a6a50\"}',Lore:['{\"text\":\"Rompe escombros y piedra agrietada.\",\"italic\":false,\"color\":\"gray\"}']},CanDestroy:[\"minecraft:cracked_stone_bricks\",\"minecraft:cobblestone\",\"minecraft:mossy_cobblestone\",\"minecraft:gravel\"],AttributeModifiers:[{AttributeName:\"generic.attack_damage\",Name:\"dv\",Amount:3.0d,Operation:0,Slot:\"mainhand\",UUID:[I;1146507075,1229934087,4096,29456]},{AttributeName:\"generic.attack_speed\",Name:\"dv\",Amount:-2.8d,Operation:0,Slot:\"mainhand\",UUID:[I;1146507075,1229934087,4097,29456]}]}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

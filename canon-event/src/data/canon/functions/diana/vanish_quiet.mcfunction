@@ -1,0 +1,1 @@
+function canon:diana/despawn

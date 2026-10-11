@@ -1,0 +1,62 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/paper"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 7310014
+      },
+      "model": "canon:item/bateria"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310015
+      },
+      "model": "canon:item/gasolina"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310016
+      },
+      "model": "canon:item/bujias"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310020
+      },
+      "model": "canon:item/clavel"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310021
+      },
+      "model": "canon:item/billete"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310022
+      },
+      "model": "canon:item/fusible"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310036
+      },
+      "model": "canon:item/pilas"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310037
+      },
+      "model": "canon:item/atrapasuenos"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7310038
+      },
+      "model": "canon:item/mechon"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "canon:altar_diana",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 22,
+    "separation": 8,
+    "salt": 731902
+  }
+}

@@ -1,0 +1,27 @@
+# Canon Event — mod de horror para Minecraft 1.20.1 (Forge / NeoForge)
+# Mod sin código (lowcodefml): datapack + resource pack integrados.
+modLoader="lowcodefml"
+loaderVersion="[46,)"
+license="All Rights Reserved"
+showAsResourcePack=false
+
+[[mods]]
+modId="canonevent"
+version="2.0.0"
+displayName="Canon Event"
+logoFile="canon_logo.png"
+credits="Hecho para Aevo Spect"
+authors="Aevo Spect"
+description='''
+Lo que tiene que pasar, va a pasar.
+Alguien empieza a visitarte. Al principio es amable. Te sigue, te oye caminar y, poco a poco, deja de estar bien.
+Viaja a Valle Quieto, un pueblo en la niebla, repara el descapotable y escapa. No le hables demasiado a Mariana.
+Y de noche, apaga la luz con cuidado: Diana la Zunga te mira dormir. Si alguien pregunta por Santi, es Juli: síguela hasta El Sueño.
+'''
+
+[[dependencies.canonevent]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.20.2)"
+    ordering="NONE"
+    side="BOTH"

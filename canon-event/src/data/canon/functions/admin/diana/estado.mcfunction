@@ -1,0 +1,1 @@
+tellraw @s ["",{"text":"[Canon Event] Asedio: ","color":"dark_gray"},{"score":{"name":"@s","objective":"dv.dia"}},{"text":" · próximo evento en ","color":"dark_gray"},{"score":{"name":"@s","objective":"dv.dcd"}},{"text":" s","color":"dark_gray"}]

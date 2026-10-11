@@ -1,0 +1,289 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/panel.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/noise_0.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/noise_1.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/noise_2.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/noise_3.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/noise_4.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/noise_5.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_0.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_1.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_2.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_3.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_4.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_5.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/heart_6.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_0.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_1.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_2.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_3.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_4.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_5.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_6.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_7.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_8.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_9.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/san_10.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/alert_00.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/alert_01.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/alert_02.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/alert_10.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/alert_11.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "canon:font/hud2/alert_12.png",
+      "ascent": 14,
+      "height": 20,
+      "chars": [
+        ""
+      ]
+    },
+    {
+      "type": "space",
+      "advances": {
+        "": -169
+      }
+    }
+  ]
+}

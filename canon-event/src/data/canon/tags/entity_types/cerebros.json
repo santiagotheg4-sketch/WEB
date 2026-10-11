@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:zombie",
+    "minecraft:cave_spider",
+    "minecraft:wolf",
+    "minecraft:chicken",
+    "minecraft:endermite",
+    "minecraft:wandering_trader",
+    "minecraft:horse"
+  ]
+}
