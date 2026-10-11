@@ -1,6 +1,57 @@
-# Canon Event 5.0.0 — guía
+# Canon Event 6.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-5.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-6.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 6.0
+
+### Arreglos
+- **Pantalla de carga infinita («Joining world»)** al salir del sueño o de la casa blanca: el regreso te mandaba a tu mundo y en el mismo instante te devolvía al sueño. Ya está arreglado, y también arregla volver del Más Allá.
+- **Salir del sueño es fácil**: al entrar te sale el botón **[ Despertar ya ]** en el chat. También puedes escribir `/trigger dv.despertar set 1`. La puerta sigue funcionando.
+- **Cámara**: cuando un personaje te fija la vista (Juli o Diana), ahora mira a su cara y no por encima de la cabeza.
+
+### Valery
+La novia nueva de Juan (Bana). Crespa, siempre triste, siempre pidiendo perdón. Aparece de la nada, como Juli, casi siempre cerca de Bana: le pregunta si comió y si durmió.
+- **Su historia**: encontró a Juan en el puente a las 3:11 de la mañana, llorando sin saber por qué. Desde ese día lo cuida.
+- **Celos de Diana**: cuando Valery está con Bana, Diana aparece detrás de ella. Esa noche grita afuera de la casa de Bana: «¿POR QUÉ ELLA?».
+- **Bana** puede preguntarle si está bien y **abrazarla**.
+- **Su secreto**: si le preguntas por Diana y por qué pide perdón, después te cuenta lo que esconde. Entonces **tú decides** si rompe el deseo o lo guarda. Cada decisión tiene su final y no hay vuelta atrás.
+
+### El diario de Diana y el jefe final
+- **13 páginas del diario de Diana** cuentan toda su historia. Salen de noche brillando en el suelo, y también te las dan el Narrador, las misiones, Luna, la casa de la abuela, Don Severo, el jardín de Juli y Felipe.
+- **El final**: con las 13 páginas se anuncia **la Noche del Demonio** en 3 días. También pueden llamarlo de noche con el Libro de invocación («Terminar esto»).
+- **El de la cara roja** (jefe, con barra de vida) solo se lastima con agua bendita, sal, golpes con la cruz de la abuela en la mano y el flash de la cámara. Llama zombis, grita y aparece detrás de ti. A mitad de vida se pone furioso. Si lo vencen, hay un final.
+
+### Más personajes e historias
+- **Don Severo** vende objetos paranormales y páginas por billetes. Aparece de día y en Valle Quieto.
+- **Abuela Esmeralda**:
+  - Santi le puede preguntar dónde vive y aparece su **casa**, con el diario de la abuela, un cofre, fotos viejas y una cama.
+  - Te pide **buscar a sus 3 nietos**: de día se oye su risa y brillan. Cuando los encuentres a los tres, vuelve con ella.
+- **Mariana**:
+  - De noche **baila afuera de tu ventana**.
+  - **Felipe**, su ex, aparece de día. Si lo llevas con Mariana, se despiden con una última canción y ella deja de acosarlos.
+- **El Mirón** se acerca cada vez que lo miras y luego dejas de mirarlo.
+- **Los Sin Rostro**: grupos de gente sin cara que te miran (en Valle Quieto y de noche). Si les quitas la vista, dan un paso.
+- **El jardín secreto de Juli**: en la casa blanca, pídele a Juli que te enseñe su lugar secreto y atrapa las 5 luciérnagas.
+- **Luna te defiende**: ataca a los monstruos y espanta lo que te acecha.
+
+### Más paranormal
+- **Poltergeist de verdad**:
+  - las puertas se abren y se cierran;
+  - las antorchas se apagan;
+  - los cofres escupen cosas;
+  - los muebles se giran;
+  - los cuadros y las armaduras se mueven.
+- **La muñeca vuelve**: si la botas, de noche regresa a tu bolsillo.
+- **Fotos en marcos**: de noche, la persona de la foto aparece en el cuarto.
+
+### Para no aburrirse
+- **Cuaderno de investigación**: todos lo reciben. Se va llenando con cada personaje que conoces y con tus páginas.
+- **Noches anunciadas**: «Faltan 3 días para la Noche de Diana».
+- **Muertes distintas**: cada monstruo te mata con su propia escena y su propio mensaje en el chat.
+- **Rachas**: cada noche que sobrevives sin morir suma. Hay premios a las 3, 5, 7 y 10 noches, y con racha alta los zombis se vuelven más fuertes.
+- **Logros nuevos** en la pestaña «Canon Event».
+
+---
 
 ## Lo nuevo de la 5.0
 
@@ -70,7 +121,7 @@ Si los miras, desaparecen.
 ### Personajes
 - **Kevin** llega, se queda un rato y se va: a veces se despide y a veces simplemente desaparece.
 - **Mariana**: no se le puede hablar. Busca a su ex, Felipe, y deja carteles. Si le hablas mucho: «Nunca me vuelvas a hablar». Desde ahí te acecha, aparece y desaparece y te deja carteles cerca de tu casa. Dale una amapola para que te perdone.
-- **La Abuela Esmeralda**: aparece al anochecer, te ofrece sopita (a veces buena, a veces no) y te invita a su casa… no la sigas a la oscuridad.
+- **La Abuela Esmeralda** (abuela de Santi): aparece al anochecer, te ofrece sopita (a veces buena, a veces no) y te invita a su casa… no la sigas a la oscuridad.
 - **Skins nuevas**: todos los personajes ahora tienen forma de jugador con skin de 64x64: Juli, Kevin, Nicolás, Diana humana, Dani, Mariana, la abuela y los 10 NPCs. Para cambiar una skin, reemplaza su `.png` (`assets/canon/textures/item/modelo/<nombre>_skin*.png`).
 
 ### El Más Allá

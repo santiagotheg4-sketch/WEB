@@ -91,7 +91,7 @@ execute as @e[type=marker,tag=dv_luzmk] if score @s dv.pid = #pid dv.tmp run sco
 
     # ================================================================== SALIDAS DE LOS SUEÑOS
     c.on('second', 'execute as @e[type=interaction,tag=dv_puerta_sueno] run data merge entity @s {width:1.6f,height:2.8f}')
-    c.on('tick', 'execute as @a[predicate=canon:en_sueno] at @s if entity @e[type=interaction,tag=dv_puerta_sueno,distance=..1.4] run function canon:sueno/wake')
+    c.on('tick', 'execute as @a[predicate=canon:en_sueno,scores={dv.sueno=..11900}] at @s if entity @e[type=interaction,tag=dv_puerta_sueno,distance=..1.1] run function canon:sueno/wake')
     c.patch('sueno/arrived', lambda s: s if 'detrás de ti' in s else s.rstrip('\n') +
             '\ntellraw @s {"text":"(La puerta para despertar está detrás de ti. Crúzala o haz clic en ella.)","color":"gray","italic":true}\n')
 
@@ -107,6 +107,7 @@ scoreboard players operation #ly dv.tmp -= #by dv.tmp
 scoreboard players add #ly dv.tmp 180
 execute if score #py dv.tmp matches -1 run scoreboard players set #ly dv.tmp 1450
 execute unless score #ly dv.tmp matches 150..2600 run scoreboard players set #ly dv.tmp 1450
+scoreboard players set #ly dv.tmp 1450
 execute as @e[type=marker,tag=dv_dlook] if score @s dv.id = #id dv.tmp run function canon:diana/look_marker_move
 ''')
 

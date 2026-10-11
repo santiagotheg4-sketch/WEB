@@ -263,7 +263,7 @@ def paint_skin(cfg, expr='neutral'):
     if hs != 'bald':
         for f in ('south', 'east', 'west'):
             x, y, w, h = S.face_rect('head', f)
-            top_rows = {'short': 3, 'emo': 4, 'messy': 4, 'bun': 3, 'long': 8, 'bob': 6, 'ponytail': 4, 'braids': 8}[hs] if f != 'south' else 8
+            top_rows = {'short': 3, 'emo': 4, 'messy': 4, 'bun': 3, 'long': 8, 'bob': 6, 'ponytail': 4, 'braids': 8, 'curly': 8}[hs] if f != 'south' else 8
             if hs in ('short', 'emo', 'messy', 'bun', 'ponytail') and f == 'south':
                 top_rows = 6
             S.rect(x, y, w, top_rows, hair)
@@ -274,7 +274,7 @@ def paint_skin(cfg, expr='neutral'):
     lay = {}
     for f in ('north', 'south', 'east', 'west', 'up'):
         lay[f] = S.face_rect('head', f, True)
-    if hs in ('long', 'bob', 'braids'):
+    if hs in ('long', 'bob', 'braids', 'curly'):
         x, y, w, h = lay['south']
         S.rect(x, y, w, h, hair)
         for f in ('east', 'west'):
@@ -291,6 +291,22 @@ def paint_skin(cfg, expr='neutral'):
         S.rect(x, y, w, 2, hair)
         S.rect(x + 3, y + 2, 5, 2, hair)
         S.rect(x + 5, y + 4, 3, 1, hair)
+    if hs == 'curly':
+        lt, dk = _sh(hair, 1.35), _sh(hair, 0.7)
+        for f in ('south', 'east', 'west', 'up', 'north'):
+            x, y, w, h = lay[f]
+            for yy in range(h if f != 'north' else 3):
+                for xx in range(w):
+                    if f == 'north' and 2 < xx < w - 3 and yy > 1:
+                        continue
+                    r = S.rng.random()
+                    if r < 0.28:
+                        S.px(x + xx, y + yy, lt)
+                    elif r < 0.5:
+                        S.px(x + xx, y + yy, dk)
+        x, y, w, h = lay['north']
+        for yy in range(2, 7):
+            S.px(x, y + yy, hair if yy % 2 else lt); S.px(x + w - 1, y + yy, dk if yy % 2 else hair)
     if hs == 'messy':
         x, y, w, h = lay['up']
         for k in range(0, 8, 2):

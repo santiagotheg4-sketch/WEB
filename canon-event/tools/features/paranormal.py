@@ -280,6 +280,7 @@ execute anchored eyes positioned ^ ^ ^1 run function canon:para/agua_bendita/ray
     F('para/agua_bendita/rayo', '''
 scoreboard players add #ab dv.tmp 1
 execute if entity @e[tag=dv_horror,distance=..1.6] run scoreboard players set #ab dv.tmp 99
+execute if entity @e[type=zombie,tag=dv_jefe,distance=..2.6] run scoreboard players set #ab dv.tmp 99
 execute if entity @e[type=#canon:hostiles,distance=..1.6] run scoreboard players set #ab dv.tmp 99
 execute unless block ~ ~ ~ #canon:pasable run scoreboard players set #ab dv.tmp 99
 execute if score #ab dv.tmp matches 12.. run function canon:para/agua_bendita/salpica
@@ -290,12 +291,13 @@ particle minecraft:splash ~ ~ ~ 1 1 1 0.2 60 normal
 particle minecraft:end_rod ~ ~ ~ 0.6 0.6 0.6 0.05 15 normal
 playsound minecraft:entity.splash_potion.break player @a[distance=..16] ~ ~ ~ 1 1
 execute as @e[tag=dv_horror,distance=..3] at @s run function canon:camara/espanta
+execute as @e[type=zombie,tag=dv_jefe,distance=..4] run function canon:rel/jefe/agua
 execute as @e[type=#canon:hostiles,distance=..3,limit=4] run damage @s 8 minecraft:magic
 ''')
     # Libro de invocación
     F('para/libro_inv/usar', 'scoreboard players set @s dv.cool 20\n' + menu('@s', 'LIBRO DE INVOCACIÓN: ¿a quién llamas?', '#8b2a2a', [
         ('Diana', '/trigger dv.invoca set 1'), ('Abuela Esmeralda', '/trigger dv.invoca set 2'), ('Un alma', '/trigger dv.invoca set 3'),
-        ('Kevin', '/trigger dv.invoca set 4'), ('El Narrador', '/trigger dv.invoca set 5')]))
+        ('Kevin', '/trigger dv.invoca set 4'), ('El Narrador', '/trigger dv.invoca set 5'), ('Terminar esto (13 páginas)', '/trigger dv.invoca set 6')]))
     F('para/libro_inv/invocar', '''
 scoreboard players operation #iv dv.tmp = @s dv.invoca
 scoreboard players set @s dv.invoca 0
@@ -313,6 +315,7 @@ execute if score #iv dv.tmp matches 2 positioned ^ ^ ^5 run function canon:abuel
 execute if score #iv dv.tmp matches 3 positioned ^ ^ ^5 run function canon:masalla/fantasma1
 execute if score #iv dv.tmp matches 4 positioned ^ ^ ^5 run function canon:kevin/summon
 execute if score #iv dv.tmp matches 5 positioned ^ ^ ^5 run function canon:para/narrador/summon
+execute if score #iv dv.tmp matches 6 run function canon:rel/jefe/invocar
 execute if predicate canon:azar/1en4 run function canon:para/ouija/algo
 ''')
     # Grabadora
@@ -344,6 +347,8 @@ execute if score #paranormal dv.cfg matches 1 as @a[gamemode=!spectator,scores={
         'function canon:para/cartel_te_vi',
         'playsound minecraft:block.chain.fall block @s ^2 ^1 ^-2 1 0.6\nplaysound minecraft:entity.item.pickup block @s ^-2 ^ ^ 0.7 0.5',
         'playsound minecraft:block.glass.break block @s ^5 ^1 ^-4 0.7 0.6\ntellraw @s {"text":"Algo de vidrio se rompió en otro cuarto. No hay nada roto.","color":"gray","italic":true}',
+        'function canon:rel/polter/puerta', 'function canon:rel/polter/puerta', 'function canon:rel/polter/antorcha',
+        'function canon:rel/polter/cofre', 'function canon:rel/polter/mueble',
     ])
     F('para/cuadro_cae', 'summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:painting",Count:1b}}\nplaysound minecraft:entity.painting.break block @a[distance=..16] ~ ~ ~ 1 0.8\nkill @s')
     F('para/cartel_te_vi', '''
@@ -421,7 +426,7 @@ tellraw @s {"text":"Volviste del Más Allá... pero no volviste solo.","color":"
     c.json('data/canon/tags/entity_types/imitables.json', {'values': ['minecraft:cow', 'minecraft:sheep', 'minecraft:pig', 'minecraft:chicken']})
     c.on('second', 'execute if score #paranormal dv.cfg matches 1 if predicate canon:de_noche as @a[gamemode=!spectator,gamemode=!creative] at @s as @e[type=#canon:imitables,distance=..5,limit=1] at @s if predicate canon:azar/1en300 run function canon:para/imitador')
     F('para/imitador', '''
-summon minecraft:zombie ~ ~ ~ {CustomName:'{"text":"El Imitador","color":"#8b0000"}',Tags:["dv_zinit","dv_zvar"],CanPickUpLoot:0b,Attributes:[{Name:"generic.movement_speed",Base:0.36d},{Name:"generic.max_health",Base:30d},{Name:"generic.attack_damage",Base:6d}],Health:30f,ArmorItems:[{},{},{},{id:"minecraft:carved_pumpkin",Count:1b}],ArmorDropChances:[0f,0f,0f,0f]}
+summon minecraft:zombie ~ ~ ~ {CustomName:'{"text":"El Imitador","color":"#8b0000"}',Tags:["dv_zinit","dv_zvar","dv_imitador"],CanPickUpLoot:0b,Attributes:[{Name:"generic.movement_speed",Base:0.36d},{Name:"generic.max_health",Base:30d},{Name:"generic.attack_damage",Base:6d}],Health:30f,ArmorItems:[{},{},{},{id:"minecraft:carved_pumpkin",Count:1b}],ArmorDropChances:[0f,0f,0f,0f]}
 particle minecraft:large_smoke ~ ~0.8 ~ 0.4 0.5 0.4 0.03 30 normal
 playsound minecraft:entity.ravager.roar hostile @a[distance=..24] ~ ~ ~ 0.8 1.4
 tellraw @a[distance=..16] {"text":"El animal se dobla, se estira... no era un animal.","color":"#c94a4a","italic":true}

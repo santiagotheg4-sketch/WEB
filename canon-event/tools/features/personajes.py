@@ -262,14 +262,14 @@ execute if score @s dv.timer matches 2400.. run scoreboard players set @s dv.sta
         'Mis nietos jugaban por aquí. Se fueron al bosque. Ya van a volver.', 'Qué ojitos tan bonitos tienes. Los quiero para mí. Es un decir.',
         '¿Ya comiste? Tienes cara de no haber comido. Ven.']])
     menu_ab = menu('@a[tag=dv_talker]', 'ABUELA ESMERALDA', AC, [('Aceptar sopita', '/trigger dv.abu set 1'), ('¿Vive sola?', '/trigger dv.abu set 2'),
-                                                            ('¿Y sus nietos?', '/trigger dv.abu set 3'), ('Acompañarla a su casa', '/trigger dv.abu set 4'),
+                                                            ('¿Y sus nietos?', '/trigger dv.abu set 3'), ('Acompañarla a su casa', '/trigger dv.abu set 4'), ('¿Le ayudo a buscar a sus nietos?', '/trigger dv.abu set 15'),
                                                             ('Me tengo que ir', '/trigger dv.abu set 5')])
     F('abuela/clic', f'execute facing entity @a[tag=dv_talker,limit=1] feet run tp @s ~ ~ ~ ~ 0\nscoreboard players set @s dv.timer 0\nexecute if entity @a[tag=dv_talker,tag=dv_santi] run function canon:abuela/clic_santi\nexecute unless entity @a[tag=dv_talker,tag=dv_santi] run function canon:abuela/clic_otro')
     F('abuela/clic_otro', menu_ab)
     F('abuela/clic_santi', 'execute if predicate canon:de_noche run function canon:abuela/noche_santi\nexecute unless predicate canon:de_noche run function canon:abuela/menu_santi')
     F('abuela/menu_santi', say('Abuela Esmeralda', AC, '#f6ead8', '¡Santi, mi niño! Venga y me da un abrazo. Usted sí se parece a su abuelo.', 100) + '\n' + menu('@a[tag=dv_talker]', 'ABUELA ESMERALDA', AC, [
         ('Bendición, abuela', '/trigger dv.abu set 11'), ('¿Qué es el Hueso de los Deseos?', '/trigger dv.abu set 12'),
-        ('¿Le ayudo con algo?', '/trigger dv.abu set 13'), ('Aceptar sopita', '/trigger dv.abu set 1'), ('Ya me voy, abuela', '/trigger dv.abu set 5')]))
+        ('¿Le ayudo con algo?', '/trigger dv.abu set 13'), ('¿Dónde vive, abuela?', '/trigger dv.abu set 14'), ('Le busco a sus nietos', '/trigger dv.abu set 15'), ('Aceptar sopita', '/trigger dv.abu set 1'), ('Ya me voy, abuela', '/trigger dv.abu set 5')]))
     F('abuela/noche_santi', f'{head(K["abuela_cabeza_creepy"])}\n' + say('Abuela Esmeralda', AC, '#f6ead8', 'Santi... su abuela de verdad está dormida en su casa. Yo solo me pongo su cara de noche. ¿Me da un abrazo igual?', 160) +
       '\nscoreboard players add @a[tag=dv_talker] dv.miedo 25\nplaysound canon:devota.giggle hostile @a[tag=dv_talker] ~ ~ ~ 1 0.7\nscoreboard players set @s dv.state 3\nscoreboard players set @s dv.timer 0')
     F('abuela/r11', say('Abuela Esmeralda', AC, '#f6ead8', 'Dios me lo bendiga, mijo, y me lo libre de la muchacha pálida. Póngase esto, era de su abuelo.', 130) +
@@ -305,6 +305,8 @@ execute if score #ac dv.tmp matches 5 run function canon:abuela/r5
 execute if score #ac dv.tmp matches 11 run function canon:abuela/r11
 execute if score #ac dv.tmp matches 12 run function canon:abuela/r12
 execute if score #ac dv.tmp matches 13 run function canon:abuela/r13
+execute if score #ac dv.tmp matches 14 run function canon:rel/abuela/casa
+execute if score #ac dv.tmp matches 15 run function canon:rel/abuela/nietos
 ''')
     c.pick('abuela/sopa', [
         say('Abuela Esmeralda', AC, '#f6ead8', 'Tómatela toda. Así, así. Qué bien.', 90) + '\nloot give @a[tag=dv_atalk] loot canon:items/sopa\neffect give @a[tag=dv_atalk] minecraft:regeneration 8 0 true',
