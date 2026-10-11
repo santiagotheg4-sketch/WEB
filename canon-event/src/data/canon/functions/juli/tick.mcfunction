@@ -13,6 +13,7 @@ execute if score @s dv.state matches 2 run function canon:juli/s_search
 execute if score @s dv.state matches 3 run function canon:juli/s_scene
 execute if score @s dv.state matches 4 run function canon:juli/s_dream
 execute if score @s dv.state matches 5 run function canon:juli/s_bye
+execute if score @s dv.state matches 6 run function canon:casa/juli_tick
 tag @a[tag=dv_jtgt] remove dv_jtgt
 execute if score #m10 dv.clock matches 0 run particle minecraft:cherry_leaves ~ ~1.6 ~ 0.6 0.8 0.6 0 2 normal
 execute if score #m20 dv.clock matches 0 run particle minecraft:end_rod ~ ~1.2 ~ 0.4 0.7 0.4 0.01 1 normal

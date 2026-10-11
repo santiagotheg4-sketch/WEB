@@ -1,0 +1,9 @@
+execute if score #kc dv.tmp matches 1 run function canon:kevin/joke
+execute if score #kc dv.tmp matches 2 run function canon:kevin/c/plan
+execute if score #kc dv.tmp matches 3 run function canon:kevin/how
+execute if score #kc dv.tmp matches 4 run function canon:kevin/c/dance
+execute if score #kc dv.tmp matches 5 run function canon:kevin/c/bye
+execute if score #kc dv.tmp matches 6 run function canon:kevin/c/gift
+execute if score #kc dv.tmp matches 11 run function canon:kevin/fiesta/try
+execute if score #kc dv.tmp matches 12 run function canon:kevin/bosque/try
+execute if score #kc dv.tmp matches 13 run function canon:kevin/cata/try

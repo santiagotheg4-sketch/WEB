@@ -36,3 +36,4 @@ execute as @e[type=item_frame,tag=dv_place] at @s run function canon:furn/place
 execute if score #m10 dv.clock matches 0 run function canon:rig/cleanup
 execute if score #m20 dv.clock matches 0 run function canon:slow_tick
 function canon:rig/cal_shift
+function canon:extra/tick

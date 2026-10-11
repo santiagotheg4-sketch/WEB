@@ -1,0 +1,5 @@
+scoreboard players operation #id dv.tmp = @s dv.id
+execute as @e[type=text_display,tag=dv_kbubble] if score @s dv.id = #id dv.tmp run data merge entity @s {text:'{"text": "Ya hicimos de todo... pero yo me lo gozo otra vez. Escoge.", "color": "#ffd27a"}',background:1342177280}
+scoreboard players set @s dv.say 120
+tellraw @a[distance=..20] [{"text": "Kevin: ", "color": "#ffb347"},{"text": "Ya hicimos de todo... pero yo me lo gozo otra vez. Escoge.", "color": "white", "italic": true}]
+tellraw @a[tag=dv_ktalk] ["",{"text": "\nOTRA VEZ\n", "color": "#ffb347"},{"text": " [Fiesta] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 11"}},{"text": " [Bosque] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 12"}},{"text": " [Catacumbas] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 13"}},{"text": " [Nada] ", "color": "#e8c9a8", "clickEvent": {"action": "run_command", "value": "/trigger dv.kv set 5"}}]

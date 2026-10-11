@@ -132,4 +132,5 @@ execute unless score #love dv.dev matches -999999..999999 run scoreboard players
 execute unless score #stage dv.dev matches -999999..999999 run scoreboard players set #stage dv.dev 0
 execute unless score #cd dv.dev matches -999999..999999 run scoreboard players set #cd dv.dev 120
 execute unless score #lgen dv.dev matches -999999..999999 run scoreboard players set #lgen dv.dev 0
+function canon:extra/load
 tellraw @a[scores={dv.debug=1}] {"text":"[Canon Event] cargado.","color":"dark_gray"}
