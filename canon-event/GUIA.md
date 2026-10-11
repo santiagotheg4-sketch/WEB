@@ -1,6 +1,45 @@
-# Canon Event 4.0.0 — guía
+# Canon Event 5.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-4.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-5.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 5.0
+
+### Objetos paranormales
+Todos se craftean, sin forma, y salen en tu libro de recetas. Se usan con clic derecho.
+- **Tablero Ouija** (2 tablones, tinta y hueso): le haces preguntas y la plancheta responde letra por letra. A veces responde Diana. Despídete siempre.
+- **Kit de ritual** (3 velas y polvo de hueso): pone un círculo de velas. Al centro llega un alma amable… o no.
+- **Espejo de mano** (panel de vidrio, hierro y pepita de oro): úsalo 3 veces seguidas de noche. Detrás de ti aparece alguien.
+- **Radio de espíritus** (hierro, redstone y cobre): entre la estática se oyen voces, a veces la de uno de tus amigos.
+- **Medidor EMF** (hierro, redstone, oro y polvo de piedra luminosa): llévalo en la mano. Pita más fuerte cuanto más cerca está algo.
+- **Muñeca maldita** (lana blanca, cuerda y ojo de araña): la dejas en el suelo. De noche se mueve cuando no la miras. Golpéala para guardarla.
+- **Caja de música** (bloque musical y pepita de oro): de noche o a oscuras, alguien se pone a bailar a tu lado.
+- **Saco de sal** (2 de polvo de hueso y papel): un círculo que por 5 minutos no deja entrar a lo que acecha.
+- **Agua bendita** (botella, pepita de oro y lágrima de ghast): la lanzas y quema a monstruos y espíritus.
+- **Libro de invocación** (libro, perla de ender y arena de almas): llamas a Diana, a la Abuela Esmeralda, a un alma, a Kevin o al Narrador. A veces viene otra cosa.
+- **Grabadora vieja** (hierro, redstone y cuerda): grabas de noche y al día siguiente escuchas lo que pasó mientras dormías.
+
+### Tu casa está embrujada
+De noche se abren y cierran puertas, se caen cuadros, se oyen cofres y vidrios, y aparecen carteles de «TE VI dormir».
+
+### Personajes
+- **Abuela Esmeralda**: es la abuela de Santi. Con Santi es un amor: le da la bendición (y el crucifijo del abuelo), le cuenta cómo encontró el **Hueso de los Deseos** y le pide 6 panes a cambio de premios. Con los demás es rara. De noche, la que está afuera **no es ella**.
+- **Diana** te roba cosas mientras duermes y las deja tiradas por ahí. A veces **imita a tus amigos en el chat** («ven rápido…»). No les creas.
+- **Nicolás** te tapa el túnel detrás de ti en las cuevas. Pica para salir.
+- **El de la cara roja** te sigue un tiempo después de volver del Más Allá.
+- **El Imitador**: de noche, una vaca, oveja, cerdo o gallina cerca de ti puede no ser lo que parece.
+- **Juli** a veces te deja un regalo en la cama al despertar.
+- **Dani** tiene **tienda**: pregúntale qué vende. Cada comida cuesta 1 esmeralda, y si no tienes, te la fía.
+- **Kevin** te reta a **carreras** (botón «Reto»): llega a la luz verde en 10 segundos y te paga. También te asusta por la espalda.
+- **Luna** a veces desentierra tesoros cuando cava.
+- **El Narrador**: un hombre de ojeras que aparece de la nada, te cuenta un pedazo de la historia y se va.
+
+### Para no aburrirse
+- **Misión del día** para cada jugador: matar zombis, picar piedra, caminar o pescar, con premio. Puedes verla con `/trigger dv.mision set 1`.
+- **Logros de terror**: la pestaña «Canon Event» en Progresos, y se anuncian en el chat.
+
+Todo lo nuevo se apaga en Ajustes, con «Actividad paranormal, misiones y logros».
+
+---
 
 ## Lo nuevo de la 4.0
 
@@ -31,7 +70,7 @@ Si los miras, desaparecen.
 ### Personajes
 - **Kevin** llega, se queda un rato y se va: a veces se despide y a veces simplemente desaparece.
 - **Mariana**: no se le puede hablar. Busca a su ex, Felipe, y deja carteles. Si le hablas mucho: «Nunca me vuelvas a hablar». Desde ahí te acecha, aparece y desaparece y te deja carteles cerca de tu casa. Dale una amapola para que te perdone.
-- **La abuela Carmen**: aparece al anochecer, te ofrece sopita (a veces buena, a veces no) y te invita a su casa… no la sigas a la oscuridad.
+- **La Abuela Esmeralda**: aparece al anochecer, te ofrece sopita (a veces buena, a veces no) y te invita a su casa… no la sigas a la oscuridad.
 - **Skins nuevas**: todos los personajes ahora tienen forma de jugador con skin de 64x64: Juli, Kevin, Nicolás, Diana humana, Dani, Mariana, la abuela y los 10 NPCs. Para cambiar una skin, reemplaza su `.png` (`assets/canon/textures/item/modelo/<nombre>_skin*.png`).
 
 ### El Más Allá

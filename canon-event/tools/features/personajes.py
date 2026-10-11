@@ -3,7 +3,7 @@
 MARIANA: chica inexpresiva obsesionada con su ex (Felipe). No se le puede hablar: si insistes,
 se enoja («Nunca me vuelvas a hablar») y desde ahí te acecha: aparece y desaparece, te mira y te deja
 carteles cerca de tu casa. Si le das una flor, te perdona (o eso parece). Busca a Felipe: deja carteles.
-ABUELA CARMEN: aparece al anochecer cerca de bosques. Te ofrece sopita, habla de sus nietos que se
+ABUELA ESMERALDA: aparece al anochecer cerca de bosques. Te ofrece sopita, habla de sus nietos que se
 fueron al bosque, te invita a su casa... si la sigues a la oscuridad, gatea detrás de ti.
 """
 from canon.shim import *  # noqa: F401,F403
@@ -31,7 +31,7 @@ def build(c):
     shim.models(ab + ah, 7321010)
     K = shim.CMD
     c.config('mariana2', 'Mariana (acecha si le hablas)', 1)
-    c.config('abuela', 'La abuela Carmen', 1)
+    c.config('abuela', 'La Abuela Esmeralda', 1)
     c.objective('dv.abu', 'trigger')
     for o in ('dv.mari', 'dv.mcd2'):
         c.objective(o)
@@ -213,8 +213,8 @@ execute if entity @s[tag=dv_xwalk] if score #c dv.tmp matches 6..11 run scoreboa
 execute if score @s dv.state matches 1 run scoreboard players set #frame dv.tmp 4
 ''')
 
-    # ============================================================== ABUELA CARMEN
-    inter = rig('abuela', 'dv_abuela', 'Abuela Carmen', AC, 'dv_abuela_click')
+    # ============================================================== ABUELA ESMERALDA
+    inter = rig('abuela', 'dv_abuela', 'Abuela Esmeralda', AC, 'dv_abuela_click')
     F('abuela/init', f'''
 function canon:rig/init_common
 {set_cmd('body', K['abuela_idle'])}
@@ -257,15 +257,37 @@ execute if score #m4 dv.clock matches 0 run function canon:x/face
 execute if entity @a[tag=dv_wtgt,distance=..8] if score @s dv.say matches ..0 if score #m200 dv.clock matches 40 run function canon:abuela/llama
 execute if score @s dv.timer matches 2400.. run scoreboard players set @s dv.state 3
 ''')
-    c.pick('abuela/llama', [say('Abuela Carmen', AC, '#f6ead8', t, 110) for t in [
+    c.pick('abuela/llama', [say('Abuela Esmeralda', AC, '#f6ead8', t, 110) for t in [
         'Ven, mijito. Te hice sopita. Está calientica.', '¿Tienes frío? Ven, que la abuela te abriga.',
         'Mis nietos jugaban por aquí. Se fueron al bosque. Ya van a volver.', 'Qué ojitos tan bonitos tienes. Los quiero para mí. Es un decir.',
         '¿Ya comiste? Tienes cara de no haber comido. Ven.']])
-    menu_ab = menu('@a[tag=dv_talker]', 'ABUELA CARMEN', AC, [('Aceptar sopita', '/trigger dv.abu set 1'), ('¿Vive sola?', '/trigger dv.abu set 2'),
+    menu_ab = menu('@a[tag=dv_talker]', 'ABUELA ESMERALDA', AC, [('Aceptar sopita', '/trigger dv.abu set 1'), ('¿Vive sola?', '/trigger dv.abu set 2'),
                                                             ('¿Y sus nietos?', '/trigger dv.abu set 3'), ('Acompañarla a su casa', '/trigger dv.abu set 4'),
                                                             ('Me tengo que ir', '/trigger dv.abu set 5')])
-    F('abuela/clic', f'execute facing entity @a[tag=dv_talker,limit=1] feet run tp @s ~ ~ ~ ~ 0\nscoreboard players set @s dv.timer 0\n{menu_ab}')
-    F('abuela/golpe', f'{head(K["abuela_cabeza_creepy"])}\n' + say('Abuela Carmen', AC, '#f6ead8', 'Ay, mijito. Eso no se le hace a la abuela. Ahora sí te voy a encontrar.', 90) +
+    F('abuela/clic', f'execute facing entity @a[tag=dv_talker,limit=1] feet run tp @s ~ ~ ~ ~ 0\nscoreboard players set @s dv.timer 0\nexecute if entity @a[tag=dv_talker,tag=dv_santi] run function canon:abuela/clic_santi\nexecute unless entity @a[tag=dv_talker,tag=dv_santi] run function canon:abuela/clic_otro')
+    F('abuela/clic_otro', menu_ab)
+    F('abuela/clic_santi', 'execute if predicate canon:de_noche run function canon:abuela/noche_santi\nexecute unless predicate canon:de_noche run function canon:abuela/menu_santi')
+    F('abuela/menu_santi', say('Abuela Esmeralda', AC, '#f6ead8', '¡Santi, mi niño! Venga y me da un abrazo. Usted sí se parece a su abuelo.', 100) + '\n' + menu('@a[tag=dv_talker]', 'ABUELA ESMERALDA', AC, [
+        ('Bendición, abuela', '/trigger dv.abu set 11'), ('¿Qué es el Hueso de los Deseos?', '/trigger dv.abu set 12'),
+        ('¿Le ayudo con algo?', '/trigger dv.abu set 13'), ('Aceptar sopita', '/trigger dv.abu set 1'), ('Ya me voy, abuela', '/trigger dv.abu set 5')]))
+    F('abuela/noche_santi', f'{head(K["abuela_cabeza_creepy"])}\n' + say('Abuela Esmeralda', AC, '#f6ead8', 'Santi... su abuela de verdad está dormida en su casa. Yo solo me pongo su cara de noche. ¿Me da un abrazo igual?', 160) +
+      '\nscoreboard players add @a[tag=dv_talker] dv.miedo 25\nplaysound canon:devota.giggle hostile @a[tag=dv_talker] ~ ~ ~ 1 0.7\nscoreboard players set @s dv.state 3\nscoreboard players set @s dv.timer 0')
+    F('abuela/r11', say('Abuela Esmeralda', AC, '#f6ead8', 'Dios me lo bendiga, mijo, y me lo libre de la muchacha pálida. Póngase esto, era de su abuelo.', 130) +
+      '\neffect give @a[tag=dv_atalk] minecraft:regeneration 10 1 true\nscoreboard players set @a[tag=dv_atalk] dv.miedo 0\nexecute unless entity @a[tag=dv_atalk,tag=dv_abubend] run loot give @a[tag=dv_atalk] loot canon:extras/crucifijo\ntag @a[tag=dv_atalk] add dv_abubend')
+    c.pick('abuela/r12', [say('Abuela Esmeralda', AC, '#f6ead8', t, 200) for t in [
+        'Yo lo encontré, mijo. Hace cuarenta años, debajo de un árbol que el día antes no estaba. Era un huesito blanco, tibio, como si estuviera vivo.',
+        'Le pedí que su abuelo volviera del monte. Volvió. Pero no hablaba igual. Nunca más habló igual. Por eso lo boté al río.',
+        'El Hueso no se pierde, Santi. Siempre vuelve a alguien que tiene un deseo muy grande. Esa muchacha, Diana... ella lo encontró.',
+        'Si algún día lo ve, no le pida nada. Y si ya le pidió algo, no se lo cuente a nadie. Así se rompe un poquito.']])
+    F('abuela/r13', '''
+execute store result score #pan dv.tmp run clear @a[tag=dv_atalk,limit=1] minecraft:bread 0
+execute if score #pan dv.tmp matches 6.. run function canon:abuela/mision_ok
+execute unless score #pan dv.tmp matches 6.. run function canon:abuela/mision_pide
+''')
+    F('abuela/mision_pide', say('Abuela Esmeralda', AC, '#f6ead8', 'Tráigame seis panes, mijo, para la sopa del domingo. Y le tengo un regalito guardado.', 120))
+    F('abuela/mision_ok', 'clear @a[tag=dv_atalk,limit=1] minecraft:bread 6\n' + say('Abuela Esmeralda', AC, '#f6ead8', '¡Ay, qué nieto tan juicioso! Tome, para que se compre algo. Y esto para que duerma tranquilo.', 120) +
+      '\nloot give @a[tag=dv_atalk] loot canon:items/billete\nloot give @a[tag=dv_atalk] loot canon:items/billete\nloot give @a[tag=dv_atalk] loot canon:para/sal\nloot give @a[tag=dv_atalk] loot canon:extras/arepa\nplaysound minecraft:entity.player.levelup player @a[tag=dv_atalk] ~ ~ ~ 0.7 1.3')
+    F('abuela/golpe', f'{head(K["abuela_cabeza_creepy"])}\n' + say('Abuela Esmeralda', AC, '#f6ead8', 'Ay, mijito. Eso no se le hace a la abuela. Ahora sí te voy a encontrar.', 90) +
       '\nscoreboard players set @s dv.state 2\nscoreboard players set @s dv.timer 0')
     F('abuela/eleccion', '''
 tag @s add dv_atalk
@@ -280,16 +302,19 @@ execute if score #ac dv.tmp matches 2 run function canon:abuela/r2
 execute if score #ac dv.tmp matches 3 run function canon:abuela/r3
 execute if score #ac dv.tmp matches 4 run function canon:abuela/r4
 execute if score #ac dv.tmp matches 5 run function canon:abuela/r5
+execute if score #ac dv.tmp matches 11 run function canon:abuela/r11
+execute if score #ac dv.tmp matches 12 run function canon:abuela/r12
+execute if score #ac dv.tmp matches 13 run function canon:abuela/r13
 ''')
     c.pick('abuela/sopa', [
-        say('Abuela Carmen', AC, '#f6ead8', 'Tómatela toda. Así, así. Qué bien.', 90) + '\nloot give @a[tag=dv_atalk] loot canon:items/sopa\neffect give @a[tag=dv_atalk] minecraft:regeneration 8 0 true',
-        say('Abuela Carmen', AC, '#f6ead8', 'Tómatela toda. ¿Sabe raro? Es la receta de la casa.', 90) + '\neffect give @a[tag=dv_atalk] minecraft:nausea 10 0 true\neffect give @a[tag=dv_atalk] minecraft:poison 4 0 true',
-        say('Abuela Carmen', AC, '#f6ead8', 'Para el camino. Y no le hagas caso a la muchacha pálida.', 90) + '\nloot give @a[tag=dv_atalk] loot canon:items/pizza',
+        say('Abuela Esmeralda', AC, '#f6ead8', 'Tómatela toda. Así, así. Qué bien.', 90) + '\nloot give @a[tag=dv_atalk] loot canon:items/sopa\neffect give @a[tag=dv_atalk] minecraft:regeneration 8 0 true',
+        say('Abuela Esmeralda', AC, '#f6ead8', 'Tómatela toda. ¿Sabe raro? Es la receta de la casa.', 90) + '\neffect give @a[tag=dv_atalk] minecraft:nausea 10 0 true\neffect give @a[tag=dv_atalk] minecraft:poison 4 0 true',
+        say('Abuela Esmeralda', AC, '#f6ead8', 'Para el camino. Y no le hagas caso a la muchacha pálida.', 90) + '\nloot give @a[tag=dv_atalk] loot canon:items/pizza',
     ])
-    F('abuela/r2', say('Abuela Carmen', AC, '#f6ead8', 'Sola no, mijito. Con los que se quedan. Siempre se quedan. Tú también te vas a quedar.', 130))
-    F('abuela/r3', f'{head(K["abuela_cabeza_creepy"])}\n' + say('Abuela Carmen', AC, '#f6ead8', 'Se fueron al bosque. Los llamo todas las noches. A veces contestan. Con otra voz.', 140))
-    F('abuela/r4', say('Abuela Carmen', AC, '#f6ead8', 'Sígueme, que la casa queda cerquita. Por aquí. Por lo oscuro.', 100) + '\nscoreboard players set @s dv.state 1\nscoreboard players set @s dv.timer 0')
-    F('abuela/r5', say('Abuela Carmen', AC, '#f6ead8', 'Vuelve pronto. Siempre vuelven.', 80) + '\nscoreboard players set @s dv.state 3\nscoreboard players set @s dv.timer 0')
+    F('abuela/r2', say('Abuela Esmeralda', AC, '#f6ead8', 'Sola no, mijito. Con los que se quedan. Siempre se quedan. Tú también te vas a quedar.', 130))
+    F('abuela/r3', f'{head(K["abuela_cabeza_creepy"])}\n' + say('Abuela Esmeralda', AC, '#f6ead8', 'Se fueron al bosque. Los llamo todas las noches. A veces contestan. Con otra voz.', 140))
+    F('abuela/r4', say('Abuela Esmeralda', AC, '#f6ead8', 'Sígueme, que la casa queda cerquita. Por aquí. Por lo oscuro.', 100) + '\nscoreboard players set @s dv.state 1\nscoreboard players set @s dv.timer 0')
+    F('abuela/r5', say('Abuela Esmeralda', AC, '#f6ead8', 'Vuelve pronto. Siempre vuelven.', 80) + '\nscoreboard players set @s dv.state 3\nscoreboard players set @s dv.timer 0')
     # la abuela guía hacia lo oscuro; si la sigues lejos, se transforma
     F('abuela/guia', '''
 execute facing entity @a[tag=dv_wtgt,limit=1] feet rotated ~180 0 if block ^ ^ ^0.7 #canon:pasable positioned ^ ^ ^0.08 run tp @s ~ ~ ~ ~ ~
@@ -304,7 +329,7 @@ scoreboard players set @s dv.state 2
 scoreboard players set @s dv.timer 0
 tag @s add dv_horror
 playsound canon:devota.scream hostile @a[distance=..24] ~ ~ ~ 1 0.6
-''' + say('Abuela Carmen', AC, '#f6ead8', 'Ya llegamos, mijito. Esta es mi casa. Y tú eres mi nieto nuevo.', 100))
+''' + say('Abuela Esmeralda', AC, '#f6ead8', 'Ya llegamos, mijito. Esta es mi casa. Y tú eres mi nieto nuevo.', 100))
     F('abuela/persigue', '''
 execute facing entity @a[tag=dv_wtgt,limit=1] feet rotated ~ 0 positioned ^ ^ ^0.2 run tp @s ~ ~ ~ ~ ~
 execute at @s run function canon:diana/ground
@@ -332,4 +357,4 @@ execute if score @s dv.state matches 2 run scoreboard players set #frame dv.tmp 
     F('admin/pers/abuela', 'scoreboard players operation #pid dv.tmp = @s dv.pid\nexecute positioned ^ ^ ^6 run function canon:abuela/summon')
     c.admin('/function canon:admin/pers/mariana', 'Traer a Mariana')
     c.admin('/function canon:admin/pers/mariana_acecho', 'Mariana te acecha (como si la hubieras enojado)')
-    c.admin('/function canon:admin/pers/abuela', 'Traer a la abuela Carmen')
+    c.admin('/function canon:admin/pers/abuela', 'Traer a la Abuela Esmeralda')
