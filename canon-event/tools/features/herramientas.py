@@ -12,12 +12,13 @@ from canon.shim import *  # noqa: F401,F403
 from canon import shim
 from canon.ctx import item_nbt, loot_item
 
-TIERS = [('hierro', 'iron', 250, '#d8d8d8', '#9a9a9a'), ('diamante', 'diamond', 1561, '#5fe0d2', '#2a9c92'),
+TIERS = [('madera', 'wooden', 59, '#a8834a', '#6b4f2a'), ('piedra', 'stone', 131, '#8a8a8a', '#5a5a5a'), ('oro', 'golden', 32, '#f2d24a', '#b8932a'),
+         ('hierro', 'iron', 250, '#d8d8d8', '#9a9a9a'), ('diamante', 'diamond', 1561, '#5fe0d2', '#2a9c92'),
          ('netherita', 'netherite', 2031, '#4a3f45', '#2a2328')]
 TOOLS = [  # id, base vanilla, nombre, cmd base, objetivo prefijo
-    ('martillo', 'pickaxe', 'Martillo', 7312001, 'p'),
-    ('excavadora', 'shovel', 'Excavadora', 7312004, 's'),
-    ('taladora', 'axe', 'Hacha taladora', 7312007, 'a'),
+    ('martillo', 'pickaxe', 'Martillo', 7312020, 'p'),
+    ('excavadora', 'shovel', 'Excavadora', 7312030, 's'),
+    ('taladora', 'axe', 'Hacha taladora', 7312040, 'a'),
 ]
 CAM_CMD, FILM_CMD, FOTO_CMD = 7312010, 7312011, 7312012
 
@@ -136,7 +137,7 @@ def build(c):
             lore = {'martillo': ['Rompe 3x3 bloques de piedra a la vez.', 'Agáchate para romper solo uno.'],
                     'excavadora': ['Cava 3x3 bloques de tierra y arena.', 'Agáchate para cavar solo uno.'],
                     'taladora': ['Corta un tronco y cae el árbol entero.', 'Agáchate para cortar normal.']}[tid]
-            nbt = item_nbt(tid, f'{nombre} de {tier}', {'hierro': '#e0e0e0', 'diamante': '#5fe0d2', 'netherita': '#b39bb0'}[tier],
+            nbt = item_nbt(tid, f'{nombre} de {tier}', {'madera': '#c9a46a', 'piedra': '#b0b0b0', 'oro': '#f2d24a', 'hierro': '#e0e0e0', 'diamante': '#5fe0d2', 'netherita': '#b39bb0'}[tier],
                            lore + ['Hecho en el taller de Valle Quieto.'], cmd0 + i)
             c.json(f'data/canon/loot_tables/herr/{name}.json', loot_item(f'{vid}_{kind}', nbt))
     camera_icon(c.path('assets/canon/textures/item/camara.png'))
@@ -163,13 +164,13 @@ def build(c):
     # -------------------------------------------------------- recetas (knowledge_book)
     def recipe(rid, pattern, key):
         c.json(f'data/canon/recipes/{rid}.json', {'type': 'minecraft:crafting_shaped', 'category': 'equipment', 'pattern': pattern,
-                                                  'key': {k: {'item': 'minecraft:' + v} for k, v in key.items()},
+                                                  'key': {k: ({'tag': v[1:]} if v.startswith('#') else {'item': 'minecraft:' + v}) for k, v in key.items()},
                                                   'result': {'item': 'minecraft:knowledge_book', 'count': 1}})
         c.json(f'data/canon/advancements/herr/receta_{rid}.json', {
             'criteria': {'c': {'trigger': 'minecraft:recipe_crafted', 'conditions': {'recipe_id': f'canon:{rid}'}}},
             'rewards': {'function': f'canon:herr/craft/{rid}'}})
         return rid
-    mats = {'hierro': 'iron_block', 'diamante': 'diamond_block'}
+    mats = {'madera': '#minecraft:logs', 'piedra': 'stone', 'oro': 'gold_block', 'hierro': 'iron_block', 'diamante': 'diamond_block'}
     recipes = []
     for tier, block in mats.items():
         recipes.append((recipe(f'martillo_{tier}', ['BBB', ' S ', ' S '], {'B': block, 'S': 'stick'}), f'herr/martillo_{tier}'))
@@ -296,15 +297,7 @@ execute if entity @s[gamemode=creative] run scoreboard players set #hn dv.tmp 0
 execute if score #hn dv.tmp matches 1.. run function canon:herr/gastar_uno
 execute store result score #hdmg dv.tmp run data get entity @s SelectedItem.tag.Damage
 scoreboard players set #hmax dv.tmp 99999
-execute if predicate canon:herr/martillo_hierro run scoreboard players set #hmax dv.tmp 250
-execute if predicate canon:herr/excavadora_hierro run scoreboard players set #hmax dv.tmp 250
-execute if predicate canon:herr/taladora_hierro run scoreboard players set #hmax dv.tmp 250
-execute if predicate canon:herr/martillo_diamante run scoreboard players set #hmax dv.tmp 1561
-execute if predicate canon:herr/excavadora_diamante run scoreboard players set #hmax dv.tmp 1561
-execute if predicate canon:herr/taladora_diamante run scoreboard players set #hmax dv.tmp 1561
-execute if predicate canon:herr/martillo_netherita run scoreboard players set #hmax dv.tmp 2031
-execute if predicate canon:herr/excavadora_netherita run scoreboard players set #hmax dv.tmp 2031
-execute if predicate canon:herr/taladora_netherita run scoreboard players set #hmax dv.tmp 2031
+''' + '\n'.join(f'execute if predicate canon:herr/{t}_{tier} run scoreboard players set #hmax dv.tmp {maxd}' for t in ('martillo', 'excavadora', 'taladora') for tier, vid, maxd, *_ in TIERS) + '''
 execute if score #hdmg dv.tmp >= #hmax dv.tmp run function canon:herr/se_rompe
 ''')
     F('herr/gastar_uno', '\n'.join(

@@ -101,6 +101,10 @@ def build(c):
     shim.use(c)
     shim.models(HUMANA, 7320500)
     models()
+    from canon import skins as SK
+    SK.build_character('dhumana', dict(skin='#efe2dc', hair='#141012', hair_style='long', eyes='#1b1214', top='#ece4d8', top_style='long',
+                                       pants='#e8dfd2', pants_style='long_dress', shoes='#3a2c2a', lips='#b48a8a', extras=['dark_circles']), c.out,
+                       ('idle', 'walk_a', 'walk_b', 'reach'), [('amable', 'smile'), ('triste', 'cry'), ('seria', 'flat'), ('glitch', 'glitch')])
     K = shim.CMD
     c.config('diana_humana', 'Diana humana (pregunta por Juan)', 1)
     c.config('diana_visitas', 'Visitas nocturnas de Diana (y a Bana)', 1)

@@ -171,6 +171,7 @@ function canon:rig/init_common
 scoreboard players set @s dv.mode 0
 scoreboard players set @s dv.say -1
 scoreboard players set @s dv.timer 600
+function canon:kevin/estancia
 summon minecraft:interaction ~ ~ ~ {{Tags:["dv_link","dv_click","dv_npc_click","dv_kev_click","dv_xclick","dv_new_link"],width:0.8f,height:1.95f,response:1b}}
 function canon:x/add_bubble
 ''')
@@ -182,7 +183,7 @@ execute if score #kev dv.dev matches 1.. run function canon:kevin/ev/abort
 ''')
     F('kevin/g/run', '''
 execute if score #kprog dv.dev matches 4 run function canon:kevin/dias/second
-execute if score #kevcd dv.dev matches ..0 unless score #kprog dv.dev matches 4 unless score #kev dv.dev matches 1.. unless entity @e[type=zombie,tag=dv_kevin] as @a[gamemode=!spectator,predicate=canon:en_superficie,limit=1,sort=random] at @s if predicate canon:azar/1en40 run function canon:kevin/arrive
+execute if score #kevcd dv.dev matches ..0 unless score #kprog dv.dev matches 4 unless score #kev dv.dev matches 1.. unless entity @e[type=zombie,tag=dv_kevin] as @a[gamemode=!spectator,predicate=canon:en_superficie,limit=1,sort=random] at @s if predicate canon:azar/1en30 run function canon:kevin/arrive
 ''')
     F('kevin/arrive', '''
 scoreboard players set #ok dv.tmp 0
@@ -231,7 +232,13 @@ execute if score @s dv.mode matches 1 if score #m4 dv.clock matches 0 run functi
 execute if score @s dv.mode matches 2 if score #m4 dv.clock matches 0 run function canon:x/face
 tag @a remove dv_wtgt
 execute if score @s dv.mode matches 0 unless entity @a[distance=..72] run function canon:kevin/leave
+scoreboard players remove @s[scores={{dv.kst=1..}}] dv.kst 1
+execute if score @s dv.mode matches 0 if score #kev dv.dev matches 0 if score @s dv.kst matches 0 run function canon:kevin/se_va
 ''')
+    pick('kevin/estancia', ['scoreboard players set @s dv.kst 2400', 'scoreboard players set @s dv.kst 3600', 'scoreboard players set @s dv.kst 5400', 'scoreboard players set @s dv.kst 1800'])
+    pick('kevin/se_va', [kv_say('Bueno, me tengo que ir. Mi mamá me está llamando. Bueno, no tengo mamá. Chao.', 60) + '\nscoreboard players set @s dv.mode 9\nschedule function canon:kevin/bye_later 60t replace',
+                         kv_say('Ya vengo. No me esperes. O sí. Jajaja.', 60) + '\nscoreboard players set @s dv.mode 9\nschedule function canon:kevin/bye_later 60t replace',
+                         'function canon:kevin/leave', 'function canon:kevin/leave'])
     F('kevin/pose_reset', f'''
 scoreboard players set @s dv.timer2 -1
 tag @s remove dv_klaugh
@@ -1067,12 +1074,17 @@ def build(c):
     shim.models(FIESTERO_MODELS, 7320133)
     shim.models(ALTO_MODELS, 7320144)
     shim.models(MASA_MODELS, 7320148)
-    models_kevin()
+    from canon import skins as SK
+    SK.build_character('kevin', dict(skin='#a8754f', hair='#121010', hair_style='short', eyes='#1d120c', top='#18181b', top_style='tshirt',
+                                     print='#d33b3b', pants='#1b1b1e', shoes='#2a2a2a', lips='#6a3a30'), c.out,
+                       ('idle', 'walk_a', 'walk_b', 'dance_a', 'dance_b', 'laugh', 'offer'),
+                       [('neutral', 'smile'), ('risa', 'laugh'), ('drogado', 'red'), ('miedo', 'scared')])
     models_fiesteros()
     models_alto()
     models_masa()
     c.objective('dv.kv', 'trigger')
     c.objective('dv.kpcd')
+    c.objective('dv.kst')
     for n in (2, 3, 4, 8, 10, 12, 20, 24, 40, 60, 560):
         c.const(n)
     c.on('load', '''

@@ -18,6 +18,8 @@ def build(c):
     shim.use(c)
     c.patch('load', lambda s: s if 'canon:extra/load' in s else s.replace(
         'tellraw @a[scores={dv.debug=1}]', 'function canon:extra/load\ntellraw @a[scores={dv.debug=1}]'))
+    for n in (15, 30, 45, 80, 120, 180, 240, 350, 500, 700, 900, 1800, 3000):
+        c.json(f'data/canon/predicates/azar/1en{n}.json', {'condition': 'minecraft:random_chance', 'chance': round(1.0 / n, 6)})
     c.patch('tick', lambda s: s if 'canon:extra/tick' in s else s.rstrip('\n') + '\nfunction canon:extra/tick\n')
     # caminar genérico con tp (como Juli) hacia el jugador marcado dv_wtgt
     F('x/walk', '''

@@ -224,14 +224,14 @@ function canon:travel/store_return
 scoreboard players set @s dv.sb 6000
 scoreboard players set @s dv.mus 0
 scoreboard players set @s dv.kz 0
-execute in canon:sueno_blanco run tp @s 12.5 64 -12.5 0 5
+execute in canon:sueno_blanco run tp @s 12.5 64 -5.5 0 5
 effect give @s minecraft:blindness 2 0 true
 title @s times 20 70 30
 title @s subtitle {jt('Todo es blanco. Menos la casa.', '#cfcfcf', True)}
 title @s title {jt('LA CASA', '#ffffff')}
 playsound canon:fx.whoosh_white master @s ~ ~ ~ 1 1
 execute if score #casa_built dv.build matches 0 run function canon:casa/build_start
-tellraw @s {jt('(Estás soñando. Juli está en algún lugar de la casa. Si te alejas mucho, despiertas.)', 'gray', True)}
+tellraw @s {jt('(Estás soñando. Juli está en algún lugar de la casa. Para despertar, sal por la reja de enfrente.)', 'gray', True)}
 ''')
     F('casa/player', f'''
 scoreboard players remove @s[scores={{dv.sb=1..}}] dv.sb 1
@@ -240,8 +240,10 @@ execute if score @s dv.sb matches 1200 run title @s actionbar {jt('La casa empie
 execute if score @s dv.sb matches ..0 run function canon:casa/wake
 execute unless entity @s[x=-40,y=0,z=-40,dx=96,dy=200,dz=96] run function canon:casa/lost
 execute if entity @s[y=-64,dy=60] run function canon:casa/wake
+execute if entity @s[x=-40,y=0,z=-200,dx=80,dy=200,dz=191.5] run function canon:casa/reja
 execute if score #m200 dv.clock matches 0 run function canon:casa/ensure_juli
 ''')
+    F('casa/reja', 'tellraw @s ' + jt('Cruzas la reja. El blanco se cierra detrás de ti y despiertas.', '#cfcfcf', True) + '\nfunction canon:casa/wake')
     F('casa/music', '''
 scoreboard players set @s dv.mus 1380
 playsound canon:music.casa_blanca music @s ~ ~ ~ 0.8 1

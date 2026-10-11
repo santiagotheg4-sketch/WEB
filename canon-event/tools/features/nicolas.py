@@ -206,7 +206,10 @@ NICOLAS_MODELS = (['nicolas_' + n for n in ['idle', 'walk_a', 'walk_b', 'reach']
 def build(c):
     shim.use(c)
     shim.models(NICOLAS_MODELS, 7320126)
-    models_nicolas()
+    from canon import skins as SK
+    SK.build_character('nicolas', dict(skin='#e3cbbb', hair='#0a0a0c', hair_style='emo', eyes='#1a1a1a', top='#141417', top_style='tshirt',
+                                       print='#6d6d72', pants='#0f0f12', shoes='#141414', lips='#6a3a44', extras=['makeup', 'earrings', 'belt']), c.out,
+                       ('idle', 'walk_a', 'walk_b', 'reach'), [('burla', 'smile'), ('odio', 'angry'), ('grito', 'void')])
     c.objective('dv.mst', 'minecraft.mined:minecraft.stone')
     c.objective('dv.mds', 'minecraft.mined:minecraft.deepslate')
     c.objective('dv.ncd')

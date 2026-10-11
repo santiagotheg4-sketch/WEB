@@ -116,6 +116,18 @@ def build(c):
         names += [f'npc_{nid}_{n}' for n in ['idle', 'walk_a', 'walk_b', 'reach']] + [f'npc_{nid}_cabeza_{e}' for e in ('neutral', 'sonrisa', 'miedo')]
     shim.models(names, 7320800)
     models()
+    from canon import skins as SK
+    HS = {'bald': 'bald', 'bob': 'bob', 'emo': 'messy', 'short': 'short'}
+    EXTRA = {'tomas': ['collar_white'], 'ramirez': ['cap', 'belt'], 'rosa': ['apron'], 'aurelio': ['cap'], 'ernesto': ['dark_circles'],
+             'sofi': ['blush'], 'tono': ['belt'], 'lucia': ['apron'], 'marta': ['belt'], 'wilson': ['dark_circles']}
+    TOP = {'tomas': 'long', 'ramirez': 'long', 'aurelio': 'jacket', 'ernesto': 'jacket', 'wilson': 'jacket', 'marta': 'long'}
+    for nid, nombre, color, lugar, build_, hs, col, scale, *_r in NPCS:
+        cfg = dict(skin=col['skin'], hair=col['hair'], hair_style=HS.get(hs, 'short'), top=col['shirt'], top_style=TOP.get(nid, 'tshirt'),
+                   pants=col['pants'], shoes=col['shoes'], extras=EXTRA.get(nid, []), cap=col['pants'] if nid == 'ramirez' else '#5a4028')
+        if nid in ('rosa', 'lucia', 'sofi'):
+            cfg['pants_style'] = 'skirt'
+        SK.build_character('npc_' + nid, cfg, c.out, ('idle', 'walk_a', 'walk_b', 'reach'),
+                           [('neutral', 'neutral'), ('sonrisa', 'smile'), ('miedo', 'scared')])
     K = shim.CMD
     c.config('npcs', 'NPCs nuevos (pueblo y viajeros)', 1)
     c.objective('dv.npc', 'trigger')

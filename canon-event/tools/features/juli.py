@@ -76,4 +76,9 @@ def models_juli():
 def build(c):
     shim.use(c)
     # Juli 2.1: reemplaza los modelos base (mismos nombres y CMD 7320094..7320102)
-    models_juli()
+    from canon import skins as SK
+    SK.build_character('juli', dict(skin='#ecd2bf', hair='#3a261d', hair_style='bob', eyes='#2b1a12', top='#7c7378', top_style='blouse',
+                                    pants='#1b1b20', pants_style='skirt', tights='#2f2a33', shoes='#5b3f2c', lips='#c06a72',
+                                    extras=['necklace', 'blush']), c.out,
+                       ('idle', 'walk_a', 'walk_b', 'reach', 'float'),
+                       [('smile', 'smile'), ('soft', 'soft'), ('sad', 'cry'), ('surprised', 'surprised')])

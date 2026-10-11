@@ -74,6 +74,11 @@ def build(c):
     shim.use(c)
     shim.models(NAMES, 7320620)
     models()
+    from canon import skins as SK
+    SK.build_character('dani', dict(skin='#e9cdb9', hair='#2b1d17', hair_style='ponytail', eyes='#3a2618', top='#4d6b58', top_style='hoodie',
+                                    pants='#3e5677', shoes='#f0f0f0', lips='#b56c70', extras=['freckles']), c.out,
+                       ('idle', 'walk_a', 'walk_b', 'reach', 'brazos'),
+                       [('seria', 'flat'), ('preocupada', 'sad'), ('triste', 'cry'), ('sonrisa', 'smile')])
     K = shim.CMD
     c.config('dani', 'Dani, la hermana de Juli', 1)
     c.objective('dv.dani', 'trigger')
