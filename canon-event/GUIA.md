@@ -1,6 +1,68 @@
-# Canon Event 3.0.0 — guía
+# Canon Event 4.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-3.0.0-1.20.1.jar` en la carpeta `mods`, tú y Juan (y Bana), y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x` y `devocion`). Lo mejor es empezar un mundo nuevo.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-4.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 4.0
+
+### Arreglos
+- **Linterna**: ya no hace que todo se vea de día. Solo alumbra el punto hacia donde miras, con luz de verdad.
+- **Puerta de El Sueño**: ahora te despierta al cruzarla caminando o al hacerle clic. Al llegar te dice que está detrás de ti.
+- **Casa blanca del sueño**: para despertar, **sal por la reja** de enfrente.
+- **Cámara de Diana**: en la parálisis, tu vista ahora se fija en su cara real y no por encima.
+
+### Miedo y oscuridad
+- **Barra de miedo** arriba de la pantalla. Sube con la oscuridad, la noche, los monstruos y estar bajo tierra. Baja con luz, de día, con tus amigos, con Luna y comiendo.
+- **Miedo alto**: oyes pasos, golpes, susurros y tu nombre, ves caras y siluetas, y te late el corazón.
+- **Oscuridad de verdad**: en la oscuridad total, sin una antorcha o linterna en la mano, algo te muerde. Lleva luz siempre.
+
+### Acoso en tu casa
+Tu casa es donde pusiste tu cama. De noche:
+- Alguien se asoma por tus **ventanas**: Diana, el Mirón, Nicolás, Mariana, la abuela.
+- **Tocan la puerta** y te hablan desde afuera.
+- Oyes **pasos en el techo**.
+- Aparece alguien **detrás de ti**, o **las luces parpadean**.
+
+Si los miras, desaparecen.
+
+### Acecho
+- **Diana** está siempre por ahí: en las esquinas, a lo lejos de día, susurrando de noche. Funciona con todos los jugadores; con Bana (que es Juan) es especial.
+- **En las cuevas**: varias versiones de **Nicolás** te miran desde los túneles y a veces te persiguen. Hay ruidos, risas y voces en la piedra.
+
+### Personajes
+- **Kevin** llega, se queda un rato y se va: a veces se despide y a veces simplemente desaparece.
+- **Mariana**: no se le puede hablar. Busca a su ex, Felipe, y deja carteles. Si le hablas mucho: «Nunca me vuelvas a hablar». Desde ahí te acecha, aparece y desaparece y te deja carteles cerca de tu casa. Dale una amapola para que te perdone.
+- **La abuela Carmen**: aparece al anochecer, te ofrece sopita (a veces buena, a veces no) y te invita a su casa… no la sigas a la oscuridad.
+- **Skins nuevas**: todos los personajes ahora tienen forma de jugador con skin de 64x64: Juli, Kevin, Nicolás, Diana humana, Dani, Mariana, la abuela y los 10 NPCs. Para cambiar una skin, reemplaza su `.png` (`assets/canon/textures/item/modelo/<nombre>_skin*.png`).
+
+### El Más Allá
+- **Cómo se entra**: durmiendo con mucho miedo, o con la **Vela del Más Allá** (vela + arena de almas + perla de ender).
+- **Cómo es**: un mundo oscuro de niebla roja, con fantasmas transparentes que te hablan y **el de la cara roja**, que te caza: si no lo miras, corre.
+- **Cómo se sale**: hay 4 puertas rojas y solo una te devuelve a tu cuerpo.
+
+### Zombis tipo Resident Evil
+- Te oyen cuando te lastiman.
+- **Tocan tu puerta** hasta romperla.
+- De noche **se quedan mirándote** desde lejos y luego corren hacia ti.
+- Las **arañas** se acercan cuando no las miras.
+
+### Ítems
+- **Herramientas 3x3 y hacha taladora** en madera, piedra, oro, hierro, diamante y netherita (en madera la receta usa troncos).
+- **Ojo del Médium**: ves a través de las paredes por 10 segundos.
+- **Crucifijo de la abuela**: aleja lo que te acecha y baja el miedo.
+- **Comidas**: arepa con queso, empanada, buñuelo, chocolate caliente, café y aguapanela. Quitan el miedo.
+- **Mascotas**: caja con un cachorro (collar de color al azar) y caja con un gatito (10 razas).
+- **Armadura del Velador**: hecha con membranas de phantom. El juego completo baja el miedo y te deja ver en la oscuridad.
+- Todo es crafteable y está en tu libro de recetas.
+
+### Menú principal
+Fondo de terror (bosque, luna roja, una casa con alguien en la ventana), frases nuevas y música del mod.
+
+### Para probar (operador)
+Abre el menú con `/trigger dv.menu set 1` y entra en «Comandos». Ahí están los comandos de prueba de todo lo nuevo.
+
+---
+
+## Lo de la 3.0 (sigue todo)
 
 - Menú del mod: `/trigger dv.menu set 1`. Ahí están los **ajustes**, para prender o apagar cada sistema, y los **comandos** de prueba para operadores.
 - Todo lo de antes sigue igual: la Devota, Valle Quieto, Mariana, Diana la Zunga, Juli y El Sueño, Kevin, Nicolás, el Mirón y la casa blanca.
