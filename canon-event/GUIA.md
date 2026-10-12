@@ -1,6 +1,15 @@
-# Canon Event 11.0.0 — guía
+# Canon Event 12.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-11.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x`, `canon-event-10.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-12.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x`, `canon-event-10.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 12.0: ¡ahora es un mod de verdad (Java, Forge 1.20.1)!
+- **Pestaña «Canon Event» en el inventario creativo** con todos los ítems del mod (118).
+- **Recetas de verdad**: al craftear sale el ítem directamente, sin el libro raro (52 recetas).
+- Probado en un **servidor real de Minecraft 1.20.1 con Forge 47.4.9**: carga sin errores y todas las funciones del mod se ejecutan.
+- **Importante**: borra de la carpeta `mods` todas las versiones viejas (`canon-event-*`). Esta reemplaza a todas.
+- Para que la pestaña del creativo funcione, el mod también tiene que estar en tu computador (no basta con ponerlo en el servidor).
+
+---
 
 ## Lo nuevo de la 11.0 (definitiva)
 - **Tu casa cuenta aunque no hayas dormido en una cama**: de noche, si estás bajo techo, pasan las cosas de la casa (puertas, cofres, abuelas en el techo, ventanas). Antes solo funcionaba si dormías en tu cama.

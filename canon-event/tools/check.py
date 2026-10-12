@@ -420,8 +420,8 @@ for dp, dn, fs in os.walk(os.path.join(OUT, 'data')):
                                      'minecraft:smoking', 'minecraft:blasting'):
                 err(rel, f'tipo de receta raro {d.get("type")}')
             r = d.get('result', {})
-            if isinstance(r, dict) and ('nbt' in r or 'tag' in r or 'components' in r):
-                err(rel, 'las recetas de 1.20.1 no admiten NBT en el resultado')
+            if isinstance(r, dict) and ('tag' in r or 'components' in r):
+                err(rel, 'en Forge 1.20.1 el NBT del resultado va en "nbt"')
 for dp, dn, fs in os.walk(A):
     for f in fs:
         if f.endswith('.json'):

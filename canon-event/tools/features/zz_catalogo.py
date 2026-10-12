@@ -180,7 +180,7 @@ def build(c):
             continue
         pages.append(json.dumps(body, ensure_ascii=False))
     intro = json.dumps(['', {'text': 'RECETARIO\nCanon Event\n\n', 'bold': True, 'color': 'dark_red'},
-                        {'text': 'Todos los crafteos del mod. Al craftear sale un libro raro: no te preocupes, se cambia solo por el ítem de verdad.\n\n'
+                        {'text': 'Todos los crafteos del mod. Todo se craftea en la mesa de crafteo normal.\n\n'
                                  'En creativo: /trigger dv.items set 1 abre el catálogo de todos los ítems.', 'color': 'black'}], ensure_ascii=False)
     pages = [intro] + pages
     snbt = ','.join("'" + p.replace('\\', '\\\\').replace("'", "\\'") + "'" for p in pages)
@@ -196,3 +196,32 @@ def build(c):
     c.patch('alto/think', lambda s: s.replace('run function canon:x/creep', 'run function canon:x/walk')
             .replace('dv.watch matches 80.. run function canon:alto/lunge', 'dv.watch matches 40.. run function canon:alto/lunge')
             .replace('distance=..1.8] run function canon:alto/catch', 'distance=..2.6] run function canon:alto/catch'))
+
+    # ---------------------------------------------------------------- recetas reales (mod Java/Forge: el resultado lleva NBT)
+    # Forge acepta "nbt" en el resultado de las recetas: ya no sale el libro raro, sale el ítem de verdad.
+    reales = 0
+    for rname, d in all_json('data/canon/recipes').items():
+        res = d.get('result', {})
+        rid = 'canon:' + rname
+        if not (isinstance(res, dict) and res.get('item', '').endswith('knowledge_book') and reward.get(rid)):
+            continue
+        fid = reward[rid]
+        m = re.search(r'loot give @s loot (canon:[\w/]+)', fn_text(fid))
+        if not m or m.group(1).split(':', 1)[1] not in LOOT:
+            continue
+        try:
+            e = LOOT[m.group(1).split(':', 1)[1]]['pools'][0]['entries'][0]
+        except Exception:
+            continue
+        tag = next((f.get('tag') for f in e.get('functions', []) if f.get('function') == 'minecraft:set_nbt'), None)
+        cnt = next((f.get('count') for f in e.get('functions', []) if f.get('function') == 'minecraft:set_count'), 1)
+        nd = dict(d)
+        nd['result'] = {'item': e['name'], 'count': cnt if isinstance(cnt, int) else 1}
+        if tag:
+            nd['result']['nbt'] = tag
+        c.json_files['data/canon/recipes/' + rname + '.json'] = (nd, 'zz_catalogo')
+        p = fid.split(':', 1)[1]
+        rev = [l for l in fn_text(fid).split('\n') if l.startswith('advancement revoke')]
+        c.files[p] = '\n'.join(rev) + '\n'
+        reales += 1
+    print(f'  recetas reales con NBT: {reales}')
