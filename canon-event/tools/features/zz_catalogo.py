@@ -51,6 +51,7 @@ def build(c):
     LOOT = all_json('data/canon/loot_tables')
     # ---------------------------------------------------------------- catálogo (todas las loot tables de un ítem con nombre)
     items = []  # (cat, nombre, loot id)
+    CREAT = []  # (cat, nombre, item base, nbt) para la pestaña del creativo (mod Java)
     for rel in sorted(LOOT):
         if rel.startswith('cat/'):
             continue
@@ -69,12 +70,21 @@ def build(c):
             except Exception:
                 continue
             items.append((rel.split('/')[0], nombre_de(tag, rel.split('/')[-1]), 'canon:' + rel))
+            CREAT.append((rel.split('/')[0], nombre_de(tag, rel.split('/')[-1]), e['name'], tag))
     seen, uniq = set(), []
     for it in items:  # sin repetidos (mismo nombre en la misma categoría)
         if (it[0], it[1]) not in seen:
             seen.add((it[0], it[1]))
             uniq.append(it)
     items = sorted(uniq, key=lambda x: (x[0], x[1]))
+    vistos, lineas = set(), []
+    for cat, nm, base, tag in sorted(CREAT, key=lambda x: (x[0], x[1])):
+        if (cat, nm) not in vistos:
+            vistos.add((cat, nm))
+            lineas.append(base + '|' + tag.replace('\n', ' '))
+    fj = os.path.join(os.path.dirname(__file__), '..', '..', 'forge', 'src', 'main', 'resources', 'canon_creativo.txt')
+    if os.path.isdir(os.path.dirname(fj)):
+        open(fj, 'w', encoding='utf-8').write('\n'.join(lineas) + '\n')
     c.objective('dv.items', 'trigger')
     cats = sorted({x[0] for x in items})
     c.on('player', 'scoreboard players enable @s dv.items\nexecute if score @s dv.items matches 1.. run function canon:cat/usar\n'
