@@ -1,6 +1,18 @@
-# Canon Event 10.0.0 — guía
+# Canon Event 11.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-10.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-11.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x`, `canon-event-10.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 11.0 (definitiva)
+- **Tu casa cuenta aunque no hayas dormido en una cama**: de noche, si estás bajo techo, pasan las cosas de la casa (puertas, cofres, abuelas en el techo, ventanas). Antes solo funcionaba si dormías en tu cama.
+- **Fantasmas** que cruzan las paredes de tu casa y **el demonio** de la cara roja a lo lejos, de noche, en el mundo normal: si no lo miras, corre hacia ti.
+- **Abuelas en el techo** más seguido y en cualquier casa de noche.
+- **Zombis**: más lentos, y ahora te tiran piedritas.
+- **Barra de miedo nueva**: una cara que cambia según tu miedo y el porcentaje («MIEDO 35% · asustado»), sin la barra fea.
+- **Santiago, el ex de Mari**: alto, chistoso y raro. La busca de día, la acusa de haberlo dejado y, de noche en el bosque, la acecha y la persigue. Si Mari no tiene ese nombre de usuario, que escriba `/trigger dv.soymari set 1`.
+- **Cartas bajo la puerta** al amanecer: de Juli, Diana, Valery, la abuela, Kevin, alguien que no firma… y de Santiago para Mari.
+- **Guía de Canon Event**: todos reciben un libro que explica el mod.
+
+---
 
 ## Lo nuevo de la 10.0
 

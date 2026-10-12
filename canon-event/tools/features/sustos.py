@@ -367,7 +367,8 @@ execute if score @s dv.timer matches 700.. run function canon:sus/lfalsa/grita
     # ================================================================ ABUELAS EN EL TECHO
     rig('sus/abutecho', 'dv_abutecho', 'Abuela', '#c9a27a', 7321010, 7321016, ['dv_horror'])
     c.on('second', f'''
-execute if score {S} if predicate canon:de_noche as @a[gamemode=!spectator] at @s unless block ~ ~3 ~ #canon:pasable if entity @e[type=villager,distance=..32] unless entity @e[tag=dv_abutecho,distance=..48] if predicate canon:azar/1en500 run function canon:sus/abutecho/aparecer
+execute if score {S} if predicate canon:de_noche as @a[gamemode=!spectator] at @s unless block ~ ~3 ~ #canon:pasable if entity @e[type=villager,distance=..32] unless entity @e[tag=dv_abutecho,distance=..48] if predicate canon:azar/1en200 run function canon:sus/abutecho/aparecer
+execute if score {S} if predicate canon:de_noche as @a[gamemode=!spectator,predicate=canon:en_superficie] at @s if entity @s[y=40,dy=300] unless block ~ ~3 ~ #canon:pasable unless entity @e[tag=dv_abutecho,distance=..48] if predicate canon:azar/1en600 run function canon:sus/abutecho/aparecer
 execute if score {S} if predicate canon:de_noche if score #abucasa dv.build matches 1 as @a[gamemode=!spectator] at @s unless block ~ ~3 ~ #canon:pasable unless entity @e[tag=dv_abutecho,distance=..48] if predicate canon:azar/1en60 run function canon:sus/abutecho/en_casa
 ''')
     F('sus/abutecho/en_casa', 'execute store result score #px dv.tmp run data get entity @s Pos[0]\nexecute store result score #pz dv.tmp run data get entity @s Pos[2]\n'

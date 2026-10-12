@@ -59,7 +59,7 @@ data merge entity @s {CanBreakDoors:1b,CanPickUpLoot:1b}
 attribute @s minecraft:generic.follow_range base set 40
 scoreboard players set @s dv.zpil 0
 scoreboard players set @s dv.zst 0
-execute if predicate canon:de_noche run attribute @s minecraft:generic.movement_speed base set 0.26
+execute if predicate canon:de_noche run attribute @s minecraft:generic.movement_speed base set 0.235
 execute if predicate canon:azar/1en8 run function canon:zomb/v/corredor
 execute unless entity @s[tag=dv_zvar] if predicate canon:azar/1en10 run function canon:zomb/v/tanque
 execute unless entity @s[tag=dv_zvar] if predicate canon:azar/1en8 run function canon:zomb/v/griton
@@ -69,7 +69,7 @@ execute unless entity @s[tag=dv_zvar] if predicate canon:azar/1en12 run function
     F('zomb/v/corredor', '''
 tag @s add dv_zvar
 tag @s add dv_zcorredor
-attribute @s minecraft:generic.movement_speed base set 0.34
+attribute @s minecraft:generic.movement_speed base set 0.28
 data merge entity @s {CustomName:'{"text":"Zombi corredor","color":"#c94a4a"}',ArmorItems:[{},{},{},{id:"minecraft:leather_helmet",Count:1b,tag:{display:{color:9109504}}}],ArmorDropChances:[0f,0f,0f,0f]}
 ''')
     F('zomb/v/tanque', '''
@@ -102,7 +102,7 @@ data merge entity @s {NoAI:1b,Silent:1b}
 tag @s remove dv_zmuerto
 data merge entity @s {NoAI:0b,Silent:0b}
 playsound minecraft:entity.zombie.ambient hostile @a[distance=..16] ~ ~ ~ 1.4 0.7
-effect give @s minecraft:speed 4 1 true
+effect give @s minecraft:speed 4 0 true
 ''')
     # -------------------------------------------------------- oído: señuelo en la posición del ruido
     F('zomb/oido', '''

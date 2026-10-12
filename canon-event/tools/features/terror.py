@@ -149,12 +149,13 @@ execute if score @s dv.miedo matches 60..79 if score #m40 dv.clock matches 0 run
 bossbar set canon:miedo{i} players @s
 bossbar set canon:miedo{i} visible true
 execute store result bossbar canon:miedo{i} value run scoreboard players get @s dv.miedo
-execute if score @s dv.miedo matches ..39 run bossbar set canon:miedo{i} color white
-execute if score @s dv.miedo matches 40..69 run bossbar set canon:miedo{i} color yellow
-execute if score @s dv.miedo matches 70.. run bossbar set canon:miedo{i} color red
-execute if score @s dv.miedo matches ..39 run bossbar set canon:miedo{i} name {{"text":"Miedo","color":"gray"}}
-execute if score @s dv.miedo matches 40..69 run bossbar set canon:miedo{i} name {{"text":"Miedo: algo no está bien","color":"yellow"}}
-execute if score @s dv.miedo matches 70.. run bossbar set canon:miedo{i} name {{"text":"Miedo: no estás solo","color":"red"}}
+bossbar set canon:miedo{i} color white
+bossbar set canon:miedo{i} style progress
+execute if score @s dv.miedo matches 0..19 run bossbar set canon:miedo{i} name ["", {{"text": "", "font": "canon:hud", "color": "white"}}, {{"text": "  MIEDO ", "color": "white", "bold": true}}, {{"score": {{"name": "@s", "objective": "dv.miedo"}}, "color": "white", "bold": true}}, {{"text": "%", "color": "white", "bold": true}}, {{"text": "  · tranquilo", "color": "gray", "italic": true}}]
+execute if score @s dv.miedo matches 20..39 run bossbar set canon:miedo{i} name ["", {{"text": "", "font": "canon:hud", "color": "white"}}, {{"text": "  MIEDO ", "color": "#e8e0a0", "bold": true}}, {{"score": {{"name": "@s", "objective": "dv.miedo"}}, "color": "#e8e0a0", "bold": true}}, {{"text": "%", "color": "#e8e0a0", "bold": true}}, {{"text": "  · inquieto", "color": "gray", "italic": true}}]
+execute if score @s dv.miedo matches 40..59 run bossbar set canon:miedo{i} name ["", {{"text": "", "font": "canon:hud", "color": "white"}}, {{"text": "  MIEDO ", "color": "yellow", "bold": true}}, {{"score": {{"name": "@s", "objective": "dv.miedo"}}, "color": "yellow", "bold": true}}, {{"text": "%", "color": "yellow", "bold": true}}, {{"text": "  · asustado", "color": "gray", "italic": true}}]
+execute if score @s dv.miedo matches 60..79 run bossbar set canon:miedo{i} name ["", {{"text": "", "font": "canon:hud", "color": "white"}}, {{"text": "  MIEDO ", "color": "gold", "bold": true}}, {{"score": {{"name": "@s", "objective": "dv.miedo"}}, "color": "gold", "bold": true}}, {{"text": "%", "color": "gold", "bold": true}}, {{"text": "  · aterrado", "color": "gray", "italic": true}}]
+execute if score @s dv.miedo matches 80.. run bossbar set canon:miedo{i} name ["", {{"text": "", "font": "canon:hud", "color": "white"}}, {{"text": "  MIEDO ", "color": "red", "bold": true}}, {{"score": {{"name": "@s", "objective": "dv.miedo"}}, "color": "red", "bold": true}}, {{"text": "%", "color": "red", "bold": true}}, {{"text": "  · ya no estás solo", "color": "gray", "italic": true}}]
 ''')
         lines.append(f'execute if score @s dv.pid matches {i} run function canon:miedo/bar/b{i}')
     F('miedo/barra', '\n'.join(lines))
