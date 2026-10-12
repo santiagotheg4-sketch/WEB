@@ -46,7 +46,7 @@ DESC = [  # clave, nombre, tags de entidad, texto del cuaderno
     ('dani', 'Dani', ['zombie,tag=dv_dani'], 'La hermana de Juli. Vende comida y pregunta si comiste.'),
     ('kevin', 'Kevin', ['zombie,tag=dv_kevin'], 'Llega, se queda y se va. Nunca dice a dónde.'),
     ('luna', 'Luna', ['wolf,tag=dv_luna'], 'Ladra a lo que tú no ves. Hazle caso.'),
-    ('valery', 'Valery', ['zombie,tag=dv_valery'], 'La novia de Juan. Siempre triste. Siempre pide perdón.'),
+    ('valery', 'Valery', ['zombie,tag=dv_valery'], 'La novia de Juan. Juan murió y ella lo sigue buscando en el puente.'),
     ('dhum', 'Diana (de día)', ['zombie,tag=dv_dhum'], 'Pálida, con ojeras. Pregunta por Juan.'),
     ('zunga', 'Diana (de noche)', ['zombie,tag=dv_as_zunga', 'zombie,tag=dv_zunga'], 'Se tuerce. Se arrastra. Sonríe demasiado.'),
     ('mariana', 'Mariana', ['zombie,tag=dv_mari2', 'zombie,tag=dv_mbaile'], 'Busca a Felipe. No le hables mucho.'),
@@ -199,14 +199,14 @@ particle minecraft:cherry_leaves ~ ~1.2 ~ 0.6 1 0.6 0 30 normal
 playsound canon:juli.chime ambient @a[distance=..16] ~ ~ ~ 0.5 0.8
 ''')
     c.pick('rel/val/hola_bana', [vs(t) for t in [
-        'Juan... digo, Bana. Perdón. Te estaba buscando. ¿Comiste algo hoy?',
-        'Ahí estás. Tienes ojeras otra vez. ¿Volviste a soñar con ella? Perdón, no debí preguntar.',
-        'Te traje algo de comer. No me mires así, ya sé que no te acuerdas de que te gusta. Yo me acuerdo por los dos.',
-        'Perdón por aparecer así. Es que cuando no te veo, siento que algo te va a pasar.']])
+        '¿Juan? ... No. Perdón, Bana. De lejos te pareces tanto a él.',
+        'Volví al puente anoche. Lo esperé hasta las 3:11. No llegó. Nunca llega.',
+        '¿Comiste? Perdón, es que a Juan siempre se le olvidaba comer. Me quedó la costumbre de preguntar.',
+        'Perdón por aparecer así. Desde que Juan no está, siento que si dejo de cuidar a alguien, también se va.']])
     c.pick('rel/val/hola_otro', [vs(t) for t in [
-        'Hola... perdón, ¿has visto a Juan? A Bana. Le dicen Bana. Está muy pálido últimamente.',
-        'Perdón, no te quería asustar. Me llamo Valery. Si ves a Juan, cuídamelo, ¿sí?',
-        '¿Tú también sientes que alguien nos mira? Desde que estoy con Juan, siempre hay alguien mirando.']])
+        'Hola... perdón. ¿Has visto a un muchacho de chaqueta gris cerca del río? Se llama Juan. Bueno. Se llamaba.',
+        'Perdón, no te quería asustar. Me llamo Valery. Si de noche ves a alguien parado en el puente, no le hables. Avísame a mí.',
+        '¿Tú también sientes que alguien nos mira? Desde que Juan se fue, siempre hay alguien mirando.']])
     tick('rel/val', 'dv_valery', f'''
 execute if score #m4 dv.clock matches 0 run function canon:x/face
 execute if score @s dv.timer matches 20 if entity @a[tag=dv_wtgt,tag=dv_bana] run function canon:rel/val/hola_bana
@@ -225,8 +225,8 @@ scoreboard players operation #pid dv.tmp = @a[tag=dv_wtgt,limit=1] dv.pid
 scoreboard players set #quien dv.tmp 1
 execute facing entity @a[tag=dv_wtgt,limit=1] feet rotated ~ 0 positioned ^ ^ ^-3 run function canon:acecho/aparecer
 playsound canon:devota.whisper hostile @a[tag=dv_wtgt] ~ ~ ~ 1 0.6
-tellraw @a[tag=dv_wtgt] {{"text":"Diana (detrás de Valery, susurrando): ¿Ella? ¿En serio, Juan? Yo te cuidaba mejor.","color":"#c94a4a","italic":true}}
-''' + vs('¿Sentiste eso? Hace frío de repente... Está aquí, ¿verdad? Siempre que me acerco a ti, ella está aquí.', 160))
+tellraw @a[tag=dv_wtgt] {{"text":"Diana (detrás de Valery, susurrando): ¿La sigues mirando, Juan? Hasta muerto la miras a ella.","color":"#c94a4a","italic":true}}
+''' + vs('¿Sentiste eso? Hace frío de repente... Es ella, ¿verdad? Me culpa de lo que le pasó a Juan. Yo también me culpo.', 160))
     F('rel/val/celos_noche', '''
 tag @s remove dv_val_celos
 function canon:acoso/ventana
@@ -250,13 +250,13 @@ execute as @e[type=zombie,tag=dv_valery,distance=..14,limit=1,sort=nearest] at @
 tag @s remove dv_vtalk
 ''')
     resp = {
-        1: 'Me llamo Valery. Soy la novia de Juan. O eso creo. A veces me mira como si tratara de recordar de dónde me conoce.',
-        2: 'No estoy triste. Bueno, sí. Cuando quieres a alguien que perdió un pedazo de sí mismo, siempre te preguntas si te quiere a ti o al hueco que le quedó.',
-        3: 'Diana. Sí. Juan no la recuerda, pero dice su nombre dormido. Yo le acaricio el pelo hasta que se calla. Ella me odia por eso. Lo siento en la nuca cuando estoy con él.',
-        4: 'Le pido perdón a Juan por todo. Por quererlo cuando él no sabía ni quién era. Por no contarle lo de Diana. Por estar viva y ella no. Y perdón a ti, por meterte en esto.',
-        5: 'Lo encontré en el puente a las 3:11 de la mañana, mirando el río, llorando sin saber por qué. Le di mi chaqueta. Desde ese día le recuerdo que coma, que duerma, que su cumpleaños es en marzo. Él me da las gracias como si fuera la primera vez. Siempre es la primera vez.',
-        6: 'Cuídate. Y si ves a Juan, dile que lo quiero. Aunque no sepa quién soy.',
-        7: '¿Yo? Estoy bien si tú estás bien. No me mires así. Ya sé que no te acuerdas de mucho. Yo me acuerdo por los dos. Eso es lo que hace una cuando quiere, ¿no?',
+        1: 'Me llamo Valery. Era la novia de Juan. Soy. Todavía no sé en qué tiempo hablar de él.',
+        2: 'Juan se murió hace un año. En el río, debajo del puente donde lo conocí. Dicen que fue un accidente. Yo sé que no. Por eso estoy triste. Por eso y porque todavía lo busco.',
+        3: 'Diana. Ella lo quería antes que yo. Con un deseo. Cuando Juan pidió olvidarla, se le olvidó todo, hasta el camino a casa. Caminó hasta el río. Diana me culpa a mí. Yo también me culpo.',
+        4: 'Le pido perdón a Juan todas las noches. Por no encontrarlo a tiempo. Por no contarle lo de Diana. Por seguir viva cuando él no. Y perdón a ti, por meterte en esto.',
+        5: 'Lo conocí en el puente a las 3:11 de la mañana, llorando sin saber por qué. Le di mi chaqueta. Durante meses le recordé que comiera, que durmiera, que su cumpleaños era en marzo. Una noche no le recordé nada. Esa noche se fue al río.',
+        6: 'Cuídate. Y si ves a Juan, aunque sea de lejos, dile que lo sigo esperando en el puente.',
+        7: '¿Si estoy bien? No sé. Tienes sus ojos, ¿sabías? Perdón. A veces te miro y creo que eres él, y que todo fue una pesadilla.',
     }
     for k, t in resp.items():
         F(f'rel/val/r{k}', (head(K['valery_cabeza_suave']) + '\n' if k == 7 else '') + vs(t, 220, '@a[tag=dv_vtalk]'))
@@ -264,7 +264,7 @@ tag @s remove dv_vtalk
     F('rel/val/r8', f'''
 {head(K['valery_cabeza_llora'])}
 scoreboard players set @s dv.mode 5
-tellraw @a[tag=dv_vtalk] {{"text":"Valery te abraza fuerte, como si fuera la última vez. «Perdóname, Juan. Por todo lo que no sabes.»","color":"{VC}","italic":true}}
+tellraw @a[tag=dv_vtalk] {{"text":"Valery te abraza fuerte, temblando. «Perdón. Es que hueles a él. Déjame un ratico más.»","color":"{VC}","italic":true}}
 effect give @a[tag=dv_vtalk] minecraft:regeneration 10 1 true
 scoreboard players set @a[tag=dv_vtalk] dv.miedo 0
 playsound minecraft:block.glass.break hostile @a[tag=dv_vtalk] ~8 ~ ~8 0.6 0.5
@@ -273,23 +273,23 @@ tag @a[tag=dv_vtalk] add dv_val_celos
 advancement grant @a[tag=dv_vtalk] only canon:logros/abrazo
 ''')
     F('rel/val/r9', head(K['valery_cabeza_llora']) + '\nscoreboard players set @s dv.mode 3\n' + vs(
-        'Está bien. Te lo digo. Cuando Juan pidió olvidarla, quedó una astilla del Hueso. La encontré yo. Y pedí que nunca, nunca la recordara. '
-        'Por eso Diana no descansa: no se puede ir si él no se despide. Es mi culpa. Yo la tengo atrapada. ¿Qué hago?', 300, '@a[tag=dv_vtalk]') + '\n' +
+        'Te lo digo. Cuando Juan pidió olvidar a Diana, quedó una astilla del Hueso. La encontré yo y pedí que nunca la recordara. '
+        'Pero el Hueso cobra: para olvidarla a ella, Juan se olvidó de sí mismo. Por eso caminó al río. Por eso su alma no descansa, y Diana tampoco. Es mi culpa. ¿Qué hago?', 300, '@a[tag=dv_vtalk]') + '\n' +
         menu('@a[tag=dv_vtalk]', 'Lo que decidas no tiene vuelta atrás.', VC, [('Rompe el deseo', '/trigger dv.val set 10'), ('Guárdalo', '/trigger dv.val set 11')]))
     F('rel/val/r10', head(K['valery_cabeza_llora']) + '\n' + vs(
-        'Tienes razón. Si me quiere, que me quiera recordando todo. Aunque después me deje. Ojalá en otra vida me recuerde primero a mí.', 200, '@a[distance=..32]') + '''
+        'Tienes razón. Que Juan recuerde todo, aunque me recuerde llorando. Que por fin descanse. Ojalá en otra vida me encuentre primero a mí.', 200, '@a[distance=..32]') + '''
 scoreboard players set #val_fin dv.dev 1
 particle minecraft:end_rod ~ ~1.3 ~ 0.4 0.6 0.4 0.05 60 normal
 playsound minecraft:block.glass.break master @a ~ ~ ~ 1 0.6
 title @a times 20 100 40
-title @a subtitle {"text":"Juan recuerda a Diana. Al Hueso. A Valery en el puente.","color":"#f6e3ea","italic":true}
+title @a subtitle {"text":"Juan recuerda todo. Ya puede descansar.","color":"#f6e3ea","italic":true}
 title @a title {"text":"EL DESEO SE ROMPIÓ","color":"#c98fa6","bold":true}
-tellraw @a {"text":"☾ Diana dejó de gritar. Por primera vez en años, alguien la recuerda. Valery no volvió a aparecer.","color":"gray","italic":true}
+tellraw @a {"text":"☾ En el puente, a las 3:11, alguien con chaqueta gris se despidió con la mano. Diana dejó de gritar. Valery no volvió a aparecer.","color":"gray","italic":true}
 advancement grant @a only canon:logros/valery_a
 schedule function canon:rel/val/fin_a 60t
 ''')
     F('rel/val/fin_a', 'execute as @e[type=zombie,tag=dv_valery] at @s run function canon:rel/val/se_va')
-    F('rel/val/r11', vs('No puedo. No puedo perderlo otra vez. Perdóname, Diana. Perdóname, Juan. Perdóname todos.', 160, '@a[distance=..32]') + '''
+    F('rel/val/r11', vs('No puedo. Si rompo el deseo, se va del todo. Prefiero un Juan que no recuerda a ningún Juan. Perdóname, Diana. Perdóname, Juan.', 160, '@a[distance=..32]') + '''
 scoreboard players set #val_fin dv.dev 2
 scoreboard players set #an_ev dv.dev 3
 scoreboard players set #an_falta dv.dev 1
@@ -653,6 +653,20 @@ execute if score @s dv.timer matches 6000.. run function canon:rel/sev/se_va
     scan('puerta', ['#minecraft:wooden_doors[half=lower]'], 'dv_ppu')
     scan('antorcha', ['minecraft:torch', 'minecraft:wall_torch'], 'dv_pan')
     scan('cofre', ['minecraft:chest', 'minecraft:barrel'], 'dv_pco')
+    scan('trampilla', ['#minecraft:wooden_trapdoors'], 'dv_ptr')
+    F('rel/polter/trampilla', 'function canon:rel/polter/scan_trampilla\nexecute as @e[type=marker,tag=dv_ptr,limit=1,sort=random] at @s run function canon:rel/polter/tramp_tog\nkill @e[type=marker,tag=dv_ptr]')
+    tt = ['scoreboard players set #dop dv.tmp 0', 'execute if block ~ ~ ~ #minecraft:wooden_trapdoors[open=false] run scoreboard players set #dop dv.tmp 1']
+    for w in WOODS:
+        tt.append(f'execute if block ~ ~ ~ minecraft:{w}_trapdoor run function canon:rel/polter/tramp_{w}')
+        ls = []
+        for f in ('north', 'south', 'east', 'west'):
+            for hf in ('top', 'bottom'):
+                st = f'facing={f},half={hf}'
+                ls.append(f'execute if score #dop dv.tmp matches 1 if block ~ ~ ~ minecraft:{w}_trapdoor[{st},open=false] run setblock ~ ~ ~ minecraft:{w}_trapdoor[{st},open=true]')
+                ls.append(f'execute if score #dop dv.tmp matches 0 if block ~ ~ ~ minecraft:{w}_trapdoor[{st},open=true] run setblock ~ ~ ~ minecraft:{w}_trapdoor[{st},open=false]')
+        F(f'rel/polter/tramp_{w}', '\n'.join(ls))
+    tt.append('playsound minecraft:block.wooden_trapdoor.open block @a[distance=..16] ~ ~ ~ 1 0.7')
+    F('rel/polter/tramp_tog', '\n'.join(tt))
     for nm, tg, fn in (('puerta', 'dv_ppu', 'puerta_tog'), ('antorcha', 'dv_pan', 'antorcha_off'), ('cofre', 'dv_pco', 'cofre_escupe')):
         F(f'rel/polter/{nm}', f'function canon:rel/polter/scan_{nm}\nexecute as @e[type=marker,tag={tg},limit=1,sort=random] at @s run function canon:rel/polter/{fn}\nkill @e[type=marker,tag={tg}]')
     tog = ['scoreboard players set #dop dv.tmp 0', 'execute if block ~ ~ ~ #minecraft:wooden_doors[open=false] run scoreboard players set #dop dv.tmp 1']

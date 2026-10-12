@@ -38,6 +38,18 @@ FRAG = ['Antes de Valle Quieto había un pueblo con otro nombre. Lo borraron con
         'En el Más Allá hay una puerta para cada persona. La tuya cambia de lugar cuando mientes.',
         'Luna ladra a lo que tú no ves. Hazle caso.',
         'Esta historia no termina. Solo cambia de dueño.']
+FRAG2 = ['Juan pidió olvidar a Diana. El Hueso le cobró también el camino a casa. Lo encontraron en el río.',
+         'Valery encontró la última astilla del Hueso. Pidió que Juan nunca recordara. Todavía no sabe que fue ella quien lo dejó perdido.',
+         'La Abuela Esmeralda tuvo tres nietos más. Se fueron al bosque a buscar el Hueso. Todavía se ríen allá, de día.',
+         'De noche, la abuela duerme. Lo que camina con su cara es lo que el Hueso dejó en su casa hace cuarenta años.',
+         'Felipe se cayó al lago la noche de la fiesta. Mariana lo busca en todas partes menos en el agua.',
+         'Diana escribió trece páginas. La última dice cómo terminar esto. Alguien las arrancó y las regó por el mundo.',
+         'El de la cara roja no tiene nombre. Diana le dio el suyo. Y su cuerpo.',
+         'Don Severo le vendió el Ouija a la muchacha pálida. Desde entonces no duerme. Por eso vende de día.',
+         'Los Sin Rostro son la gente que Valle Quieto olvidó. Te miran porque quieren que alguien los recuerde.',
+         'El Alto no camina. Cuando dejas de mirarlo, ya está más cerca. Kevin lo sabe. Por eso hace fiestas: para no estar solo.',
+         'Juli duerme desde la noche del deseo. Si alguien termina esta historia, se despierta.',
+         'Yo no soy parte de la historia. Yo solo la cuento. Por ahora.']
 
 
 def icon(path, c1, c2):
@@ -55,7 +67,8 @@ def build(c):
     for o in ('dv.ouija', 'dv.invoca', 'dv.tienda'):
         c.objective(o, 'trigger')
     c.objective('dv.mision', 'trigger')
-    for o in ('dv.espejo', 'dv.grab', 'dv.durm', 'dv.demsig', 'dv.mis', 'dv.misp', 'dv.misd', 'dv.mcdp'):
+    c.patch('camara/disparar', lambda s: s if 'dv.mfot' in s else s.rstrip('\n') + '\nscoreboard players add @s dv.mfot 1\n')
+    for o in ('dv.espejo', 'dv.mfot', 'dv.grab', 'dv.durm', 'dv.demsig', 'dv.mis', 'dv.misp', 'dv.misd', 'dv.mcdp'):
         c.objective(o)
     c.objective('dv.mzk', 'minecraft.killed:minecraft.zombie')
     c.objective('dv.mfs', 'minecraft.custom:minecraft.fish_caught')
@@ -347,7 +360,7 @@ execute if score #paranormal dv.cfg matches 1 as @a[gamemode=!spectator,scores={
         'function canon:para/cartel_te_vi',
         'playsound minecraft:block.chain.fall block @s ^2 ^1 ^-2 1 0.6\nplaysound minecraft:entity.item.pickup block @s ^-2 ^ ^ 0.7 0.5',
         'playsound minecraft:block.glass.break block @s ^5 ^1 ^-4 0.7 0.6\ntellraw @s {"text":"Algo de vidrio se rompió en otro cuarto. No hay nada roto.","color":"gray","italic":true}',
-        'function canon:rel/polter/puerta', 'function canon:rel/polter/puerta', 'function canon:rel/polter/antorcha',
+        'function canon:rel/polter/puerta', 'function canon:rel/polter/trampilla', 'function canon:rel/polter/antorcha',
         'function canon:rel/polter/cofre', 'function canon:rel/polter/mueble',
     ])
     F('para/cuadro_cae', 'summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:painting",Count:1b}}\nplaysound minecraft:entity.painting.break block @a[distance=..16] ~ ~ ~ 1 0.8\nkill @s')
@@ -502,11 +515,11 @@ scoreboard players add @a[distance=..10,limit=1,sort=nearest] dv.miedo 8
     # ----------------------------------------------------------- misiones diarias
     c.on('second', 'execute if score #paranormal dv.cfg matches 1 as @a[gamemode=!spectator] run function canon:para/mision/second')
     MIS = [(1, 'Mata 10 zombies', 'dv.mzk', 10), (2, 'Pica 64 bloques de piedra', 'dv.mpie', 64), (3, 'Camina 1000 bloques', 'dv.mwk', 100000),
-           (4, 'Pesca 3 peces', 'dv.mfs', 3)]
+           (4, 'Pesca 3 peces', 'dv.mfs', 3), (5, 'Saca 3 fotos con la cámara instantánea', 'dv.mfot', 3)]
     F('para/mision/second', '''
 execute store result score #md dv.tmp run time query day
 execute unless score @s dv.misd = #md dv.tmp run function canon:para/mision/nueva
-execute if score @s dv.mis matches 1..4 run function canon:para/mision/revisar
+execute if score @s dv.mis matches 1..5 run function canon:para/mision/revisar
 ''')
     nueva = ['scoreboard players operation @s dv.misd = #md dv.tmp', 'scoreboard players set @s dv.misp 0'] + \
             [f'scoreboard players set @s {o} 0' for _, _, o, _ in MIS] + ['function canon:para/mision/elegir',
@@ -576,7 +589,9 @@ scoreboard players set @s dv.say -1
 function canon:x/add_bubble
 ''')
     c.npc('dv_narrador', 'para/narrador/tick')
-    c.pick('para/narrador/fragmento', [say('El Narrador', '#9a9ab0', '#e0e0ea', t, 200, '@a[distance=..24]') for t in FRAG])
+    c.pick('para/narrador/fa', [say('El Narrador', '#9a9ab0', '#e0e0ea', t, 200, '@a[distance=..24]') for t in FRAG])
+    c.pick('para/narrador/fb', [say('El Narrador', '#9a9ab0', '#e0e0ea', t, 200, '@a[distance=..24]') for t in FRAG2])
+    c.pick('para/narrador/fragmento', ['function canon:para/narrador/fa', 'function canon:para/narrador/fb'])
     F('para/narrador/tick', f'''
 function canon:x/links_follow
 scoreboard players remove @s[scores={{dv.say=1..}}] dv.say 1

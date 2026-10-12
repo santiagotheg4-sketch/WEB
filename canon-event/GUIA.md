@@ -1,6 +1,23 @@
-# Canon Event 6.0.0 — guía
+# Canon Event 7.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-6.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-7.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 7.0
+
+### Catálogo y recetario
+- **Recetario**: todos reciben un libro con **todos los crafteos** del mod: herramientas, armadura, comida, mascotas, objetos paranormales, cámara y más. Para pedir otro: `/trigger dv.items set 2`.
+- **Catálogo** (`/trigger dv.items set 1`): todos los ítems del mod por secciones. En **modo creativo**, haces clic y te lo da. Minecraft no deja que un mod hecho como este agregue su propia pestaña al inventario creativo, así que esta es la forma de verlo todo.
+- Al craftear algo del mod sale un libro raro por un instante y se cambia solo por el ítem de verdad.
+
+### Arreglos y mejoras
+- **Juli aparece mucho menos y al azar**. Antes aparecía cada 8 minutos exactos (cada 5 si no eres Santi) y te llevaba de la nada. Ahora es al menos cada 40 minutos para Santi (30 para los demás), más un tiempo al azar.
+- **El Alto (Slenderman) sí ataca**: si no lo miras, camina hacia ti; si lo miras 2 segundos, se te lanza encima; y si te alcanza, te golpea.
+- **Valery**: Juan murió en el río, debajo del puente donde ella lo conoció, y Valery lo sigue buscando ahí. Ve a Juan en Bana. Los dos finales cambian: si rompe el deseo, Juan por fin descansa.
+- **El Narrador** tiene 12 pedazos de historia nuevos: Juan, Valery, los nietos de la abuela, Felipe, las páginas, el demonio, Don Severo, los Sin Rostro, el Alto y Juli.
+- **Poltergeist**: también se abren y se cierran las **trampillas**.
+- **Misión del día nueva**: «saca 3 fotos con la cámara».
+
+---
 
 ## Lo nuevo de la 6.0
 
