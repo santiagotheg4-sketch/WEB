@@ -138,7 +138,7 @@ def build(c):
     c.on('player', 'scoreboard players enable @s dv.luna\nexecute if score @s dv.luna matches 1.. run function canon:luna2/eleccion')
     c.on('tick', 'execute as @e[type=wolf,tag=dv_luna,scores={dv.lpose=1..}] at @s run function canon:luna2/truco_tick')
     c.on('second', '''
-execute as @e[type=wolf,tag=dv_luna] unless score @s dv.lpose matches 1.. at @s run function canon:luna2/sola
+execute as @e[type=wolf,tag=dv_luna,tag=!dv_luna_atada] unless score @s dv.lpose matches 1.. at @s run function canon:luna2/sola
 ''')
     c.patch('rig/frames/luna', lambda s: s if 'luna2/frame' in s else s.rstrip('\n') + '\nexecute if score @s dv.lpose matches 1.. run function canon:luna2/frame\n')
     # frame del truco / pose actual

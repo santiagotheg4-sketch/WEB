@@ -11,17 +11,17 @@ from canon import skins as SK
 from canon.ctx import item_nbt, loot_item
 
 ITEMS = [  # id, nombre, color, lore, cmd, receta (shapeless), icono(colores)
-    ('ouija', 'Tablero Ouija', '#d9b88a', ['Clic derecho: pregúntale a los espíritus.', 'Siempre despídete.'], ['oak_planks', 'oak_planks', 'ink_sac', 'bone'], ((150, 100, 50), (40, 25, 15))),
-    ('velas', 'Kit de ritual (velas)', '#f0e0b0', ['Clic derecho: haces un círculo de velas.', 'Algo vendrá al centro.'], ['candle', 'candle', 'candle', 'bone_meal'], ((240, 230, 200), (255, 120, 40))),
-    ('espejo', 'Espejo de mano', '#c8d8e8', ['De noche, úsalo tres veces seguidas.', 'No lo hagas.'], ['glass_pane', 'iron_ingot', 'gold_nugget'], ((200, 220, 235), (120, 110, 90))),
-    ('radio_esp', 'Radio de espíritus', '#8fb36a', ['Clic derecho: barre las frecuencias.', 'Entre la estática, alguien contesta.'], ['iron_ingot', 'redstone', 'copper_ingot'], ((80, 90, 60), (200, 60, 40))),
-    ('emf', 'Medidor de energía (EMF)', '#e0d040', ['Tenlo en la mano: pita cuando algo está cerca.'], ['iron_ingot', 'redstone', 'gold_ingot', 'glowstone_dust'], ((60, 60, 60), (240, 220, 60))),
-    ('muneca', 'Muñeca maldita', '#d8a0b0', ['Clic derecho: la dejas en el suelo.', 'Golpéala para guardarla. Si puedes.'], ['white_wool', 'string', 'spider_eye'], ((230, 200, 210), (40, 20, 20))),
-    ('caja_musica', 'Caja de música', '#c9a46a', ['Clic derecho: suena una melodía vieja.', 'En la oscuridad, alguien baila.'], ['note_block', 'gold_nugget'], ((150, 100, 60), (230, 200, 120))),
-    ('sal', 'Saco de sal', '#f4f4f4', ['Clic derecho: haces un círculo de sal por 5 minutos.', 'Lo que acecha no lo cruza.'], ['bone_meal', 'bone_meal', 'paper'], ((240, 240, 240), (200, 200, 200))),
-    ('agua_bendita', 'Agua bendita', '#a0c8f0', ['Clic derecho: la lanzas adelante.', 'Quema a lo que no está vivo.'], ['glass_bottle', 'gold_nugget', 'ghast_tear'], ((150, 190, 240), (230, 240, 255))),
-    ('libro_inv', 'Libro de invocación', '#8b2a2a', ['Clic derecho: llamas a alguien.', 'Puede que venga. Puede que venga otra cosa.'], ['book', 'ender_pearl', 'soul_sand'], ((110, 30, 30), (200, 170, 90))),
-    ('grabadora', 'Grabadora vieja', '#9a9a9a', ['Clic derecho de noche: empieza a grabar.', 'De día: escucha lo que pasó mientras dormías.'], ['iron_ingot', 'redstone', 'string'], ((80, 80, 80), (30, 30, 30))),
+    ('ouija', 'Tablero Ouija', '#d9b88a', ['Clic derecho: pregúntale a los espíritus.', 'Siempre despídete.'], ['oak_planks', 'oak_planks', 'ink_sac', 'bone', 'phantom_membrane'], ((150, 100, 50), (40, 25, 15))),
+    ('velas', 'Kit de ritual (velas)', '#f0e0b0', ['Clic derecho: haces un círculo de velas.', 'Algo vendrá al centro.'], ['candle', 'candle', 'candle', 'bone_meal', 'phantom_membrane'], ((240, 230, 200), (255, 120, 40))),
+    ('espejo', 'Espejo de mano', '#c8d8e8', ['De noche, úsalo tres veces seguidas.', 'No lo hagas.'], ['glass_pane', 'iron_ingot', 'gold_nugget', 'phantom_membrane'], ((200, 220, 235), (120, 110, 90))),
+    ('radio_esp', 'Radio de espíritus', '#8fb36a', ['Clic derecho: barre las frecuencias.', 'Entre la estática, alguien contesta.'], ['iron_ingot', 'redstone', 'copper_ingot', 'phantom_membrane'], ((80, 90, 60), (200, 60, 40))),
+    ('emf', 'Medidor de energía (EMF)', '#e0d040', ['Tenlo en la mano: pita cuando algo está cerca.'], ['iron_ingot', 'redstone', 'gold_ingot', 'glowstone_dust', 'phantom_membrane'], ((60, 60, 60), (240, 220, 60))),
+    ('muneca', 'Muñeca maldita', '#d8a0b0', ['Clic derecho: la dejas en el suelo.', 'Golpéala para guardarla. Si puedes.'], ['white_wool', 'string', 'spider_eye', 'phantom_membrane'], ((230, 200, 210), (40, 20, 20))),
+    ('caja_musica', 'Caja de música', '#c9a46a', ['Clic derecho: suena una melodía vieja.', 'En la oscuridad, alguien baila.'], ['note_block', 'gold_nugget', 'phantom_membrane'], ((150, 100, 60), (230, 200, 120))),
+    ('sal', 'Saco de sal', '#f4f4f4', ['Clic derecho: haces un círculo de sal por 5 minutos.', 'Lo que acecha no lo cruza.'], ['bone_meal', 'bone_meal', 'paper', 'phantom_membrane'], ((240, 240, 240), (200, 200, 200))),
+    ('agua_bendita', 'Agua bendita', '#a0c8f0', ['Clic derecho: la lanzas adelante.', 'Quema a lo que no está vivo.'], ['glass_bottle', 'gold_nugget', 'ghast_tear', 'phantom_membrane'], ((150, 190, 240), (230, 240, 255))),
+    ('libro_inv', 'Libro de invocación', '#8b2a2a', ['Clic derecho: llamas a alguien.', 'Puede que venga. Puede que venga otra cosa.'], ['book', 'ender_pearl', 'soul_sand', 'phantom_membrane'], ((110, 30, 30), (200, 170, 90))),
+    ('grabadora', 'Grabadora vieja', '#9a9a9a', ['Clic derecho de noche: empieza a grabar.', 'De día: escucha lo que pasó mientras dormías.'], ['iron_ingot', 'redstone', 'string', 'phantom_membrane'], ((80, 80, 80), (30, 30, 30))),
 ]
 BASE_CMD = 7311100
 NARR = dict(skin='#bfb6ae', hair='#1a1a1a', hair_style='short', eyes='#d0d0d0', top='#2a2a30', top_style='hoodie', pants='#222226',

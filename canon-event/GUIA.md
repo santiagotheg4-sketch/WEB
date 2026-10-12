@@ -1,6 +1,48 @@
-# Canon Event 7.0.0 — guía
+# Canon Event 8.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-7.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-8.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 8.0
+
+### La Luna falsa
+De noche, a veces la Luna que te sigue **no es ella**. No responde, no mueve la cola, se queda mirando la pared y te gruñe. A lo lejos se oye a la Luna de verdad llorando: **brilla a través de las paredes** para que la encuentres. Si te quedas con la falsa en la oscuridad, se estira y se convierte en un **bicho gigante** que te persigue y te pega fuerte. Cuando llegas a la Luna de verdad, la falsa grita y desaparece. Usa el **Collar de Luna** para saber si es ella. (Luna sigue sin poder morir.)
+
+### Sustos nuevos
+- **Abuelas en el techo**: de noche, bajo techo en las aldeas o en la casa de la Abuela Esmeralda, hay una abuela pegada boca abajo del techo. Si la miras, se te tira encima.
+- **Micro-sustos todo el tiempo** (más o menos cada minuto y medio):
+  - pasos detrás de ti y respiración en el oído;
+  - tu nombre en el chat, un logro falso «[Te vi]» o «¿me oyes?»;
+  - golpes, risas, susurros, cofres y vidrios que suenan;
+  - aullidos y oscuridad de un segundo.
+- **Chat falso**: «Juan se unió al juego», «Diana se unió al juego» o la muerte de un amigo que está vivo.
+- **La hora muerta, 3:11**: las luces se oscurecen, todos los animales y aldeanos se quedan quietos mirando hacia el mismo lado y algo cruza.
+- **El teléfono** del mod suena solo de noche. Contesta si te atreves: llaman Juli, Diana, Juan, la abuela, Kevin… o alguien que te ve.
+- **Aldeanos raros**: de noche se quedan quietos, te miran, se acercan cuando no los miras y susurran tu nombre.
+- **El pozo**:
+  - si de noche miras dentro del pozo de una aldea, una cara te mira desde abajo;
+  - si tiras algo al pozo, te devuelve otra cosa.
+- **Espantapájaros**: en las aldeas se mueven cuando no los miras. A veces uno aparece detrás de tu casa.
+- **El árbol de los colgados**: en los bosques. Tres figuras colgadas que giran para mirarte, y un cofre cerrado con mucho botín que solo se abre con la Llave oxidada.
+- **La Llorona**: de noche, cerca del agua. Si te acercas, te agarra.
+- **El cuarto que no estaba**: a veces, al despertar en tu casa, hay una puerta nueva en la pared. Adentro hay un cuarto oscuro, alguien parado y un cofre cerrado. La puerta desaparece después.
+- **Screamers**: muy de vez en cuando, y a veces al abrir cofres de noche.
+- **Los animales se defienden**: si le pegas a una vaca, oveja, cerdo, gallina, caballo, zorro, etc., te persigue y te muerde por unos segundos.
+
+### Ítems nuevos
+- **Ojo de vidrio**: ves a todo lo que te acecha por 15 segundos, a través de las paredes.
+- **Campanita**: espanta y congela lo que te acecha (también aturde al jefe).
+- **Vela negra**: la prendes y atrae cosas. Más sustos cerca de ella, pero deja premios cada minuto.
+- **Collar de Luna**: te dice si esa Luna es la de verdad.
+- **Cintas VHS (6)**: úsalas cerca de un televisor del mod. Cada una muestra una escena de la historia.
+- **Llave oxidada**: abre los cofres cerrados del árbol y del cuarto.
+- **Ectoplasma**: lo sueltan los espíritus cuando los espantas. Sirve como membrana de phantom en los crafteos.
+
+### Todo se encuentra en el mundo
+- Los **cofres de las estructuras** (aldeas, mazmorras, templos, barcos, etc.) ahora traen ítems del mod: billetes, ectoplasma, llaves, objetos paranormales, cintas, páginas del diario y más.
+- Los **crafteos son más difíciles**: los objetos paranormales y los ítems nuevos piden **membrana de phantom o ectoplasma**. Lo normal es encontrarlos explorando.
+- Todo esto se apaga en Ajustes con «Sustos nuevos».
+
+---
 
 ## Lo nuevo de la 7.0
 
