@@ -122,6 +122,8 @@ tellraw @s {"text":"La vela negra prende sola. Algo la vio desde lejos.","color"
 scoreboard players set @s dv.cool 40
 execute if entity @e[tag=dv_lfalsa,distance=..48] run tellraw @s {"text":"El collar se pone frío y rojo. Esa no es Luna.","color":"#c94a4a","italic":true}
 execute unless entity @e[tag=dv_lfalsa,distance=..48] run tellraw @s {"text":"El collar está tibio. Luna es Luna.","color":"#ffd27a","italic":true}
+execute if entity @e[type=wolf,tag=dv_luna_atada] anchored eyes facing entity @e[type=wolf,tag=dv_luna_atada,limit=1] eyes run tp @s ~ ~ ~ ~ ~
+execute if entity @e[type=wolf,tag=dv_luna_atada] run tellraw @s {"text":"El collar tira de tu mano hacia allá. Luna está por ese lado.","color":"#ffd27a","italic":true}
 playsound minecraft:block.amethyst_block.chime player @s ~ ~ ~ 1 1
 ''')
     cin = ['scoreboard players set @s dv.cool 100', 'execute store result score #cn dv.tmp run data get entity @s SelectedItem.tag.cinta',
@@ -161,7 +163,7 @@ playsound minecraft:block.amethyst_block.chime player @s ~ ~ ~ 1 1
 
     # ================================================================ micro-sustos todo el tiempo
     c.on('second', f'''
-execute if score {S} as @a[gamemode=!spectator] at @s if predicate canon:azar/1en90 run function canon:sus/micro
+execute if score {S} as @a[gamemode=!spectator] at @s if predicate canon:azar/1en150 run function canon:sus/micro
 execute if score {S} as @e[type=marker,tag=dv_vnegra] at @s as @a[distance=..16,gamemode=!spectator] at @s if predicate canon:azar/1en15 run function canon:sus/micro
 execute if score {S} as @a[gamemode=!spectator] at @s if predicate canon:azar/1en3000 run function canon:sus/screamer
 execute if score {S} if predicate canon:azar/1en1800 run function canon:sus/chat_falso
@@ -311,17 +313,17 @@ scoreboard players operation #pid dv.tmp = @a[distance=..20,gamemode=!spectator,
 function canon:sus/lfalsa/summon
 tag @s add dv_luna_atada
 scoreboard players set #ok dv.tmp 0
-execute rotated ~180 0 positioned ^ ^ ^40 run function canon:util/spot_search
-execute if score #ok dv.tmp matches 1 run tp @s @e[type=marker,tag=dv_spot,limit=1]
-kill @e[type=marker,tag=dv_spot]
+execute rotated ~180 0 positioned ^ ^ ^220 run spreadplayers ~ ~ 0 30 false @s
+execute at @s run forceload add ~ ~
 execute on passengers run data merge entity @s {Glowing:1b,glow_color_override:16765562}
 ''')
     F('sus/luna/atada', '''
-execute if score #m200 dv.clock matches 0..19 run playsound minecraft:entity.wolf.whine neutral @a[distance=..64] ~ ~ ~ 3 1.2
-execute if score #m200 dv.clock matches 100..119 run playsound minecraft:entity.wolf.ambient neutral @a[distance=..64] ~ ~ ~ 3 1
+execute if score #m200 dv.clock matches 0..19 run playsound minecraft:entity.wolf.whine neutral @a[distance=..320] ~ ~ ~ 20 1.2
+execute if score #m200 dv.clock matches 100..119 run playsound minecraft:entity.wolf.ambient neutral @a[distance=..320] ~ ~ ~ 20 1
 execute if entity @a[distance=..3,gamemode=!spectator] run function canon:sus/luna/rescate
 ''')
     F('sus/luna/rescate', '''
+forceload remove ~ ~
 tag @s remove dv_luna_atada
 execute on passengers run data merge entity @s {Glowing:0b}
 execute as @e[tag=dv_lfalsa] at @s run function canon:sus/lfalsa/grita
@@ -338,8 +340,8 @@ execute if entity @a[tag=dv_wtgt,distance=30..] at @a[tag=dv_wtgt,limit=1] rotat
 execute if score @s dv.timer matches 400 run tellraw @a[tag=dv_wtgt] {"text":"Luna no mueve la cola. Se quedó mirando la pared. A lo lejos, otro perro ladra igual que ella.","color":"gray","italic":true}
 execute if score @s dv.timer matches 900 run playsound minecraft:entity.wolf.growl neutral @a[tag=dv_wtgt] ~ ~ ~ 1 0.5
 execute if score @s dv.timer matches 900 run tellraw @a[tag=dv_wtgt] {"text":"Luna te gruñe. Luna nunca te gruñe.","color":"#c94a4a","italic":true}
-execute if score @s dv.timer matches 1200.. if entity @a[tag=dv_wtgt,distance=..5] if predicate canon:oscuro run function canon:sus/lfalsa/transforma
-execute if score @s dv.timer matches 6000.. if entity @a[tag=dv_wtgt,distance=..8] run function canon:sus/lfalsa/transforma
+execute if score @s dv.timer matches 3600.. if entity @a[tag=dv_wtgt,distance=..5] if predicate canon:oscuro run function canon:sus/lfalsa/transforma
+execute if score @s dv.timer matches 9000.. if entity @a[tag=dv_wtgt,distance=..8] run function canon:sus/lfalsa/transforma
 ''')
     F('sus/lfalsa/transforma', '''
 scoreboard players operation #pid dv.tmp = @s dv.target
@@ -484,7 +486,8 @@ function canon:rig/despawn
 
     # ================================================================ EL CUARTO QUE NO ESTABA (arriba, en el cielo de tu casa)
     c.patch('para/despertar', lambda s: s if 'sus/cuarto' in s else s.rstrip('\n') + f'\nexecute if score {S} if score @s dv.home matches 1 if predicate canon:azar/1en6 run function canon:sus/cuarto/aparece\n')
-    F('sus/cuarto/aparece', 'scoreboard players set #vf dv.tmp 0\n' + '\n'.join(
+    F('sus/cuarto/aparece', 'execute store result score #cd dv.tmp run time query day\nscoreboard players operation #cd2 dv.tmp = #cd dv.tmp\nscoreboard players operation #cd dv.tmp -= @s dv.cuarto\nexecute if score #cd dv.tmp matches 3.. run function canon:sus/cuarto/aparece2')
+    F('sus/cuarto/aparece2', 'scoreboard players operation @s dv.cuarto = #cd2 dv.tmp\nscoreboard players set #vf dv.tmp 0\n' + '\n'.join(
         f'execute if score #vf dv.tmp matches 0 anchored eyes rotated {a} 0 positioned ^ ^ ^1 run function canon:sus/cuarto/ray0' for a in (0, 90, 180, 270)))
     F('sus/cuarto/ray0', 'scoreboard players set #vs dv.tmp 0\nfunction canon:sus/cuarto/ray')
     F('sus/cuarto/ray', '''scoreboard players add #vs dv.tmp 1
@@ -498,11 +501,12 @@ summon minecraft:interaction ~ ~ ~ {Tags:["dv_cuarto_click","dv_click","dv_npc_c
 summon minecraft:marker ~ ~ ~ {Tags:["dv_cuarto_mk"]}
 tellraw @a[distance=..12] {"text":"En la pared hay una puerta que ayer no estaba.","color":"#c94a4a","italic":true}
 ''')
+    F('sus/cuarto/a_cama', 'execute store result score @s dv.rx run data get entity @s SpawnX\nexecute store result score @s dv.ry run data get entity @s SpawnY\nexecute store result score @s dv.rz run data get entity @s SpawnZ\nscoreboard players set @s dv.rdim 0')
     c.on('second', 'execute as @e[type=marker,tag=dv_cuarto_mk] at @s run function canon:sus/cuarto/tiempo')
     F('sus/cuarto/tiempo', 'scoreboard players add @s dv.timer 1\nexecute if score @s dv.timer matches 1200.. run function canon:sus/cuarto/borrar')
     F('sus/cuarto/borrar', 'kill @e[type=item_display,tag=dv_cuarto_vis,distance=..2]\nkill @e[type=interaction,tag=dv_cuarto_click,distance=..2]\nkill @s')
     c.click('dv_cuarto_click', 'sus/cuarto/entrar')
-    F('sus/cuarto/entrar', 'execute as @a[tag=dv_talker] at @s run function canon:sus/cuarto/entrar2')
+    F('sus/cuarto/entrar', 'execute as @a[tag=dv_talker,limit=1] at @s run function canon:sus/cuarto/entrar2\nkill @e[type=item_display,tag=dv_cuarto_vis,distance=..2]\nkill @e[type=marker,tag=dv_cuarto_mk,distance=..2]\nkill @s')
     F('sus/cuarto/entrar2', '''
 function canon:travel/store_return
 execute positioned ~ 300 ~ run function canon:sus/cuarto/construir
@@ -526,8 +530,9 @@ summon minecraft:item_display ~ ~2 ~2.45 {Tags:["dv_cuarto_salvis"],item_display
     F('sus/cuarto/salir', '''
 execute positioned ~ ~-1 ~-2.4 run fill ~-3 ~ ~-3 ~3 ~4 ~3 minecraft:air
 kill @e[type=item_display,tag=dv_cuarto_salvis,distance=..4]
+execute as @a[tag=dv_talker] if data entity @s SpawnX run function canon:sus/cuarto/a_cama
 execute as @a[tag=dv_talker] run function canon:util/tp_return
-tellraw @a[tag=dv_talker] {"text":"Sales. Detrás de ti, la puerta ya es pared otra vez.","color":"gray","italic":true}
+tellraw @a[tag=dv_talker] {"text":"Despiertas en tu cama. La puerta ya no está. ¿Fue un sueño?","color":"gray","italic":true}
 kill @s
 ''')
 
@@ -547,7 +552,7 @@ execute if score @s dv.timer matches 300.. run kill @s
         'entity': [{'condition': 'minecraft:entity_properties', 'entity': 'this', 'predicate': {'type': '#canon:pacificos'}}]}}},
         'rewards': {'function': 'canon:sus/animal/pegado'}})
     F('sus/animal/pegado', 'advancement revoke @s only canon:sus/pega_animal\nexecute as @e[type=#canon:pacificos,tag=!dv_brain,distance=..8,nbt=!{HurtTime:0s},limit=1,sort=nearest] run function canon:sus/animal/furia')
-    F('sus/animal/furia', 'tag @s add dv_furia\nscoreboard players set @s dv.timer 0\nscoreboard players set @s dv.cool 0')
+    F('sus/animal/furia', 'tag @s add dv_furia\nscoreboard players set @s dv.timer 0\nscoreboard players set @s dv.cool 0\nscoreboard players set @s dv.mode 0')
     c.on('tick', 'execute as @e[tag=dv_furia] at @s run function canon:sus/animal/tick')
     F('sus/animal/tick', '''
 scoreboard players add @s dv.timer 1
@@ -557,7 +562,7 @@ execute if score #m10 dv.clock matches 0 run particle minecraft:angry_villager ~
 execute if entity @p[distance=..1.8,gamemode=!spectator,gamemode=!creative] unless score @s dv.cool matches 1.. run function canon:sus/animal/muerde
 execute if score @s dv.timer matches 240.. run tag @s remove dv_furia
 ''')
-    F('sus/animal/muerde', 'scoreboard players set @s dv.cool 20\ndamage @p[gamemode=!spectator,gamemode=!creative] 3 minecraft:mob_attack by @s\nplaysound minecraft:entity.player.hurt_sweet_berry_bush hostile @a[distance=..8] ~ ~ ~ 0.6 0.6')
+    F('sus/animal/muerde', 'scoreboard players set @s dv.cool 20\nscoreboard players add @s dv.mode 1\nexecute if score @s dv.mode matches 2.. run tag @s remove dv_furia\ndamage @p[gamemode=!spectator,gamemode=!creative] 2 minecraft:mob_attack by @s\nplaysound minecraft:entity.player.hurt_sweet_berry_bush hostile @a[distance=..8] ~ ~ ~ 0.6 0.6')
 
     # ================================================================ admin
     adm = [('luna_falsa', 'execute as @e[type=wolf,tag=dv_luna,limit=1,sort=nearest] at @s run function canon:sus/luna/cambio', 'La Luna falsa (cambia a Luna)'),

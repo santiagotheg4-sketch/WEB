@@ -19,7 +19,7 @@ Z = '@e[type=zombie,tag=!dv_brain'
 def build(c):
     shim.use(c)
     c.config('zomb_listos', 'Zombies inteligentes (oído, horda, escalar)', 1)
-    c.config('zomb_rompen', 'Zombies rompen bloques débiles', 1)
+    c.config('zomb_rompen', 'Zombies rompen bloques débiles', 0)
     for o in ('dv.zx', 'dv.zz', 'dv.zst', 'dv.zpil', 'dv.zlure', 'dv.zcall'):
         c.objective(o)
     for n in (10, 20, 40):

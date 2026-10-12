@@ -343,7 +343,7 @@ execute if score #m2 dv.clock matches 0 run function canon:x/face
 function canon:x/seen
 execute if score #seen dv.tmp matches 1 run scoreboard players add @s dv.watch 1
 execute if score @s dv.timer matches 40 if score #seen dv.tmp matches 0 run playsound canon:devota.whisper hostile @a[tag=dv_wtgt] ~ ~ ~ 0.5 0.7
-execute if score @s dv.watch matches 4.. run function canon:acecho/visto
+execute if score @s dv.watch matches 30.. run function canon:acecho/visto
 execute if entity @a[tag=dv_wtgt,distance=..3] run function canon:acecho/visto
 execute if score @s dv.timer matches 240.. run function canon:acecho/se_va
 ''')
@@ -364,11 +364,11 @@ execute if score #c dv.tmp matches 6..11 run scoreboard players set #frame dv.tm
 
     # ================================================================== ACECHO EN EL MUNDO
     F('acecho/second', '''
-execute unless score @s dv.acd matches 1.. if predicate canon:de_noche if predicate canon:azar/1en300 run function canon:acecho/esquina
+execute unless score @s dv.acd matches 1.. if predicate canon:de_noche if predicate canon:azar/1en180 run function canon:acecho/esquina
 execute unless score @s dv.acd matches 1.. if predicate canon:de_noche if score @s dv.miedo matches 40.. if predicate canon:azar/1en150 run function canon:acecho/esquina
 execute unless score @s dv.acd matches 1.. if predicate canon:de_dia if predicate canon:azar/1en900 run function canon:acecho/lejos
 execute if predicate canon:de_noche if predicate canon:azar/1en240 run function canon:acecho/susurro
-execute if entity @s[y=-64,dy=104] if predicate canon:muy_oscuro unless score @s dv.acd matches 1.. if predicate canon:azar/1en150 run function canon:acecho/cueva
+execute if entity @s[y=-64,dy=104] if predicate canon:muy_oscuro unless score @s dv.acd matches 1.. if predicate canon:azar/1en60 run function canon:acecho/cueva
 execute if entity @s[y=-64,dy=104] if predicate canon:azar/1en80 run function canon:acecho/cueva_sonido
 execute if entity @s[y=-64,dy=104] if score #nicolas dv.cfg matches 1 if score @s dv.ncd matches ..0 if predicate canon:azar/1en200 run function canon:nicolas/try
 ''')

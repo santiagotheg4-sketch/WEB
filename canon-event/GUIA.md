@@ -1,6 +1,36 @@
-# Canon Event 8.0.0 — guía
+# Canon Event 9.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-8.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-9.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 9.0
+
+### Arreglos
+- **Acecho que no se veía**: Diana, el Mirón, Nicolás y los demás desaparecían 0,2 segundos después de mirarlos, así que nunca alcanzabas a verlos. Ahora se quedan mirándote **un segundo y medio** antes de esfumarse, y aparecen en las esquinas más seguido.
+  - Ojo: **el acoso en tu casa necesita que hayas dormido en tu cama**, porque el mod usa ese punto como tu casa.
+- **El cuarto que no estaba**:
+  - la puerta sirve **una sola vez** y desaparece al entrar;
+  - sale como mucho cada 3 días;
+  - al salir **despiertas en tu cama**.
+- **La Luna falsa**:
+  - la Luna de verdad queda escondida **a unos 200 bloques**, y sus ladridos se oyen desde muy lejos;
+  - el **Collar de Luna** te gira la cabeza hacia donde está;
+  - tienes más tiempo antes de que la falsa se transforme.
+- **Los animales** te muerden **solo dos veces** y más suave, y después se calman.
+- **Los zombis** son menos tramposos: ya no rompen bloques (se puede volver a prender en Ajustes).
+- **Juli**: cuando se eleva en su escena, la cámara sigue su cara.
+- **Menos saturación**: los micro-sustos salen un poco menos seguido.
+
+### Nuevo
+- **Gigantes**: de noche, algo enorme camina a lo lejos en el horizonte. Si lo miras mucho, se detiene y te mira. Si te acercas, desaparece.
+- **Nicolás en las cuevas**, mucho más seguido y de varias formas, y tu cámara se gira hacia él:
+  - **ojos** que te miran en la oscuridad;
+  - **pegado del techo** boca abajo;
+  - **cruzando el túnel corriendo**.
+- **La luna roja** ahora se ve: cae una lluvia de polvo rojo, sale un aviso en pantalla y se oyen ruidos de cueva.
+- **Diana elige a otro «Juan»**: si Bana no está jugando, cada día Diana escoge a otra persona («Te pareces a Juan… desde hoy eres mío») y le hace todo lo que le hacía a Juan. Valery también la trata como a Juan.
+- **Kevin**: en su menú está **«¿Vamos a las catacumbas?»**, y a veces **te esconde un ítem** que queda brillando por ahí.
+
+---
 
 ## Lo nuevo de la 8.0
 
