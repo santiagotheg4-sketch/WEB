@@ -1,6 +1,35 @@
-# Canon Event 9.0.0 — guía
+# Canon Event 10.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-9.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-10.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 10.0
+
+### Juli habla de todos
+- En la casa blanca, el menú de Juli tiene dos opciones nuevas:
+  - **«Hablemos de alguien...»**: Juli habla de Dani, Valery, Diana, Kevin, la Abuela Esmeralda, Luna, Mariana, el Narrador y los nietos. Solo salen las personas que ya conociste (las del Cuaderno). Santi tiene además la opción «¿Me extrañas?».
+  - **«¿Qué viste de mi día?»**: Juli comenta lo que te pasó:
+    - tu racha de noches o si te moriste;
+    - las páginas del diario de Diana;
+    - el final de Valery, el de Mariana y el jefe;
+    - tu miedo y los nietos de la abuela.
+- Cuando Juli aparece en el mundo y está cerca de **Dani, Valery, Kevin, Luna o la abuela**, se hablan entre ellos.
+
+### El jardín de Juli tiene 5 misiones
+1. Atrapa las 5 luciérnagas.
+2. Toca las 3 campanitas que cuelgan sobre los faroles.
+3. Busca la carta enterrada en la tierra suelta junto al árbol.
+4. Siéntate en el columpio: Juli te cuenta un recuerdo.
+5. Tira algo al estanque y pide un deseo.
+
+Al entrar al jardín, Juli te dice en qué misión vas. Cada misión da premios y la última da un logro.
+
+### Kevin: aguanta la noche sin luz
+En el menú de Kevin: **«Reto: aguanta la noche sin luz»**. Desde que lo aceptas hasta el amanecer, no puedes tener en la mano antorchas, faroles, la linterna ni nada que alumbre. Si lo logras: diamantes, billetes y una campanita. Si prendes luz o te mueres, pierdes.
+
+### Poltergeist: los cofres se pasan cosas
+De noche, en tu casa, a veces un ítem se pasa solo de un cofre a otro. Oyes un cofre abrirse y otro cerrarse. No se pierde nada: solo cambia de lugar.
+
+---
 
 ## Lo nuevo de la 9.0
 

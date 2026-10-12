@@ -361,7 +361,7 @@ execute if score #paranormal dv.cfg matches 1 as @a[gamemode=!spectator,scores={
         'playsound minecraft:block.chain.fall block @s ^2 ^1 ^-2 1 0.6\nplaysound minecraft:entity.item.pickup block @s ^-2 ^ ^ 0.7 0.5',
         'playsound minecraft:block.glass.break block @s ^5 ^1 ^-4 0.7 0.6\ntellraw @s {"text":"Algo de vidrio se rompió en otro cuarto. No hay nada roto.","color":"gray","italic":true}',
         'function canon:rel/polter/puerta', 'function canon:rel/polter/trampilla', 'function canon:rel/polter/antorcha',
-        'function canon:rel/polter/cofre', 'function canon:rel/polter/mueble',
+        'function canon:rel/polter/cofre', 'function canon:rel/polter/mueble', 'function canon:jm/polter/cofres',
     ])
     F('para/cuadro_cae', 'summon minecraft:item ~ ~ ~ {Item:{id:"minecraft:painting",Count:1b}}\nplaysound minecraft:entity.painting.break block @a[distance=..16] ~ ~ ~ 1 0.8\nkill @s')
     F('para/cartel_te_vi', '''

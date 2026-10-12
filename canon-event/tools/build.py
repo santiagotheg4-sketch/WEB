@@ -14,7 +14,7 @@ sys.path.insert(0, TOOLS)
 from canon.ctx import Ctx, BuildError, jt  # noqa: E402
 from canon import models as M  # noqa: E402
 
-VERSION = '9.0.0'
+VERSION = '10.0.0'
 FIRST = ['core']          # módulos que corren primero
 LAST = ['remodel']        # módulos que corren al final (pueden reemplazar modelos)
 
