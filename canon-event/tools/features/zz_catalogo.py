@@ -225,3 +225,21 @@ def build(c):
         c.files[p] = '\n'.join(rev) + '\n'
         reales += 1
     print(f'  recetas reales con NBT: {reales}')
+
+    # ---------------------------------------------------------------- lista para el comando /canon del mod Java
+    import unicodedata
+    def clave(t):
+        t = unicodedata.normalize('NFKD', t).encode('ascii', 'ignore').decode().lower()
+        return re.sub(r'[^a-z0-9]+', '_', t).strip('_')
+    usados, cmds = set(), []
+    for cmd, desc in c.admin_cmds:
+        m = re.match(r'/function canon:admin/([\w/]+)$', cmd)
+        k = clave(m.group(1).replace('/', '_')) if m else clave(desc)[:24]
+        base, n = k, 2
+        while k in usados:
+            k = f'{base}{n}'; n += 1
+        usados.add(k)
+        cmds.append(f'{k}|{cmd.lstrip("/")}|{desc}')
+    fc = os.path.join(os.path.dirname(__file__), '..', '..', 'forge', 'src', 'main', 'resources', 'canon_comandos.txt')
+    if os.path.isdir(os.path.dirname(fc)):
+        open(fc, 'w', encoding='utf-8').write('\n'.join(cmds) + '\n')

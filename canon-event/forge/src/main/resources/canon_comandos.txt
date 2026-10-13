@@ -1,0 +1,102 @@
+ir_a_la_casa|function canon:admin/ir_a_la_casa|Soñar con la casa de Juli
+dani_traer|function canon:admin/dani/traer|Traer a Dani (cerca)
+dani_aparecer|function canon:admin/dani/aparecer|Dani aparece a lo lejos mirando
+diana2_humana|function canon:admin/diana2/humana|Diana humana (pregunta por Juan)
+diana2_bana|function canon:admin/diana2/bana|Diana encuentra a Bana (aviso)
+diana2_visita|function canon:admin/diana2/visita|Visita nocturna esta noche
+diana2_visita_ya|function canon:admin/diana2/visita_ya|Visita nocturna ya (pone medianoche)
+diana2_borde|function canon:admin/diana2/borde|Zunga al borde de la vista
+diana2_techo|function canon:admin/diana2/techo|Zunga en el techo (en cueva)
+diana2_cama|function canon:admin/diana2/cama|Zunga junto a la cama
+diana2_doble|function canon:admin/diana2/doble|Doble de un jugador
+diana2_doble_npc|function canon:admin/diana2/doble_npc|Doble de un vagabundo/NPC
+director_evento_1|function canon:admin/director/evento_1|Evento canónico: luna de sangre
+director_evento_2|function canon:admin/director/evento_2|Evento canónico: la niebla
+director_evento_3|function canon:admin/director/evento_3|Evento canónico: la noche de diana
+director_evento_4|function canon:admin/director/evento_4|Evento canónico: visita de dani
+director_evento_6|function canon:admin/director/evento_6|Evento canónico: la noche del mirón
+director_evento_12|function canon:admin/director/evento_12|Evento canónico: apagón
+director_terminar|function canon:admin/director/terminar|Terminar el evento canónico
+empezar_el_escondite_cua|trigger dv.juego set 1|Empezar el escondite (cualquiera puede)
+juego_parar|function canon:admin/juego/parar|Parar el escondite
+extras_kit|function canon:admin/extras/kit|Ojo del médium, crucifijo, comidas, mascotas y armadura
+soy_mari_para_que_su_ex_|trigger dv.soymari set 1|Soy Mari (para que su ex la encuentre)
+fin_guia|function canon:admin/fin/guia|Otra copia de la Guía de Canon Event
+fin_ex|function canon:admin/fin/ex|Traer a Santiago (el ex de Mari)
+fin_ex_bosque|function canon:admin/fin/ex_bosque|Santiago acecha en el bosque
+fin_fantasma|function canon:admin/fin/fantasma|Un fantasma cruza la pared
+fin_demonio|function canon:admin/fin/demonio|El demonio a lo lejos
+fin_carta|function canon:admin/fin/carta|Una carta bajo la puerta
+herr_kit|function canon:admin/herr/kit|Herramientas 3x3, hachas taladoras y cámara
+herr_camara|function canon:admin/herr/camara|Cámara con 8 rollos de película
+jm_juli_temas|function canon:admin/jm/juli_temas|Temas de Juli (ver la lista)
+jm_cofres|function canon:admin/jm/cofres|Los cofres se pasan algo
+jm_reto_noche|function canon:admin/jm/reto_noche|Reto de Kevin: noche sin luz
+spawn_kevin|function canon:admin/spawn/kevin|Traer a Kevin
+kevin_fiesta|function canon:admin/kevin/fiesta|Kevin: empezar la fiesta
+kevin_bosque|function canon:admin/kevin/bosque|Kevin: empezar el bosque
+kevin_catacumbas|function canon:admin/kevin/catacumbas|Kevin: bajar a las catacumbas
+kevin_tres_dias|function canon:admin/kevin/tres_dias|Kevin: empezar los 3 días
+kevin_volver|function canon:admin/kevin/volver|Kevin: terminar los 3 días
+kevin_parar|function canon:admin/kevin/parar|Detener el evento de Kevin
+kevin_reiniciar|function canon:admin/kevin/reiniciar|Reiniciar la historia de Kevin
+menu_de_trucos_de_luna_p|trigger dv.luna set 99|Menú de trucos de Luna (para todos)
+masalla_entrar|function canon:admin/masalla/entrar|Ir al Más Allá
+masalla_vela|function canon:admin/masalla/vela|Vela del Más Allá
+mej_gigante|function canon:admin/mej/gigante|Un gigante en el horizonte
+mej_nico_ojos|function canon:admin/mej/nico_ojos|Ojos de Nicolás en la oscuridad
+mej_nico_techo|function canon:admin/mej/nico_techo|Nicolás en el techo
+mej_nico_corre|function canon:admin/mej/nico_corre|Nicolás cruza corriendo
+mej_kevin_esconde|function canon:admin/mej/kevin_esconde|Kevin te esconde algo
+spawn_miron|function canon:admin/spawn/miron|Traer al Mirón
+spawn_nicolas|function canon:admin/spawn/nicolas|Traer a Nicolás
+susto_mina|function canon:admin/susto_mina|Probar el susto de la mina
+npc_ernesto|function canon:admin/npc/ernesto|Traer a Don Ernesto
+npc_rosa|function canon:admin/npc/rosa|Traer a Rosa la panadera
+npc_tomas|function canon:admin/npc/tomas|Traer a Padre Tomás
+npc_ramirez|function canon:admin/npc/ramirez|Traer a Policía Ramírez
+npc_sofi|function canon:admin/npc/sofi|Traer a Sofi
+npc_wilson|function canon:admin/npc/wilson|Traer a Wilson el del radio
+npc_tono|function canon:admin/npc/tono|Traer a Toño el mecánico
+npc_lucia|function canon:admin/npc/lucia|Traer a Lucía la mesera
+npc_aurelio|function canon:admin/npc/aurelio|Traer a Don Aurelio el viajero
+npc_marta|function canon:admin/npc/marta|Traer a Marta la leñadora
+ver_tu_mision_del_dia_cu|trigger dv.mision set 1|Ver tu misión del día (cualquiera)
+para_kit|function canon:admin/para/kit|Todos los objetos paranormales
+para_narrador|function canon:admin/para/narrador|Traer al Narrador
+pers_mariana|function canon:admin/pers/mariana|Traer a Mariana
+pers_mariana_acecho|function canon:admin/pers/mariana_acecho|Mariana te acecha (como si la hubieras enojado)
+pers_abuela|function canon:admin/pers/abuela|Traer a la Abuela Esmeralda
+rel_valery|function canon:admin/rel/valery|Traer a Valery
+rel_jefe|function canon:admin/rel/jefe|Traer al jefe final
+rel_paginas|function canon:admin/rel/paginas|Las 13 páginas del diario
+rel_severo|function canon:admin/rel/severo|Traer a Don Severo
+rel_felipe|function canon:admin/rel/felipe|Traer a Felipe
+rel_miron|function canon:admin/rel/miron|El Mirón que se acerca
+rel_sinrostro|function canon:admin/rel/sinrostro|Los Sin Rostro
+rel_baile|function canon:admin/rel/baile|Mariana baila en tu ventana (en tu casa)
+rel_nieto|function canon:admin/rel/nieto|Traer a un nieto
+rel_casa_abuela|function canon:admin/rel/casa_abuela|Construir la casa de la abuela adelante
+rel_jardin|function canon:admin/rel/jardin|Ir al jardín secreto de Juli
+rel_polter|function canon:admin/rel/polter|Poltergeist ya (puerta, antorcha, cofre)
+rel_noche|function canon:admin/rel/noche|Anunciar una noche especial
+sus_luna_falsa|function canon:admin/sus/luna_falsa|La Luna falsa (cambia a Luna)
+sus_bicho|function canon:admin/sus/bicho|La Luna falsa se transforma
+sus_abuela_techo|function canon:admin/sus/abuela_techo|Abuela en el techo (bajo techo)
+sus_espanta|function canon:admin/sus/espanta|Espantapájaros
+sus_arbol|function canon:admin/sus/arbol|Árbol de los colgados
+sus_llorona|function canon:admin/sus/llorona|La Llorona
+sus_cuarto|function canon:admin/sus/cuarto|El cuarto que no estaba
+sus_hora|function canon:admin/sus/hora|La hora muerta (3:11)
+sus_micro|function canon:admin/sus/micro|Un micro-susto
+sus_items|function canon:admin/sus/items|Todos los ítems nuevos
+terror_miedo|function canon:admin/terror/miedo|Subir tu miedo a 90 (alucinaciones)
+terror_ventana|function canon:admin/terror/ventana|Algo se asoma por tu ventana
+terror_puerta|function canon:admin/terror/puerta|Tocan tu puerta
+terror_techo|function canon:admin/terror/techo|Pasos en el techo
+terror_esquina|function canon:admin/terror/esquina|Algo te mira desde una esquina
+terror_cueva|function canon:admin/terror/cueva|Nicolás en la cueva
+zomb_variantes|function canon:admin/zomb/variantes|Invocar zombies (variantes al azar)
+zomb_sangre|function canon:admin/zomb/sangre|Forzar la Luna de sangre
+catalogo_de_todos_los_it|trigger dv.items set 1|Catálogo de todos los ítems del mod (en creativo te los da)
+recetario_el_libro_con_t|trigger dv.items set 2|Recetario: el libro con todos los crafteos (cualquiera)
