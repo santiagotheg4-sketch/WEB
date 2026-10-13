@@ -12,7 +12,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 /** Red del mod: el servidor le cuenta a cada jugador su miedo, quién lo acecha y si lo persiguen. */
 public class CanonRed {
-    private static final String V = "1";
+    private static final String V = "2";
     public static final SimpleChannel CANAL = NetworkRegistry.newSimpleChannel(new ResourceLocation(CanonEvent.MODID, "main"),
             () -> V, s -> true, s -> true);
 
@@ -21,17 +21,18 @@ public class CanonRed {
     }
 
     /** miedo 0..100; acechador = nombre de quien te mira ("" si nadie); visto = te tiene a la vista; persecucion = algo te persigue. */
-    public record Estado(int miedo, String acechador, boolean visto, boolean persecucion, float distancia) {
+    public record Estado(int miedo, String acechador, boolean visto, boolean persecucion, float distancia, int temblor) {
         void escribir(FriendlyByteBuf b) {
             b.writeVarInt(miedo);
             b.writeUtf(acechador, 64);
             b.writeBoolean(visto);
             b.writeBoolean(persecucion);
             b.writeFloat(distancia);
+            b.writeVarInt(temblor);
         }
 
         static Estado leer(FriendlyByteBuf b) {
-            return new Estado(b.readVarInt(), b.readUtf(64), b.readBoolean(), b.readBoolean(), b.readFloat());
+            return new Estado(b.readVarInt(), b.readUtf(64), b.readBoolean(), b.readBoolean(), b.readFloat(), b.readVarInt());
         }
 
         void manejar(Supplier<NetworkEvent.Context> ctx) {

@@ -192,3 +192,7 @@ B|7321143|llorona|cover
 B|7321144|llorona|reach
 H|7321145|llorona|llora
 H|7321146|llorona|vacia
+B|7320508|@doble|idle
+B|7320509|@doble|walk_a
+B|7320510|@doble|walk_b
+B|7320511|@doble|twist

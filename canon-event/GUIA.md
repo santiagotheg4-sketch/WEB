@@ -2,13 +2,33 @@
 
 Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-13.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x`, `canon-event-10.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
 
+## Lo nuevo de la 14.0
+- **Todos los personajes en 3D con su skin**: Juli, Kevin, Dani, la abuela, Felipe, Mariana, los nietos... ahora se ven como jugadores de verdad, caminan, corren, bailan y cambian de cara.
+- **Los dobles** (Diana copiando a alguien) tienen la skin real de tu amigo, de cuerpo entero.
+- **La canción de Santi, «Noches de neón»**, suena en la fiesta de Kevin (la fiesta dura toda la canción, con presentación, fuegos en el coro y un apagón con alguien que nadie invitó) y a veces en la rocola.
+- **Catacumbas**: **La Masa** es ahora un monstruo enorme y animado que te busca por los pasillos de verdad (no atraviesa paredes). Primero acecha, después ruge «¡CORRE!» y te persigue. Si te alcanza, te golpea y se queda rugiendo: es tu momento de huir. La pantalla tiembla cuando está cerca. **Kevin corre detrás de ti** siguiendo tu camino y grita mientras huyen.
+- **Criaturas del agua** (salen solas en mares, ríos y lagos, más de noche):
+  - **La Ahogada**: se asoma del agua a lo lejos hasta el pecho, te mira y te llama con la mano y con la voz («ven... ven al agua»). Si vas en bote, a veces está parada en la orilla mirándote. Si la miras mucho se hunde. Si te metes al agua, nada hacia ti y te agarra para hundirte: ¡pégale para que te suelte!
+  - **El Leviatán**: una serpiente de 15 bloques que da vueltas debajo de ti cuando estás en agua honda. Gime, saca el lomo, mece tu bote, y si estás nadando y pasa cerca... muerde.
+- **Nicolás, reconstruido**: ahora es un monstruo de verdad en las cuevas (no atraviesa paredes) y cada vez hace algo distinto: te acecha y se esconde si lo miras, cuelga del techo boca abajo y cae delante de ti, te persigue riéndose, te apaga las antorchas una por una, o pica la pared hasta abrir un hueco y mirarte. Si le pegas, se ríe y huye.
+- **Más miedo en las cuevas**: letras rojas en la pared detrás de ti («TE VEO», «SIGUE CAVANDO»), grava que cae detrás de ti, la roca que respira, risas con eco, alguien picando del otro lado, ojos rojos en la oscuridad y **pasos que copian los tuyos**... y siguen cuando te detienes.
+- **Apariciones de lejos, también de día**: alguien parado a 50 bloques, mirándote. Cada vez que le quitas los ojos de encima, está más cerca. Diana también puede verse de día a lo lejos.
+- **El Gigante** ya no mueve tu cámara: se oye un rugido grave desde muy lejos, la pantalla tiembla, y tú lo buscas.
+- **Terror psicológico**: a veces «Fulano se unió a la partida» cuando Fulano no está jugando, escribe algo raro y se va. Tus objetos cambian de lugar en la barra. Con mucho miedo, la pantalla se llena de estática un instante.
+- **Luna** ya no espanta a nada: solo caza vacas, ovejas y pollos. A todo lo que da miedo le tiene miedo: gime, tiembla y huye.
+- **Se fueron Valery y Santiago (el ex de Mari)**. Si estaban en tu mundo, desaparecen solos.
+- **Temblores de pantalla** que ya no te mueven la mira.
+- Comandos nuevos (con `/canon lista`): `mj_masa`, `mar_ahogada`, `mar_orilla`, `mar_leviatan`, `nic_techo`, `nic_corre`, `nic_apaga`, `nic_pica`, `lej_alguien`, `psico_visita`, `psico_eco`... y `summon canonevent:masa`, `canonevent:ahogada`, `canonevent:leviatan`, `canonevent:nicolas`.
+
+---
+
 ## Lo nuevo de la 13.0
 - **Medidor de miedo abajo**, a la derecha de la barra de ítems: una carita que cambia, «MIEDO 35%» y una barrita. La barra fea de arriba ya no sale.
 - **Aviso de acecho** encima de los corazones: «◉ Diana te está mirando», «Sientes que te acechan...», «¡Algo te está persiguiendo!».
 - **Música de persecución**: cuando algo se te viene encima, sube una música tensa. Cuando se va, silencio.
 - **Ambiente**: viento afuera de noche y un zumbido grave que crece con el miedo.
 - **Pasos detrás de ti** cuando te quedas quieto de noche (o con mucho miedo).
-- **Sonidos nuevos** hechos para el mod (pasos, puertas que crujen, golpes, respiraciones, susurros, latidos, silbidos, guitarra) y **voces** (Diana, Kevin, la abuela, Santiago, Juli, Nicolás).
+- **Sonidos nuevos** hechos para el mod (pasos, puertas que crujen, golpes, respiraciones, susurros, latidos, silbidos, guitarra) y **voces** (Diana, Kevin, la abuela, Juli, Nicolás).
 - **Diana en 3D, de verdad**: 3 bloques de alto, brazos hasta las rodillas, cuello torcido, pelo sobre la cara y sonrisa enorme. Se queda quieta si la miras y se acerca cuando no. Si la miras mucho, se esfuma. De noche puede salir corriendo hacia ti con los brazos estirados.
 - **El Gigante**: camina a lo lejos de noche, de 12 bloques de alto.
 - **Kevin se enoja**: en su menú hay «No, Kevin». Cada no lo enoja más. Al segundo no te acecha de noche, y al cuarto te persigue. «Perdón, Kevin» lo calma.

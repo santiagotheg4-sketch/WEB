@@ -64,12 +64,19 @@ def personas(out, base):
                 lineas.append(f'B|{cmd}|{pr}|{name[len(pr) + 1:]}')
                 vaciar.append((name, pr))
                 break
+    # los dobles: cuerpo de jugador con la skin real de la víctima (la saca el mod de la cabeza que llevan)
+    for cmd, model in sorted(base.items()):
+        name = model.split('/', 1)[1] if model.startswith('canon:modelo/') else ''
+        if name.startswith('doble_') and name[len('doble_'):] in ('idle', 'walk_a', 'walk_b', 'twist'):
+            lineas.append(f'B|{cmd}|@doble|{name[len("doble_"):]}')
+            vaciar.append((name, '@doble'))
     dst = os.path.join(TOOLS, '..', 'forge', 'src', 'main', 'resources', 'canon_personas.txt')
     if os.path.isdir(os.path.dirname(dst)):
         open(dst, 'w').write('\n'.join(lineas) + '\n')
     md = os.path.join(out, 'assets', 'canon', 'models', 'modelo')
     for n, pr in vaciar:
-        json.dump({'textures': {'particle': f'canon:item/modelo/{pr}_skin'}, 'elements': []}, open(os.path.join(md, n + '.json'), 'w'))
+        part = 'minecraft:block/black_wool' if pr.startswith('@') else f'canon:item/modelo/{pr}_skin'
+        json.dump({'textures': {'particle': part}, 'elements': []}, open(os.path.join(md, n + '.json'), 'w'))
     print(f'  personajes 3D: {sum(1 for l in lineas if l[0] == "B")} poses, {sum(1 for l in lineas if l[0] == "H")} caras')
 
 

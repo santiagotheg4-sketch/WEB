@@ -41,9 +41,9 @@ public class Rastro {
         for (ServerPlayer p : part) {
             ArrayDeque<Vec3> r = rastros.computeIfAbsent(p.getUUID(), k -> new ArrayDeque<>());
             Vec3 pos = p.position();
+            if (!r.isEmpty() && r.peekLast().distanceToSqr(pos) > 25) r.clear(); // se teletransportó: rastro nuevo
             if (!p.onGround() && !r.isEmpty()) continue; // en el aire no: Kevin no flota
             if (r.isEmpty() || r.peekLast().distanceToSqr(pos) > 0.16) r.addLast(pos);
-            if (r.peekLast().distanceToSqr(pos) > 64) { r.clear(); r.addLast(pos); } // se teletransportó
             while (r.size() > 600) r.removeFirst();
         }
         for (ServerLevel lv : srv.getAllLevels()) {
@@ -87,7 +87,7 @@ public class Rastro {
         double falta = 0;
         for (int i = idx; i < pts.length - 1; i++) falta += pts[i].distanceTo(pts[i + 1]);
         falta += pts[pts.length - 1].distanceTo(p.position());
-        if (dmin > 9 || falta > 45) {
+        if (dmin > 9 || k.distanceTo(p) > 26) {
             // se perdió o quedó muy atrás: aparece en tu rastro, unos pasos detrás de ti
             double atras = 0;
             int j = pts.length - 1;

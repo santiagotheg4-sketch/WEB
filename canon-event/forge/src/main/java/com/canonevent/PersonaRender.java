@@ -24,6 +24,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,7 +40,38 @@ public class PersonaRender {
     record Pieza(String quien, String que) {}
 
     private static Map<Integer, Pieza> cuerpos, caras;
-    private static PlayerModel<LivingEntity> modelo;
+    private static PlayerModel<LivingEntity> modelo, modeloFino;
+    record Skin(ResourceLocation tex, boolean fino) {}
+    /** brain id -> skin del jugador que copia el doble */
+    private static final Map<Integer, Skin> dobles = new HashMap<>();
+
+    /** Lee la cabeza de jugador que lleva el doble y busca la skin de ese jugador (si está conectado, la de su perfil). */
+    static Skin skinDe(LivingEntity ent) {
+        for (Entity p : ent.getPassengers()) {
+            if (!(p instanceof Display.ItemDisplay d) || d.itemRenderState() == null) continue;
+            ItemStack it = d.itemRenderState().itemStack();
+            if (!it.is(Items.PLAYER_HEAD)) continue;
+            CompoundTag t = it.getTag();
+            com.mojang.authlib.GameProfile gp = null;
+            if (t != null && t.contains("SkullOwner", 10)) gp = net.minecraft.nbt.NbtUtils.readGameProfile(t.getCompound("SkullOwner"));
+            else if (t != null && t.contains("SkullOwner", 8)) gp = new com.mojang.authlib.GameProfile(null, t.getString("SkullOwner"));
+            Minecraft mc = Minecraft.getInstance();
+            if (gp != null && gp.getName() != null && mc.getConnection() != null) {
+                net.minecraft.client.multiplayer.PlayerInfo info = mc.getConnection().getPlayerInfo(gp.getName());
+                if (info != null) return new Skin(info.getSkinLocation(), "slim".equals(info.getModelName()));
+            }
+            if (gp != null) {
+                var mapa = mc.getSkinManager().getInsecureSkinInformation(gp);
+                var tx = mapa.get(com.mojang.authlib.minecraft.MinecraftProfileTexture.Type.SKIN);
+                if (tx != null) return new Skin(mc.getSkinManager().registerTexture(tx, com.mojang.authlib.minecraft.MinecraftProfileTexture.Type.SKIN),
+                        "slim".equals(tx.getMetadata("model")));
+                java.util.UUID id = net.minecraft.core.UUIDUtil.getOrCreatePlayerUUID(gp);
+                return new Skin(net.minecraft.client.resources.DefaultPlayerSkin.getDefaultSkin(id), "slim".equals(net.minecraft.client.resources.DefaultPlayerSkin.getSkinModelName(id)));
+            }
+            return new Skin(net.minecraft.client.resources.DefaultPlayerSkin.getDefaultSkin(), false);
+        }
+        return null;
+    }
     /** id -> {distancia acumulada, velocidad suave, último tick} para la animación de caminar */
     private static final Map<Integer, float[]> mov = new HashMap<>();
 
@@ -92,9 +124,30 @@ public class PersonaRender {
         }
         if (cuerpo == null) return;
         e.setCanceled(true);
-        if (modelo == null) modelo = new PlayerModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER), false);
-        String tex = (cara != null && cara.quien().equals(cuerpo.quien())) ? cuerpo.quien() + "_skin_" + cara.que() : cuerpo.quien() + "_skin";
-        ResourceLocation rl = new ResourceLocation("canon", "textures/item/modelo/" + tex + ".png");
+        if (modelo == null) {
+            modelo = new PlayerModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER), false);
+            modeloFino = new PlayerModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER_SLIM), true);
+        }
+        ResourceLocation rl;
+        PlayerModel<LivingEntity> md = modelo;
+        if (cuerpo.quien().equals("@doble")) {
+            // el doble: la skin de verdad de la víctima (sacada de la cabeza que lleva puesta), y la cabeza se esconde
+            Skin sk = dobles.get(ent.getId());
+            if (sk == null) {
+                sk = skinDe(ent);
+                if (sk == null) sk = new Skin(net.minecraft.client.resources.DefaultPlayerSkin.getDefaultSkin(), false);
+                if (dobles.size() > 64) dobles.clear();
+                dobles.put(ent.getId(), sk);
+            }
+            rl = sk.tex();
+            if (sk.fino()) md = modeloFino;
+            for (Entity p : ent.getPassengers())
+                if (p instanceof Display.ItemDisplay d && d.itemRenderState() != null && d.itemRenderState().itemStack().is(Items.PLAYER_HEAD))
+                    d.getSlot(0).set(ItemStack.EMPTY);
+        } else {
+            String tex = (cara != null && cara.quien().equals(cuerpo.quien())) ? cuerpo.quien() + "_skin_" + cara.que() : cuerpo.quien() + "_skin";
+            rl = new ResourceLocation("canon", "textures/item/modelo/" + tex + ".png");
+        }
 
         float pt = e.getPartialTick();
         float edad = ent.tickCount + pt;
@@ -114,7 +167,6 @@ public class PersonaRender {
         float amp = Math.max(Mth.clamp(m[1] * 6f, 0f, 1f), (pose.startsWith("walk") || pose.startsWith("run")) ? 0.6f : 0f);
         float fase = (m[0] + vel * pt) * (corre ? 3.2f : 4f) + (amp > 0.5f && m[1] < 0.02f ? edad * 0.35f : 0f);
 
-        PlayerModel<LivingEntity> md = modelo;
         md.young = false;
         md.crouching = false;
         md.riding = false;

@@ -373,3 +373,16 @@ def gemido(dur=6.0):
     x += lp(noise(dur, 'brown'), 120) * 0.6
     x = np.tanh(x * 1.5) * env(n, 0.8, 2.0, 2.0)
     return reverb(lp(x, 900), 1.0, 0.5)
+
+
+def rugido_gigante(dur=6.5):
+    """Rugido enorme y grave, de muy lejos: hace temblar todo."""
+    n = int(SR * dur)
+    tt = np.arange(n) / SR
+    f0 = 34 + 10 * np.sin(np.pi * tt / dur) - 6 * (tt / dur)
+    fase = np.cumsum(2 * np.pi * f0 / SR)
+    x = sum(np.sin(fase * h + rng.uniform(0, 6)) * (0.85 ** h) for h in range(1, 16))
+    x *= 0.6 + 0.4 * np.abs(np.sin(2 * np.pi * 17 * tt))  # gruñido
+    x += lp(noise(dur, 'brown'), 90) * 0.9
+    x = np.tanh(x * 2.2) * env(n, 0.6, 2.5, 2.0)
+    return reverb(lp(x, 700), 1.0, 0.55)

@@ -34,6 +34,9 @@ public class CanonEntidades {
             .<Marina>of((t, l) -> new Marina(t, l, Marina.Tipo.LEVIATAN), MobCategory.MONSTER)
             .sized(3.0f, 2.5f).clientTrackingRange(16).build("canonevent:leviatan"));
 
+    public static final RegistryObject<EntityType<Nicolas>> NICOLAS = ENT.register("nicolas", () -> EntityType.Builder
+            .<Nicolas>of(Nicolas::new, MobCategory.MONSTER).sized(0.6f, 1.95f).clientTrackingRange(8).build("canonevent:nicolas"));
+
     @SubscribeEvent
     public static void atributos(EntityAttributeCreationEvent e) {
         e.put(DIANA.get(), Monstruo.atributosDiana().build());
@@ -41,5 +44,6 @@ public class CanonEntidades {
         e.put(MASA.get(), Masa.atributos().build());
         e.put(AHOGADA.get(), Marina.atributosAhogada().build());
         e.put(LEVIATAN.get(), Marina.atributosLeviatan().build());
+        e.put(NICOLAS.get(), Nicolas.atributos().build());
     }
 }

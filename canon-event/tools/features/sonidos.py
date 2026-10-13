@@ -40,7 +40,7 @@ def generar():
         'latido': lambda: A.latido(False), 'latido_rapido': lambda: A.latido(True),
         'viento': lambda: A.viento(), 'drone': lambda: A.drone(), 'drone_grave': lambda: A.drone(base=41.2),
         'persecucion': lambda: A.persecucion(), 'stinger': lambda: A.stinger(), 'estatica': lambda: A.lluvia_estatica(),
-        'guitarra': lambda: A.guitarra_triste(), 'silbido_cerca': lambda: A.silbido(True), 'silbido_lejos': lambda: A.silbido(False),
+        'guitarra': lambda: A.guitarra_triste(), 'rugido_gigante': lambda: A.rugido_gigante(), 'silbido_cerca': lambda: A.silbido(True), 'silbido_lejos': lambda: A.silbido(False),
     })
     for k, (txt, grave, voz) in VOCES.items():
         lista['voz_' + k] = lambda txt=txt, grave=grave, voz=voz: A.voz(txt, grave, True, voz)
@@ -63,7 +63,7 @@ def build(c):
     grupos = {'paso_madera': 4, 'paso_tierra': 3, 'puerta': 3, 'susurro': 3}
     for g, k in grupos.items():
         c.sound('gen.' + g, [{'name': f'canon:gen/{g}{i}'} for i in range(k)], subtitle='subtitulos.canon.' + g)
-    stream = {'viento', 'drone', 'drone_grave', 'persecucion', 'guitarra'}
+    stream = {'viento', 'drone', 'drone_grave', 'persecucion', 'guitarra', 'rugido_gigante'}
     for n in nombres:
         if any(n.startswith(g) and n[len(g):].isdigit() for g in grupos):
             continue
@@ -72,7 +72,7 @@ def build(c):
             'golpes3': 'Tocan la puerta', 'golpes5': 'Golpean la puerta', 'golpe1': 'Un golpe', 'respira_lenta': 'Alguien respira',
             'respira_rapida': 'Respiración agitada', 'latido': 'Tu corazón', 'latido_rapido': 'Tu corazón se acelera', 'viento': 'Viento',
             'drone': 'Algo zumba', 'drone_grave': 'Algo zumba', 'persecucion': 'Te persiguen', 'stinger': '¡!', 'estatica': 'Estática',
-            'guitarra': 'Alguien toca guitarra', 'silbido_cerca': 'Un silbido lejano', 'silbido_lejos': 'Un silbido cercano'}
+            'guitarra': 'Alguien toca guitarra', 'rugido_gigante': 'Un rugido enorme, muy lejos', 'silbido_cerca': 'Un silbido lejano', 'silbido_lejos': 'Un silbido cercano'}
     for k in VOCES:
         subs['voz_' + k] = 'Una voz'
     for k, v in subs.items():

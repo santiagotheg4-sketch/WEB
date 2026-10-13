@@ -179,6 +179,15 @@ public class Monstruo extends Monster {
             this.getNavigation().moveTo(obj.x, obj.y, obj.z, 0.8);
         }
         if (this.tickCount % 30 == 0) sonar("gen.golpe1", 6.0f, 0.4f);
+        // ruge desde lejos: grave, todo tiembla, y uno lo busca con la mirada (la cámara no se mueve sola)
+        if (vida == 20 || (vida > 200 && this.random.nextInt(500) == 0)) rugir();
+    }
+
+    void rugir() {
+        sonar("gen.rugido_gigante", 16.0f, 0.75f + this.random.nextFloat() * 0.1f);
+        for (Player pl : this.level().players())
+            if (pl instanceof ServerPlayer sp && pl.distanceTo(this) < 260)
+                comando(sp, "scoreboard players set @s dv.shake " + (pl.distanceTo(this) < 120 ? 60 : 35));
     }
 
     @Override

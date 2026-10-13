@@ -101,6 +101,12 @@ execute if score #sustos dv.cfg matches 1 if predicate canon:de_noche unless ent
     F('mj/gigante_aparece', 'scoreboard players set #ok dv.tmp 0\nexecute rotated ~ 0 positioned ^-20 ^ ^60 run function canon:util/spot_search\n'
       'execute if score #ok dv.tmp matches 1 at @e[type=marker,tag=dv_spot,limit=1] run summon canonevent:gigante ~ ~ ~\nkill @e[type=marker,tag=dv_spot]\n'
       'execute if score #ok dv.tmp matches 1 run tellraw @s {"text":"A lo lejos, entre la niebla, camina algo enorme.","color":"gray","italic":true}')
+    # el temblor ya no mueve tu mira (antes giraba la cámara con tp): ahora es solo visual, lo hace el mod Java
+    c.patch('fx/shake_tick', lambda s: 'scoreboard players remove @s dv.shake 1')
+    # el gigante viejo (de bloques) también ruge al aparecer
+    c.patch('mej/gigante/aparecer', lambda s: s if 'rugido_gigante' in s else s.rstrip('\n') +
+            '\nexecute if score #ok dv.tmp matches 1 run playsound canon:gen.rugido_gigante hostile @s ^-30 ^ ^60 6 0.8\n'
+            'execute if score #ok dv.tmp matches 1 run scoreboard players set @s dv.shake 60\n')
     F('admin/mj/diana', 'execute positioned ^ ^ ^8 run summon canonevent:diana ~ ~ ~')
     F('admin/mj/gigante', 'function canon:mj/gigante_aparece')
     c.admin('/function canon:admin/mj/diana', 'Diana 3D (se acerca cuando no la miras)')

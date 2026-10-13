@@ -78,8 +78,10 @@ public class CanonServidor {
                 persigue.put(p.getUUID(), Math.max(persigue.getOrDefault(p.getUUID(), 0) - 1, 0));
                 persecucion = persigue.get(p.getUUID()) >= 2;
             }
+            Objective shakeObj = sb.getObjective("dv.shake");
+            int temblor = (shakeObj != null && sb.hasPlayerScore(nom, shakeObj)) ? Math.max(0, sb.getOrCreatePlayerScore(nom, shakeObj).getScore()) : 0;
             CanonRed.CANAL.send(PacketDistributor.PLAYER.with(() -> p),
-                    new CanonRed.Estado(miedo, acecha, visto, persecucion, mejor == null ? -1f : (float) dmin));
+                    new CanonRed.Estado(miedo, acecha, visto, persecucion, mejor == null ? -1f : (float) dmin, temblor));
 
             // pasos que solo se oyen cuando te quedas quieto (de noche, o con miedo)
             Vec3 ahora = p.position();

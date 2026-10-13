@@ -23,7 +23,12 @@ public class CanonCliente {
     static String acechador = "";
     static boolean visto = false, persecucion = false;
     static float distancia = -1;
+    /** ticks de temblor de pantalla (solo visual: no mueve tu mira) */
+    static int temblor = 0;
     static Bucle musica, viento, zumbido;
+    /** estática en la pantalla (ticks) y ojos en la oscuridad (ticks, posición) */
+    static int glitch = 0, ojos = 0, ojosX = 0, ojosY = 0;
+    static final java.util.Random AZAR = new java.util.Random();
 
     static void recibir(CanonRed.Estado e) {
         miedo = e.miedo();
@@ -31,6 +36,7 @@ public class CanonCliente {
         visto = e.visto();
         persecucion = e.persecucion();
         distancia = e.distancia();
+        temblor = Math.max(temblor, e.temblor());
     }
 
     /** Sonido en bucle con volumen que sube y baja suave. */
@@ -81,6 +87,23 @@ public class CanonCliente {
             if (persecucion) mc.getMusicManager().stopPlaying();
             viento = asegurar(viento, "gen.viento", 0.01f, (noche && afuera && !persecucion) ? 0.35f : 0f);
             zumbido = asegurar(zumbido, "gen.drone", 0.01f, (!persecucion && miedo >= 35) ? Math.min(0.6f, (miedo - 30) / 80f) : 0f);
+            // con mucho miedo la pantalla se llena de estática un instante
+            if (temblor > 0) temblor--;
+            if (glitch > 0) glitch--;
+            else if (miedo >= 75 && AZAR.nextInt(miedo >= 90 ? 400 : 900) == 0) {
+                glitch = 4 + AZAR.nextInt(5);
+                mc.getSoundManager().play(net.minecraft.client.resources.sounds.SimpleSoundInstance.forUI(
+                        SoundEvent.createVariableRangeEvent(new ResourceLocation("canon", "gen.estatica")), 1.0f, 0.6f));
+            }
+            // en la oscuridad total, a veces hay dos ojos rojos mirándote desde un borde
+            if (ojos > 0) ojos--;
+            else if (miedo >= 30 && mc.level.getMaxLocalRawBrightness(mc.player.blockPosition().above()) <= 2 && AZAR.nextInt(1200) == 0) {
+                ojos = 40 + AZAR.nextInt(40);
+                int w = mc.getWindow().getGuiScaledWidth(), h = mc.getWindow().getGuiScaledHeight();
+                boolean izq = AZAR.nextBoolean();
+                ojosX = izq ? 10 + AZAR.nextInt(w / 6) : w - 30 - AZAR.nextInt(w / 6);
+                ojosY = 20 + AZAR.nextInt(Math.max(1, h / 2));
+            }
         }
 
         /** La cámara tiembla cuando algo te persigue y está cerca (más cerca, más tiembla). */
@@ -91,6 +114,7 @@ public class CanonCliente {
             float f = 0f;
             if (persecucion && distancia >= 0 && distancia < 12) f = (12 - distancia) / 12f;
             if (miedoVisto >= 85) f = Math.max(f, (miedoVisto - 85) / 60f);
+            if (temblor > 0) f = Math.max(f, Math.min(1.6f, temblor / 15f));
             if (f <= 0.01f) return;
             double t = mc.level.getGameTime() + e.getPartialTick();
             e.setRoll((float) (e.getRoll() + Math.sin(t * 1.7) * 1.6 * f));
@@ -144,6 +168,24 @@ public class CanonCliente {
             int col = persecucion ? 0xFF2020 : visto ? 0xFF6060 : 0xC8A0A0;
             int tw = mc.font.width(msg);
             g.drawString(mc.font, msg, w / 2 - tw / 2, h - 59 - (mc.player.getArmorValue() > 0 ? 10 : 0), (alpha << 24) | col, true);
+        }
+        // ojos en la oscuridad (parpadean)
+        if (ojos > 0 && !(ojos % 23 < 2)) {
+            int a = Math.min(255, ojos * 8);
+            int c = (a << 24) | 0xC01010;
+            g.fill(ojosX, ojosY, ojosX + 2, ojosY + 1, c);
+            g.fill(ojosX + 6, ojosY, ojosX + 8, ojosY + 1, c);
+        }
+        // estática
+        if (glitch > 0) {
+            for (int i = 0; i < 700; i++) {
+                int px = AZAR.nextInt(w), py = AZAR.nextInt(h), v = AZAR.nextInt(255);
+                g.fill(px, py, px + 2, py + 2, 0xB0000000 | (v << 16) | (v << 8) | v);
+            }
+            for (int i = 0; i < 4; i++) {
+                int ly = AZAR.nextInt(h);
+                g.fill(0, ly, w, ly + 1 + AZAR.nextInt(3), 0x60FFFFFF);
+            }
         }
         // viñeta roja suave cuando el miedo es muy alto
         if (m >= 70) {
