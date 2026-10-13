@@ -41,6 +41,7 @@ public class CanonEvent {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         TABS.register(bus);
         CanonRed.registrar();
+        CanonEntidades.ENT.register(bus);
     }
 
     private static ItemStack icono() {

@@ -40,6 +40,7 @@ kevin_tres_dias|function canon:admin/kevin/tres_dias|Kevin: empezar los 3 días
 kevin_volver|function canon:admin/kevin/volver|Kevin: terminar los 3 días
 kevin_parar|function canon:admin/kevin/parar|Detener el evento de Kevin
 kevin_reiniciar|function canon:admin/kevin/reiniciar|Reiniciar la historia de Kevin
+k2_acecha|function canon:admin/k2/acecha|Kevin enojado te acecha y te persigue
 menu_de_trucos_de_luna_p|trigger dv.luna set 99|Menú de trucos de Luna (para todos)
 masalla_entrar|function canon:admin/masalla/entrar|Ir al Más Allá
 masalla_vela|function canon:admin/masalla/vela|Vela del Más Allá
@@ -49,6 +50,8 @@ mej_nico_techo|function canon:admin/mej/nico_techo|Nicolás en el techo
 mej_nico_corre|function canon:admin/mej/nico_corre|Nicolás cruza corriendo
 mej_kevin_esconde|function canon:admin/mej/kevin_esconde|Kevin te esconde algo
 spawn_miron|function canon:admin/spawn/miron|Traer al Mirón
+mj_diana|function canon:admin/mj/diana|Diana 3D (se acerca cuando no la miras)
+mj_gigante|function canon:admin/mj/gigante|El Gigante a lo lejos
 spawn_nicolas|function canon:admin/spawn/nicolas|Traer a Nicolás
 susto_mina|function canon:admin/susto_mina|Probar el susto de la mina
 npc_ernesto|function canon:admin/npc/ernesto|Traer a Don Ernesto

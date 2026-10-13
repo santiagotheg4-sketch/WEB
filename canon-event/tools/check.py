@@ -21,7 +21,7 @@ A = os.path.join(OUT, 'assets')
 REG = json.load(open(os.path.join(TOOLS, 'canon', 'registry_1_20_1.json')))
 BLOCKS = REG['blocks']
 ITEMS = set(REG['items'])
-ENTS = set(REG['entities'])
+ENTS = set(REG['entities']) | {'canonevent:diana', 'canonevent:gigante', 'diana', 'gigante'}  # entidades Java del mod
 EFFECTS = set(REG['effects'])
 PARTS = set(REG['particles'])
 VSOUNDS = set(REG['sounds'])
@@ -214,7 +214,7 @@ def check_line_registries(w, line):
             props = '[' + ','.join(p.replace(':', '=').replace('"', '') for p in m.group(2).split(',')) + ']'
         check_block(w, m.group(1), props)
     # entidades
-    for m in re.finditer(r'\bsummon\s+(?:minecraft:)?([a-z_]+)', line):
+    for m in re.finditer(r'\bsummon\s+(?:minecraft:)?((?:canonevent:)?[a-z_]+)', line):
         if m.group(1) not in ENTS:
             err(w, f'entidad inexistente en summon: {m.group(1)}')
     for t in [t for sel in re.findall(r'@[aeprs]\[([^\]]*)\]', line) for t in re.findall(r'(?:^|,)type=!?(#?[a-z0-9_:]+)', sel)]:

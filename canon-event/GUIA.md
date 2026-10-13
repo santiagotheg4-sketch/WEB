@@ -1,6 +1,22 @@
-# Canon Event 12.0.0 — guía
+# Canon Event 13.0.0 — guía
 
-Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-12.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x`, `canon-event-10.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+Mod para **Minecraft 1.20.1 con Forge**. Pon `canon-event-13.0.0-1.20.1.jar` en la carpeta `mods` de todos los que juegan, y en el servidor si usan uno. Borra las versiones viejas (`canon-event-2.x`, `canon-event-3.x`, `canon-event-4.x`, `canon-event-5.x`, `canon-event-6.x`, `canon-event-7.x`, `canon-event-8.x`, `canon-event-9.x`, `canon-event-10.x` y `devocion`). Lo mejor es empezar un mundo nuevo. Funciona en cualquier mundo o mapa.
+
+## Lo nuevo de la 13.0
+- **Medidor de miedo abajo**, a la derecha de la barra de ítems: una carita que cambia, «MIEDO 35%» y una barrita. La barra fea de arriba ya no sale.
+- **Aviso de acecho** encima de los corazones: «◉ Diana te está mirando», «Sientes que te acechan...», «¡Algo te está persiguiendo!».
+- **Música de persecución**: cuando algo se te viene encima, sube una música tensa. Cuando se va, silencio.
+- **Ambiente**: viento afuera de noche y un zumbido grave que crece con el miedo.
+- **Pasos detrás de ti** cuando te quedas quieto de noche (o con mucho miedo).
+- **Sonidos nuevos** hechos para el mod (pasos, puertas que crujen, golpes, respiraciones, susurros, latidos, silbidos, guitarra) y **voces** (Diana, Kevin, la abuela, Santiago, Juli, Nicolás).
+- **Diana en 3D, de verdad**: 3 bloques de alto, brazos hasta las rodillas, cuello torcido, pelo sobre la cara y sonrisa enorme. Se queda quieta si la miras y se acerca cuando no. Si la miras mucho, se esfuma. De noche puede salir corriendo hacia ti con los brazos estirados.
+- **El Gigante**: camina a lo lejos de noche, de 12 bloques de alto.
+- **Kevin se enoja**: en su menú hay «No, Kevin». Cada no lo enoja más. Al segundo no te acecha de noche, y al cuarto te persigue. «Perdón, Kevin» lo calma.
+- **Comando `/canon`** (para operadores): `/canon lista` muestra todo lo que se puede invocar y `/canon lista diana` filtra. Por ejemplo, `/canon mj_diana` trae a Diana. También funciona `summon canonevent:diana` y `summon canonevent:gigante`.
+- **Ya se puede dormir** aunque haya personajes del mod cerca (antes Minecraft decía que había monstruos).
+- **Mari**: el mod la reconoce sola si su nombre tiene «mari».
+
+---
 
 ## Lo nuevo de la 12.0: ¡ahora es un mod de verdad (Java, Forge 1.20.1)!
 - **Pestaña «Canon Event» en el inventario creativo** con todos los ítems del mod (118).
