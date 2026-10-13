@@ -291,3 +291,85 @@ def voz(texto, grave=True, eco=True, voice='es+m3'):
     x = bp(x, 120, 5200)
     x += hp(noise(len(x) / SR), 3000) * 0.04 * np.abs(signal.hilbert(x))  # aire
     return reverb(x, 0.5, 0.35) if eco else x
+
+
+# ------------------------------------------------------------------ agua
+def bajo_agua(x, fuerte=0.7):
+    """Como si sonara debajo del agua: apagado, ondulante, con burbujas."""
+    n = len(x)
+    tt = np.arange(n) / SR
+    idx = np.cumsum(1 + 0.018 * np.sin(2 * np.pi * 4.3 * tt) + 0.01 * np.sin(2 * np.pi * 0.7 * tt))
+    idx = np.clip(idx, 0, n - 1)
+    x = np.interp(idx, np.arange(n), x)  # vibrato húmedo
+    x = lp(x, 1500) * fuerte + bp(x, 300, 4000) * (1 - fuerte)
+    bur = np.zeros(n)
+    for _ in range(int(n / SR * 9)):
+        i = int(rng.integers(0, max(1, n - 3000)))
+        f = rng.uniform(500, 1600)
+        k = np.arange(2200)
+        bur[i:i + 2200] += np.sin(2 * np.pi * (f + k * 0.25) * k / SR) * decay(2200, 0.012) * rng.uniform(0.1, 0.3)
+    return reverb(x + bur * 0.4, 0.8, 0.45)
+
+
+def voz_agua(texto, voice='es+f5'):
+    with tempfile.TemporaryDirectory() as d:
+        w = os.path.join(d, 'v.wav')
+        subprocess.run(['espeak-ng', '-v', voice, '-s', '105', '-p', '62', '-w', w, texto], check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        x, sr = sf.read(w)
+    if x.ndim > 1:
+        x = x.mean(axis=1)
+    x = signal.resample(x, int(len(x) * SR / sr * 1.12))
+    x = x + 0.15 * np.tanh(x * 4)
+    x = np.concatenate([np.zeros(int(SR * 0.2)), x, np.zeros(int(SR * 0.8))])
+    return bajo_agua(x, 0.55)
+
+
+def canto(dur=7.0):
+    """Una mujer tarareando una melodía triste, como desde el fondo del agua."""
+    notas = [440, 392, 349, 330, 349, 294, 330, 262]
+    n = int(SR * dur)
+    f0 = np.zeros(n)
+    seg = n // len(notas)
+    for i, f in enumerate(notas):
+        f0[i * seg:(i + 1) * seg] = f
+    f0 = lp(f0, 6) * (1 + 0.012 * np.sin(2 * np.pi * 5.2 * np.arange(n) / SR))
+    fase = np.cumsum(2 * np.pi * f0 / SR)
+    x = sum(np.sin(fase * h) / h ** 1.3 for h in range(1, 14))
+    x = reson(x, 420, 6) * 1.0 + reson(x, 850, 8) * 0.6 + reson(x, 2600, 12) * 0.15  # vocal «u/o»
+    x *= env(n, 0.4, 1.2, 2.0) * (0.75 + 0.25 * np.sin(2 * np.pi * 0.35 * np.arange(n) / SR))
+    return bajo_agua(x, 0.5)
+
+
+def chapoteo():
+    n = int(SR * 1.2)
+    x = hp(noise(1.2, 'pink'), 600) * decay(n, 0.12)
+    for _ in range(14):
+        i = int(rng.integers(int(SR * 0.05), n - 4000))
+        f = rng.uniform(1200, 3200)
+        k = np.arange(3000)
+        x[i:i + 3000] += np.sin(2 * np.pi * (f - k * 0.3) * k / SR) * decay(3000, 0.015) * 0.4
+    return reverb(x, 0.3, 0.2)
+
+
+def grito(dur=1.6):
+    n = int(SR * dur)
+    tt = np.arange(n) / SR
+    f0 = 620 + 280 * np.sin(np.pi * tt / dur) + 30 * np.sin(2 * np.pi * 7 * tt)
+    fase = np.cumsum(2 * np.pi * f0 / SR)
+    x = signal.sawtooth(fase) + noise(dur) * 0.35
+    x = reson(x, 900, 5) + reson(x, 1400, 6) * 0.7 + reson(x, 2900, 9) * 0.3
+    x = np.tanh(x * 3) * env(n, 0.03, 0.5, 2.0)
+    return reverb(bajo_agua(x, 0.3), 0.6, 0.3)
+
+
+def gemido(dur=6.0):
+    """Lamento enorme del fondo del mar (ballena enferma)."""
+    n = int(SR * dur)
+    tt = np.arange(n) / SR
+    f0 = 48 + 26 * np.sin(np.pi * tt / dur) - 12 * (tt / dur) ** 2
+    fase = np.cumsum(2 * np.pi * f0 / SR)
+    x = sum(np.sin(fase * h) * (0.8 ** h) for h in range(1, 9))
+    x += lp(noise(dur, 'brown'), 120) * 0.6
+    x = np.tanh(x * 1.5) * env(n, 0.8, 2.0, 2.0)
+    return reverb(lp(x, 900), 1.0, 0.5)

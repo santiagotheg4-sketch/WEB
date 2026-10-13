@@ -29,7 +29,7 @@ NUEVOS = [  # id, nombre, color, lore, cmd, base, colores icono, receta (None = 
      ['iron_ingot', 'copper_ingot', 'phantom_membrane']),
 ]
 CINTAS = ['Cumpleaños de Juan, marzo. Todos cantan. En la ventana de atrás, una chica pálida canta también. Nadie la invitó.',
-          'El puente, 3:11 a.m. La cámara tiembla. Un muchacho de chaqueta gris mira el río. Alguien dice «Juan, vuelve». No es la voz de Valery.',
+          'El puente, 3:11 a.m. La cámara tiembla. Un muchacho de chaqueta gris mira el río. Alguien dice «Juan, vuelve». No es la voz de nadie que conozcas.',
           'La casa de la abuela. Tres niños juegan en el patio. Uno mira a la cámara y deja de sonreír. La cinta se corta.',
           'La fiesta de Kevin. Todos bailan. En el fondo, entre los árboles, algo muy alto se agacha para mirar.',
           'El cuarto de Juli. Juli duerme. La cámara se acerca. Juli abre los ojos: «Apágala. Ella está mirando por la cámara».',
@@ -226,7 +226,7 @@ execute if score @s dv.timer matches 20.. run function canon:sus/tel/fin
     F('sus/tel/fin', 'tag @s remove dv_tel_suena\nscoreboard players set @s dv.timer 0')
     c.pick('sus/tel/voz', [f'tellraw @a[distance=..3] ["",{jt("(teléfono) " + q + ": ", "#c9a46a", bold=True)},{jt(t, "#e8c9a8", True)}]' for q, t in [
         ('Juli', '¿Santi? Te escucho desde el sueño. No te duermas todavía.'), ('Diana', 'Estoy afuera. No. Mejor: estoy adentro.'),
-        ('Juan', 'Valery... ¿estás ahí? Hace frío en el río.'), ('Abuela Esmeralda', 'Mijito, ¿dejó la puerta abierta? Porque yo ya entré.'),
+        ('Juan', 'Diana... ¿estás ahí? Hace frío en el río.'), ('Abuela Esmeralda', 'Mijito, ¿dejó la puerta abierta? Porque yo ya entré.'),
         ('???', 'Te veo. Tienes puesta la misma ropa de ayer.'), ('Kevin', 'Jajaja te asusté. ...Kevin está a mi lado. No soy Kevin.')]])
     F('sus/tel/contesta', 'function canon:sus/tel/voz\nplaysound canon:items.radio_static player @a[distance=..3] ~ ~ ~ 0.6 1\nfunction canon:sus/tel/fin')
 

@@ -39,7 +39,7 @@ FRAG = ['Antes de Valle Quieto había un pueblo con otro nombre. Lo borraron con
         'Luna ladra a lo que tú no ves. Hazle caso.',
         'Esta historia no termina. Solo cambia de dueño.']
 FRAG2 = ['Juan pidió olvidar a Diana. El Hueso le cobró también el camino a casa. Lo encontraron en el río.',
-         'Valery encontró la última astilla del Hueso. Pidió que Juan nunca recordara. Todavía no sabe que fue ella quien lo dejó perdido.',
+         'Alguien encontró la última astilla del Hueso y pidió que Juan nunca recordara. Nadie sabe quién fue. La astilla sigue caliente.',
          'La Abuela Esmeralda tuvo tres nietos más. Se fueron al bosque a buscar el Hueso. Todavía se ríen allá, de día.',
          'De noche, la abuela duerme. Lo que camina con su cara es lo que el Hueso dejó en su casa hace cuarenta años.',
          'Felipe se cayó al lago la noche de la fiesta. Mariana lo busca en todas partes menos en el agua.',

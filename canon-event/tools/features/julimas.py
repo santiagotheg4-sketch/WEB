@@ -10,8 +10,6 @@ JC, JB = '#f2a7c3', '#fde3ee'
 TEMAS = [  # clave, adv del cuaderno (None = siempre), botón, frases
     ('dani', 'dani', 'Dani', ['Dani me cuida desde afuera. Me peina aunque no me despierte. A veces la oigo llorar en la cocina y hacerse la fuerte.',
                               'Dile a Dani que no venda tan barato. Y que coma ella también, siempre se le olvida.']),
-    ('valery', 'valery', 'Valery', ['Valery viene a veces a este sueño. No entra. Se queda en la reja mirando la casa, como si esperara a alguien.',
-                                    'Valery y yo nos parecemos: las dos esperamos a alguien que no sabe que lo esperamos.']),
     ('diana', 'dhum', 'Diana', ['Diana no siempre fue así. Antes cantaba en el colegio. Lo que la torció fue querer demasiado.',
                                 'Si Diana te encuentra, no corras hacia lo oscuro. Corre hacia la luz. Ella odia que la vean bien.']),
     ('kevin', 'kevin', 'Kevin', ['Kevin es el único que me hace reír desde aquí. A veces oigo su música en el sueño.',
@@ -32,7 +30,6 @@ SANTI = ['Todos los días. Aunque aquí no hay días. Cuento las veces que viene
          'Te guardé una flor de cada visita. Ya no caben en el cuarto.']
 ENCUENTROS = [  # tag del otro, tipo, nombre, color, línea de Juli, respuesta
     ('dv_dani', 'zombie', 'Dani', '#9fc3a8', '¡Dani! ¿Le diste de comer a Luna?', 'Juli... ¿estás despierta? ¿O estoy soñando yo?'),
-    ('dv_valery', 'zombie', 'Valery', '#c98fa6', 'Valery. Ya no tienes que ir al puente todas las noches.', '¿Tú también lo ves? Perdón... perdón por llorar.'),
     ('dv_kevin', 'zombie', 'Kevin', '#ffb347', 'Kevin, baja esa música, que me despiertas.', '¡Juli! Jajaja... espera, ¿tú no estabas dormida?'),
     ('dv_luna', 'wolf', 'Luna', '#ffd27a', '¡Luna! Ven, ven, mi niña...', '(Luna mueve la cola tan fuerte que se cae de lado.)'),
     ('dv_abuela', 'zombie', 'Abuela Esmeralda', '#c9a27a', 'Abuela Esmeralda... ¿es usted de verdad?', 'Hoy sí, mijita. Hoy sí. Pero no me espere de noche.'),
@@ -76,8 +73,6 @@ def build(c):
         'execute as @a[tag=dv_jtalk,scores={dv.racha=0}] run ' + jvoz('Hoy te vi caer. No me gustó nada. Ten más cuidado, por favor.'),
         'execute as @a[tag=dv_jtalk,tag=dv_pagtodas] run ' + jvoz('Ya tienes todas las páginas de Diana. Ya sabes cómo termina esto. No lo hagas solo.'),
         'execute as @a[tag=dv_jtalk,tag=dv_pag1,tag=!dv_pagtodas] run ' + jvoz('Estás juntando las páginas de Diana. Léelas despacio. Duelen.'),
-        'execute if score #val_fin dv.dev matches 1 as @a[tag=dv_jtalk] run ' + jvoz('Juan descansa. Lo sentí. La casa se puso tibia por un momento.'),
-        'execute if score #val_fin dv.dev matches 2 as @a[tag=dv_jtalk] run ' + jvoz('Valery guardó el deseo. Diana grita de noche. Ten cuidado afuera.'),
         'execute if score #felipe_fin dv.dev matches 1 as @a[tag=dv_jtalk] run ' + jvoz('Mariana encontró a Felipe. Hoy la casa huele a lago.'),
         'execute if score #jefe_ganado dv.dev matches 1 as @a[tag=dv_jtalk] run ' + jvoz('Lo lograron. Ya casi me despierto. Gracias, de verdad.'),
         'execute as @a[tag=dv_jtalk,scores={dv.miedo=60..}] run ' + jvoz('Tienes miedo. Se te nota hasta aquí. Quédate un rato, aquí no entra nada.'),

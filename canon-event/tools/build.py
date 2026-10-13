@@ -40,6 +40,39 @@ def item_parent(item):
     return 'minecraft:item/generated'
 
 
+def personas(out, base):
+    """Personajes con skin -> modelo de jugador animado (mod Java). Escribe forge/src/main/resources/canon_personas.txt
+    (B|cmd|personaje|pose y H|cmd|personaje|cara) y deja vacíos sus modelos de bloques (los dibuja el mod Java)."""
+    from canon.skins import POSES
+    td = os.path.join(out, 'assets', 'canon', 'textures', 'item', 'modelo')
+    if not os.path.isdir(td):
+        return
+    pref = sorted({f[:-len('_skin.png')] for f in os.listdir(td) if f.endswith('_skin.png')}, key=len, reverse=True)
+    lineas, vaciar = [], []
+    for cmd, model in sorted(base.items()):
+        if not model.startswith('canon:modelo/'):
+            continue
+        name = model.split('/', 1)[1]
+        if '_cabeza_' in name:
+            pr, ex = name.split('_cabeza_', 1)
+            if pr in pref and os.path.exists(os.path.join(td, f'{pr}_skin_{ex}.png')):
+                lineas.append(f'H|{cmd}|{pr}|{ex}')
+                vaciar.append((name, pr))
+            continue
+        for pr in pref:
+            if name.startswith(pr + '_') and name[len(pr) + 1:] in POSES:
+                lineas.append(f'B|{cmd}|{pr}|{name[len(pr) + 1:]}')
+                vaciar.append((name, pr))
+                break
+    dst = os.path.join(TOOLS, '..', 'forge', 'src', 'main', 'resources', 'canon_personas.txt')
+    if os.path.isdir(os.path.dirname(dst)):
+        open(dst, 'w').write('\n'.join(lineas) + '\n')
+    md = os.path.join(out, 'assets', 'canon', 'models', 'modelo')
+    for n, pr in vaciar:
+        json.dump({'textures': {'particle': f'canon:item/modelo/{pr}_skin'}, 'elements': []}, open(os.path.join(md, n + '.json'), 'w'))
+    print(f'  personajes 3D: {sum(1 for l in lineas if l[0] == "B")} poses, {sum(1 for l in lineas if l[0] == "H")} caras')
+
+
 def finalize(c):
     out = c.out
     # -------- ganchos -> funciones
@@ -156,6 +189,7 @@ function canon:admin/config
         base[cmd] = model
     mj['overrides'] = [{'predicate': {'custom_model_data': k}, 'model': v} for k, v in sorted(base.items())]
     json.dump(mj, open(mp, 'w'), indent=1)
+    personas(out, base)
     # -------- modelos de ítems vanilla
     for item, cm in c.item_models.items():
         ip = os.path.join(out, 'assets', 'minecraft', 'models', 'item', item + '.json')

@@ -17,7 +17,6 @@ VOCES = {  # nombre: (texto, grave, voz)
     'kevin_enojado': ('No me vuelvas a decir que no.', True, 'es+m3'),
     'kevin_te_veo': ('Te estoy viendo.', True, 'es+m3'),
     'abuela_mijo': ('Mijito, ábrale a la abuela.', True, 'es+f2'),
-    'santiago_mari': ('Mari. Mari. ¿Por qué me dejaste?', False, 'es+m1'),
     'juli_santi': ('Santi, no te duermas todavía.', False, 'es+f3'),
     'nicolas_aqui': ('Aquí abajo hace frío.', True, 'es+m2'),
     'nombre_susurro': ('Oye. Oye. Voltea.', True, 'es+f4'),

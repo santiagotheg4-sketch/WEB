@@ -20,10 +20,7 @@ director_terminar|function canon:admin/director/terminar|Terminar el evento can�
 empezar_el_escondite_cua|trigger dv.juego set 1|Empezar el escondite (cualquiera puede)
 juego_parar|function canon:admin/juego/parar|Parar el escondite
 extras_kit|function canon:admin/extras/kit|Ojo del médium, crucifijo, comidas, mascotas y armadura
-soy_mari_para_que_su_ex_|trigger dv.soymari set 1|Soy Mari (para que su ex la encuentre)
 fin_guia|function canon:admin/fin/guia|Otra copia de la Guía de Canon Event
-fin_ex|function canon:admin/fin/ex|Traer a Santiago (el ex de Mari)
-fin_ex_bosque|function canon:admin/fin/ex_bosque|Santiago acecha en el bosque
 fin_fantasma|function canon:admin/fin/fantasma|Un fantasma cruza la pared
 fin_demonio|function canon:admin/fin/demonio|El demonio a lo lejos
 fin_carta|function canon:admin/fin/carta|Una carta bajo la puerta
@@ -41,7 +38,13 @@ kevin_volver|function canon:admin/kevin/volver|Kevin: terminar los 3 días
 kevin_parar|function canon:admin/kevin/parar|Detener el evento de Kevin
 kevin_reiniciar|function canon:admin/kevin/reiniciar|Reiniciar la historia de Kevin
 k2_acecha|function canon:admin/k2/acecha|Kevin enojado te acecha y te persigue
+lej_alguien|function canon:admin/lej/alguien|Alguien parado a lo lejos (se acerca cuando no lo miras)
+lej_diana|function canon:admin/lej/diana|Diana a lo lejos, de día
 menu_de_trucos_de_luna_p|trigger dv.luna set 99|Menú de trucos de Luna (para todos)
+mar_ahogada|function canon:admin/mar/ahogada|La Ahogada (ponla en agua honda: se asoma y te llama)
+mar_orilla|function canon:admin/mar/orilla|La Ahogada parada en la orilla, mirándote
+mar_leviatan|function canon:admin/mar/leviatan|El Leviatán debajo de ti (estando en el mar)
+mj_masa|function canon:admin/mj/masa|La Masa (catacumbas): te persigue por los pasillos sin atravesar paredes
 masalla_entrar|function canon:admin/masalla/entrar|Ir al Más Allá
 masalla_vela|function canon:admin/masalla/vela|Vela del Más Allá
 mej_gigante|function canon:admin/mej/gigante|Un gigante en el horizonte
@@ -70,7 +73,6 @@ para_narrador|function canon:admin/para/narrador|Traer al Narrador
 pers_mariana|function canon:admin/pers/mariana|Traer a Mariana
 pers_mariana_acecho|function canon:admin/pers/mariana_acecho|Mariana te acecha (como si la hubieras enojado)
 pers_abuela|function canon:admin/pers/abuela|Traer a la Abuela Esmeralda
-rel_valery|function canon:admin/rel/valery|Traer a Valery
 rel_jefe|function canon:admin/rel/jefe|Traer al jefe final
 rel_paginas|function canon:admin/rel/paginas|Las 13 páginas del diario
 rel_severo|function canon:admin/rel/severo|Traer a Don Severo

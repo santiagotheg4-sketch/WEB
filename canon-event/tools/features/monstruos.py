@@ -65,12 +65,28 @@ def piel(path, paleta, cara=True, seed=7):
     im.save(path)
 
 
+def ojos(path):
+    """Capa que brilla en la oscuridad: los ojos y la sonrisa de Diana."""
+    im = Image.new('RGBA', (128, 128), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    u, v, w, h, f = CAJAS['cabeza']
+    fx, fy = u + f, v + f
+    d.point([(fx + 2, fy + 3), (fx + 5, fy + 3)], fill=(255, 235, 235, 255))
+    d.point([(fx + 1, fy + 2), (fx + 6, fy + 2)], fill=(200, 20, 20, 255))
+    for x in range(fx + 1, fx + 7, 2):
+        d.point((x, fy + 6), fill=(255, 250, 225, 255))
+    u, v, w, h, f = CAJAS['pelo_frente']
+    d.point((u + f + 4, v + f + 3), fill=(255, 235, 235, 255))  # el ojo que se asoma por el pelo
+    im.save(path)
+
+
 def build(c):
     shim.use(c)
     piel(c.path('assets/canonevent/textures/entity/diana.png'),
          {'piel': (176, 182, 170), 'vena': (70, 80, 95), 'punta': (40, 30, 30), 'ropa': (42, 36, 48), 'pelo': (14, 12, 14)}, True, 7)
     piel(c.path('assets/canonevent/textures/entity/gigante.png'),
          {'piel': (70, 66, 64), 'vena': (30, 25, 25), 'punta': (20, 15, 15), 'ropa': (30, 28, 30), 'pelo': (22, 20, 20)}, False, 11)
+    ojos(c.path('assets/canonevent/textures/entity/diana_ojos.png'))
     c.text('entity.canonevent.diana', 'Diana')
     c.text('entity.canonevent.gigante', 'El Gigante')
     # aparecen solos: Diana de noche (más con miedo), el gigante de noche a lo lejos

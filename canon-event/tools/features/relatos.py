@@ -1,7 +1,7 @@
-"""Canon Event 6: arreglos (volver del sueño, cámara), Valery, páginas del diario de Diana, jefe final,
+"""Canon Event 6: arreglos (volver del sueño, cámara), páginas del diario de Diana, jefe final,
 Don Severo (tienda paranormal), cuaderno, poltergeist de verdad, muñeca que vuelve, fotos en marcos,
 casa de la Abuela Esmeralda y sus nietos, Mariana baila en tu ventana, Felipe y el final de Mariana,
-el Mirón que se acerca, los Sin Rostro, el jardín secreto de Juli, Luna te defiende, noches anunciadas,
+el Mirón que se acerca, los Sin Rostro, el jardín secreto de Juli, Luna caza vacas/ovejas/pollos (y le teme a todo lo demás), noches anunciadas,
 muertes distintas y rachas de supervivencia.
 """
 from PIL import Image, ImageDraw
@@ -12,10 +12,7 @@ from canon.ctx import item_nbt, loot_item
 from features.personajes import MARI
 
 PAG_CMD, CUAD_CMD, FOTO_CMD = 7311120, 7311121, 7312012
-VC, VB = '#c98fa6', '#f6e3ea'  # Valery: nombre / burbuja
 SEV, FEL = '#b9915a', '#8fa6c9'
-VALERY = dict(skin='#b97a56', hair='#22140e', hair_style='curly', eyes='#3a2618', brows='#22140e', lips='#9a5048',
-              top='#7a8fa8', top_style='long', pants='#2f3542', shoes='#e8e8e8', extras=['dark_circles', 'necklace'])
 SEVERO = dict(skin='#c9a284', hair='#9a9a9a', hair_style='short', eyes='#2a2a2a', brows='#888888', top='#6a4a2a', top_style='cardigan',
               pants='#3a3530', shoes='#2a2018', extras=['shawl', 'cap'], shawl='#8a5a2a', cap='#4a3a2a')
 FELIPE = dict(skin='#d8c8bc', hair='#3a2a1e', hair_style='messy', eyes='#3a5a7a', top='#3b4a5e', top_style='jacket', top2='#d8d8d8',
@@ -35,7 +32,7 @@ PAGINAS = [
     'Juan ya no come si no estoy. Dice que le duele la cabeza cuando me alejo. Su mamá lloró hoy en la puerta.',
     'Intenté deshacerlo. Pegué el hueso con cinta. No sirve. Juan se arrancó un mechón de pelo para dármelo.',
     'Juan pidió su propio deseo con lo que quedaba del Hueso: olvidarme. Ahora me mira y no sabe quién soy.',
-    'Hay una muchacha crespa que lo cuida. Valery. Le da de comer. Él le sonríe. A mí me sonreía así cuando no era de verdad.',
+    'Juan ya no me mira. Mira a través de mí, como si yo fuera una ventana sucia. Le sonríe a cualquiera menos a mí.',
     'Si él no me recuerda, voy a hacer que todos me recuerden. Mi cara en cada esquina. Mi nombre en cada radio.',
     'Algo con la cara roja me habla desde el otro lado. Dice que si le doy mi cuerpo, nunca me van a olvidar. Le dije que sí.',
     'Para terminar esto: de noche, con las trece páginas, abre el Libro de invocación y llama al de la cara roja. '
@@ -46,7 +43,6 @@ DESC = [  # clave, nombre, tags de entidad, texto del cuaderno
     ('dani', 'Dani', ['zombie,tag=dv_dani'], 'La hermana de Juli. Vende comida y pregunta si comiste.'),
     ('kevin', 'Kevin', ['zombie,tag=dv_kevin'], 'Llega, se queda y se va. Nunca dice a dónde.'),
     ('luna', 'Luna', ['wolf,tag=dv_luna'], 'Ladra a lo que tú no ves. Hazle caso.'),
-    ('valery', 'Valery', ['zombie,tag=dv_valery'], 'La novia de Juan. Juan murió y ella lo sigue buscando en el puente.'),
     ('dhum', 'Diana (de día)', ['zombie,tag=dv_dhum'], 'Pálida, con ojeras. Pregunta por Juan.'),
     ('zunga', 'Diana (de noche)', ['zombie,tag=dv_as_zunga', 'zombie,tag=dv_zunga'], 'Se tuerce. Se arrastra. Sonríe demasiado.'),
     ('mariana', 'Mariana', ['zombie,tag=dv_mari2', 'zombie,tag=dv_mbaile'], 'Busca a Felipe. No le hables mucho.'),
@@ -83,10 +79,9 @@ def icon(path, c1, c2, lines=False):
 
 def build(c):
     shim.use(c)
-    c.config('valery', 'Valery (la novia de Juan)', 1)
-    for o in ('dv.val', 'dv.fel', 'dv.severo', 'dv.despertar'):
+    for o in ('dv.fel', 'dv.severo', 'dv.despertar'):
         c.objective(o, 'trigger')
-    for o in ('dv.valp', 'dv.nietos', 'dv.luci', 'dv.racha', 'dv.rmuerte', 'dv.jvida', 'dv.jstun'):
+    for o in ('dv.nietos', 'dv.luci', 'dv.racha', 'dv.rmuerte', 'dv.jvida', 'dv.jstun'):
         c.objective(o)
     c.objective('dv.muerte', 'deathCount')
     for n in (2, 12, 24, 75):
@@ -111,10 +106,8 @@ def build(c):
     c.on('player', '''
 scoreboard players enable @s dv.despertar
 execute if score @s dv.despertar matches 1.. run function canon:rel/despertar
-scoreboard players enable @s dv.val
 scoreboard players enable @s dv.fel
 scoreboard players enable @s dv.severo
-execute if score @s dv.val matches 1.. run function canon:rel/val/eleccion
 execute if score @s dv.fel matches 1.. run function canon:rel/felipe/eleccion
 execute if score @s dv.severo matches 1.. run function canon:rel/severo/comprar
 execute if score @s dv.muerte matches 1.. run function canon:rel/muerte
@@ -130,8 +123,6 @@ execute if dimension canon:sueno_blanco run function canon:casa/wake
     def char(prefix, cfg, poses, exprs, start):
         b, h = SK.build_character(prefix, cfg, c.out, poses, exprs)
         shim.models(b + h, start)
-    char('valery', VALERY, ('idle', 'walk_a', 'walk_b', 'reach', 'cover', 'offer'),
-         [('triste', 'sad'), ('llora', 'cry'), ('suave', 'soft'), ('sonrisa', 'smile')], 7321120)
     char('severo', SEVERO, ('idle', 'walk_a', 'walk_b', 'offer'), [('sonrisa', 'smile'), ('raro', 'creepy')], 7321070)
     char('felipe', FELIPE, ('idle', 'walk_a', 'walk_b', 'reach', 'dance_a', 'dance_b'), [('triste', 'sad'), ('sonrisa', 'soft')], 7321080)
     char('nieto', NIETO, ('idle', 'walk_a', 'walk_b', 'arms_up'), [('sonrisa', 'smile'), ('triste', 'sad')], 7321090)
@@ -176,129 +167,6 @@ scoreboard players operation #c dv.tmp %= #12 dv.math
 execute if entity @s[tag=dv_xwalk] if score #c dv.tmp matches 0..5 run scoreboard players set #frame dv.tmp 1
 execute if entity @s[tag=dv_xwalk] if score #c dv.tmp matches 6..11 run scoreboard players set #frame dv.tmp 2
 '''
-
-    # ================================================================ VALERY
-    rig('rel/val', 'dv_valery', 'Valery', VC, K['valery_idle'], K['valery_cabeza_triste'], ['dv_humano'], click='dv_val_click')
-    c.brain_click('dv_val_click', 'zombie', 'dv_valery', 'rel/val/clic', 'rel/val/golpe')
-    c.frames('dv_valery', 'rel/val/frames')
-    F('rel/val/frames', WALKF + 'execute if score @s dv.mode matches 3 run scoreboard players set #frame dv.tmp 4\n'
-      'execute if score @s dv.mode matches 5 run scoreboard players set #frame dv.tmp 5')
-    vs = lambda t, ticks=160, sel='@a[distance=..20]': say('Valery', VC, VB, t, ticks, sel)
-    c.on('load', 'execute unless score #val_cd dv.dev matches -999999..999999 run scoreboard players set #val_cd dv.dev 300')
-    c.on('second', '''
-execute if score #val_cd dv.dev matches 1.. run scoreboard players remove #val_cd dv.dev 1
-execute if score #valery dv.cfg matches 1 if score #val_cd dv.dev matches ..0 unless score #val_fin dv.dev matches 1 unless entity @e[type=zombie,tag=dv_valery] as @a[tag=dv_bana,gamemode=!spectator,predicate=canon:en_superficie,limit=1,sort=random] at @s if predicate canon:azar/1en350 run function canon:rel/val/aparecer
-execute if score #valery dv.cfg matches 1 if score #val_cd dv.dev matches ..0 unless score #val_fin dv.dev matches 1 unless entity @e[type=zombie,tag=dv_valery] as @a[gamemode=!spectator,predicate=canon:en_superficie,limit=1,sort=random] at @s if predicate canon:azar/1en1200 run function canon:rel/val/aparecer
-execute as @a[tag=dv_val_celos,predicate=canon:en_superficie] at @s if predicate canon:de_noche if predicate canon:azar/1en120 run function canon:rel/val/celos_noche
-''')
-    F('rel/val/aparecer', 'scoreboard players set #val_cd dv.dev 900\nscoreboard players operation #pid dv.tmp = @s dv.pid\n' +
-      spot('rel/val/llega', '^1 ^ ^6'))
-    F('rel/val/llega', '''
-function canon:rel/val/summon
-particle minecraft:cherry_leaves ~ ~1.2 ~ 0.6 1 0.6 0 30 normal
-playsound canon:juli.chime ambient @a[distance=..16] ~ ~ ~ 0.5 0.8
-''')
-    c.pick('rel/val/hola_bana', [vs(t) for t in [
-        '¿Juan? ... No. Perdón, Bana. De lejos te pareces tanto a él.',
-        'Volví al puente anoche. Lo esperé hasta las 3:11. No llegó. Nunca llega.',
-        '¿Comiste? Perdón, es que a Juan siempre se le olvidaba comer. Me quedó la costumbre de preguntar.',
-        'Perdón por aparecer así. Desde que Juan no está, siento que si dejo de cuidar a alguien, también se va.']])
-    c.pick('rel/val/hola_otro', [vs(t) for t in [
-        'Hola... perdón. ¿Has visto a un muchacho de chaqueta gris cerca del río? Se llama Juan. Bueno. Se llamaba.',
-        'Perdón, no te quería asustar. Me llamo Valery. Si de noche ves a alguien parado en el puente, no le hables. Avísame a mí.',
-        '¿Tú también sientes que alguien nos mira? Desde que Juan se fue, siempre hay alguien mirando.']])
-    tick('rel/val', 'dv_valery', f'''
-execute if score #m4 dv.clock matches 0 run function canon:x/face
-execute if score @s dv.timer matches 20 if entity @a[tag=dv_wtgt,tag=dv_bana] run function canon:rel/val/hola_bana
-execute if score @s dv.timer matches 20 unless entity @a[tag=dv_wtgt,tag=dv_bana] run function canon:rel/val/hola_otro
-execute if entity @a[tag=dv_wtgt,tag=dv_bana] unless entity @a[tag=dv_wtgt,distance=..3] if entity @a[tag=dv_wtgt,distance=..16] if score @s dv.mode matches 0 run function canon:x/walk_slow
-execute if score @s dv.mode matches 0 if score @s dv.timer matches 200.. if entity @a[tag=dv_wtgt,tag=dv_bana,distance=..10] unless score @s dv.state matches 1 if predicate canon:azar/1en80 run function canon:rel/val/celos
-execute unless entity @a[tag=dv_wtgt,distance=..28] run function canon:rel/val/se_va
-execute if score @s dv.timer matches 3000.. run function canon:rel/val/se_va
-''')
-    F('rel/val/se_va', 'particle minecraft:cherry_leaves ~ ~1.2 ~ 0.5 1 0.5 0 25 normal\ntellraw @a[distance=..32] {"text":"Valery se fue sin hacer ruido. Como siempre.","color":"#c98fa6","italic":true}\nfunction canon:rig/despawn')
-    F('rel/val/celos', f'''
-scoreboard players set @s dv.state 1
-tag @a[tag=dv_wtgt] add dv_val_celos
-{head(K['valery_cabeza_llora'])}
-scoreboard players operation #pid dv.tmp = @a[tag=dv_wtgt,limit=1] dv.pid
-scoreboard players set #quien dv.tmp 1
-execute facing entity @a[tag=dv_wtgt,limit=1] feet rotated ~ 0 positioned ^ ^ ^-3 run function canon:acecho/aparecer
-playsound canon:devota.whisper hostile @a[tag=dv_wtgt] ~ ~ ~ 1 0.6
-tellraw @a[tag=dv_wtgt] {{"text":"Diana (detrás de Valery, susurrando): ¿La sigues mirando, Juan? Hasta muerto la miras a ella.","color":"#c94a4a","italic":true}}
-''' + vs('¿Sentiste eso? Hace frío de repente... Es ella, ¿verdad? Me culpa de lo que le pasó a Juan. Yo también me culpo.', 160))
-    F('rel/val/celos_noche', '''
-tag @s remove dv_val_celos
-function canon:acoso/ventana
-tellraw @s {"text":"Afuera, una voz de mujer grita: «¡¿POR QUÉ ELLA?! ¡¿POR QUÉ ELLA Y NO YO?!»","color":"#c94a4a","italic":true}
-playsound canon:diana.scream hostile @s ~ ~ ~ 0.8 0.8
-scoreboard players add @s dv.miedo 20
-''')
-    F('rel/val/golpe', vs('Está bien. Pégame. Me lo merezco. Perdón.', 90))
-    menu_v = menu('@a[tag=dv_talker]', 'VALERY', VC, [('¿Quién eres?', '/trigger dv.val set 1'), ('¿Por qué estás triste?', '/trigger dv.val set 2'),
-                                                    ('¿Conoces a Diana?', '/trigger dv.val set 3'), ('¿Por qué pides perdón?', '/trigger dv.val set 4'),
-                                                    ('Cuéntame de Juan', '/trigger dv.val set 5'), ('Adiós', '/trigger dv.val set 6')])
-    F('rel/val/clic', 'execute facing entity @a[tag=dv_talker,limit=1] feet run tp @s ~ ~ ~ ~ 0\nscoreboard players set @s dv.timer 200\n' + menu_v + '\n' +
-      menu('@a[tag=dv_talker,tag=dv_bana]', '', VC, [('Valery, ¿estás bien?', '/trigger dv.val set 7'), ('Abrazarla', '/trigger dv.val set 8')]) + '\n' +
-      'execute unless score #val_fin dv.dev matches 1.. run ' + menu('@a[tag=dv_talker,scores={dv.valp=2..}]', '', VC, [('¿Qué escondes, Valery?', '/trigger dv.val set 9')]))
-    F('rel/val/eleccion', '''
-tag @s add dv_vtalk
-scoreboard players operation #vc dv.tmp = @s dv.val
-scoreboard players set @s dv.val 0
-execute if score #vc dv.tmp matches 3..4 run scoreboard players add @s dv.valp 1
-execute as @e[type=zombie,tag=dv_valery,distance=..14,limit=1,sort=nearest] at @s run function canon:rel/val/responde
-tag @s remove dv_vtalk
-''')
-    resp = {
-        1: 'Me llamo Valery. Era la novia de Juan. Soy. Todavía no sé en qué tiempo hablar de él.',
-        2: 'Juan se murió hace un año. En el río, debajo del puente donde lo conocí. Dicen que fue un accidente. Yo sé que no. Por eso estoy triste. Por eso y porque todavía lo busco.',
-        3: 'Diana. Ella lo quería antes que yo. Con un deseo. Cuando Juan pidió olvidarla, se le olvidó todo, hasta el camino a casa. Caminó hasta el río. Diana me culpa a mí. Yo también me culpo.',
-        4: 'Le pido perdón a Juan todas las noches. Por no encontrarlo a tiempo. Por no contarle lo de Diana. Por seguir viva cuando él no. Y perdón a ti, por meterte en esto.',
-        5: 'Lo conocí en el puente a las 3:11 de la mañana, llorando sin saber por qué. Le di mi chaqueta. Durante meses le recordé que comiera, que durmiera, que su cumpleaños era en marzo. Una noche no le recordé nada. Esa noche se fue al río.',
-        6: 'Cuídate. Y si ves a Juan, aunque sea de lejos, dile que lo sigo esperando en el puente.',
-        7: '¿Si estoy bien? No sé. Tienes sus ojos, ¿sabías? Perdón. A veces te miro y creo que eres él, y que todo fue una pesadilla.',
-    }
-    for k, t in resp.items():
-        F(f'rel/val/r{k}', (head(K['valery_cabeza_suave']) + '\n' if k == 7 else '') + vs(t, 220, '@a[tag=dv_vtalk]'))
-    F('rel/val/r6', vs(resp[6], 120, '@a[tag=dv_vtalk]') + '\nscoreboard players set @s dv.timer 2900')
-    F('rel/val/r8', f'''
-{head(K['valery_cabeza_llora'])}
-scoreboard players set @s dv.mode 5
-tellraw @a[tag=dv_vtalk] {{"text":"Valery te abraza fuerte, temblando. «Perdón. Es que hueles a él. Déjame un ratico más.»","color":"{VC}","italic":true}}
-effect give @a[tag=dv_vtalk] minecraft:regeneration 10 1 true
-scoreboard players set @a[tag=dv_vtalk] dv.miedo 0
-playsound minecraft:block.glass.break hostile @a[tag=dv_vtalk] ~8 ~ ~8 0.6 0.5
-tellraw @a[tag=dv_vtalk] {{"text":"Muy lejos, alguien rompe un vidrio con la mano.","color":"#c94a4a","italic":true}}
-tag @a[tag=dv_vtalk] add dv_val_celos
-advancement grant @a[tag=dv_vtalk] only canon:logros/abrazo
-''')
-    F('rel/val/r9', head(K['valery_cabeza_llora']) + '\nscoreboard players set @s dv.mode 3\n' + vs(
-        'Te lo digo. Cuando Juan pidió olvidar a Diana, quedó una astilla del Hueso. La encontré yo y pedí que nunca la recordara. '
-        'Pero el Hueso cobra: para olvidarla a ella, Juan se olvidó de sí mismo. Por eso caminó al río. Por eso su alma no descansa, y Diana tampoco. Es mi culpa. ¿Qué hago?', 300, '@a[tag=dv_vtalk]') + '\n' +
-        menu('@a[tag=dv_vtalk]', 'Lo que decidas no tiene vuelta atrás.', VC, [('Rompe el deseo', '/trigger dv.val set 10'), ('Guárdalo', '/trigger dv.val set 11')]))
-    F('rel/val/r10', head(K['valery_cabeza_llora']) + '\n' + vs(
-        'Tienes razón. Que Juan recuerde todo, aunque me recuerde llorando. Que por fin descanse. Ojalá en otra vida me encuentre primero a mí.', 200, '@a[distance=..32]') + '''
-scoreboard players set #val_fin dv.dev 1
-particle minecraft:end_rod ~ ~1.3 ~ 0.4 0.6 0.4 0.05 60 normal
-playsound minecraft:block.glass.break master @a ~ ~ ~ 1 0.6
-title @a times 20 100 40
-title @a subtitle {"text":"Juan recuerda todo. Ya puede descansar.","color":"#f6e3ea","italic":true}
-title @a title {"text":"EL DESEO SE ROMPIÓ","color":"#c98fa6","bold":true}
-tellraw @a {"text":"☾ En el puente, a las 3:11, alguien con chaqueta gris se despidió con la mano. Diana dejó de gritar. Valery no volvió a aparecer.","color":"gray","italic":true}
-advancement grant @a only canon:logros/valery_a
-schedule function canon:rel/val/fin_a 60t
-''')
-    F('rel/val/fin_a', 'execute as @e[type=zombie,tag=dv_valery] at @s run function canon:rel/val/se_va')
-    F('rel/val/r11', vs('No puedo. Si rompo el deseo, se va del todo. Prefiero un Juan que no recuerda a ningún Juan. Perdóname, Diana. Perdóname, Juan.', 160, '@a[distance=..32]') + '''
-scoreboard players set #val_fin dv.dev 2
-scoreboard players set #an_ev dv.dev 3
-scoreboard players set #an_falta dv.dev 1
-tellraw @a {"text":"☾ Muy lejos, alguien grita el nombre de Valery. Mañana es la Noche de Diana.","color":"#c94a4a","italic":true}
-advancement grant @a only canon:logros/valery_b
-''')
-    F('rel/val/responde', '\n'.join(f'execute if score #vc dv.tmp matches {k} run function canon:rel/val/r{k}' for k in range(1, 12) if k not in (10, 11)) +
-      '\nexecute if score #vc dv.tmp matches 10 unless score #val_fin dv.dev matches 1.. run function canon:rel/val/r10'
-      '\nexecute if score #vc dv.tmp matches 11 unless score #val_fin dv.dev matches 1.. run function canon:rel/val/r11')
 
     # ================================================================ PÁGINAS DEL DIARIO DE DIANA + CUADERNO
     icon(c.path('assets/canon/textures/item/r_pagina.png'), (232, 218, 190), (120, 100, 90), True)
@@ -376,10 +244,7 @@ execute unless score #jefe_ganado dv.dev matches 1 unless score #an_ev dv.dev ma
                                       ('felipe', 'La última canción', 'Lleva a Felipe con Mariana.', 'minecraft:music_disc_11', 'goal'),
                                       ('nietos', 'Ya pueden descansar', 'Encuentra a los tres nietos de la abuela.', 'minecraft:candle', 'goal'),
                                       ('jardin', 'Lugar secreto', 'Atrapa las cinco luciérnagas del jardín de Juli.', 'minecraft:pink_tulip', 'task'),
-                                      ('racha', 'Diez noches', 'Sobrevive 10 noches seguidas sin morir.', 'minecraft:clock', 'challenge'),
-                                      ('abrazo', 'Perdóname', 'Deja que Valery te abrace.', 'minecraft:red_dye', 'task'),
-                                      ('valery_a', 'Recordar duele', 'Valery rompió el deseo.', 'minecraft:glass_pane', 'goal'),
-                                      ('valery_b', 'Quedarse', 'Valery guardó el deseo.', 'minecraft:string', 'goal')]:
+                                      ('racha', 'Diez noches', 'Sobrevive 10 noches seguidas sin morir.', 'minecraft:clock', 'challenge')]:
         c.json(f'data/canon/advancements/logros/{lid}.json', {'parent': 'canon:logros/raiz', 'display': {
             'icon': {'item': ic}, 'title': {'text': tit, 'color': '#d77a8a'}, 'description': {'text': desc}, 'frame': frame,
             'show_toast': True, 'announce_to_chat': True, 'hidden': False}, 'criteria': {'c': {'trigger': 'minecraft:impossible'}}})
@@ -1074,21 +939,17 @@ execute in canon:sueno_blanco as @a[x=30,y=60,z=30,dx=20,dy=45,dz=20] run tp @s 
 execute in canon:sueno_blanco as @e[type=item_display,tag=dv_luci_vis] at @s run particle minecraft:glow ~ ~ ~ 0.2 0.2 0.2 0 2 normal
 ''')
 
-    # ================================================================ LUNA TE DEFIENDE
-    c.on('second', '''
-execute as @e[type=wolf,tag=dv_luna] at @s if entity @e[type=#canon:presas,tag=!dv_brain,distance=..10] run function canon:rel/luna/defiende
-execute as @e[type=wolf,tag=dv_luna] at @s if entity @e[tag=dv_horror,tag=!dv_jefe,distance=..7] if predicate canon:azar/1en4 run function canon:rel/luna/espanta
-''')
-    F('rel/luna/defiende', 'data modify entity @s AngryAt set from entity @e[type=#canon:presas,tag=!dv_brain,distance=..10,limit=1,sort=nearest] UUID\ndata modify entity @s AngerTime set value 300')
-    F('rel/luna/espanta', '''
-playsound minecraft:entity.wolf.growl neutral @a[distance=..16] ~ ~ ~ 1 0.9
-execute as @e[tag=dv_horror,distance=..7,limit=1,sort=nearest] at @s run function canon:camara/espanta
-tellraw @a[distance=..16] {"text":"Luna se le lanzó encima y eso desapareció. Buena niña.","color":"#ffd27a","italic":true}
+    # ================================================================ LUNA: solo caza vacas, ovejas y pollos (el miedo lo maneja Java: LunaMiedo)
+    c.json('data/canon/tags/entity_types/presas_luna.json', {'values': ['minecraft:cow', 'minecraft:sheep', 'minecraft:chicken']})
+    c.on('second', 'execute as @e[type=wolf,tag=dv_luna] at @s unless entity @e[tag=dv_horror,distance=..14] if entity @e[type=#canon:presas_luna,distance=..10] if predicate canon:azar/1en120 run function canon:rel/luna/caza')
+    F('rel/luna/caza', '''
+data modify entity @s AngryAt set from entity @e[type=#canon:presas_luna,distance=..10,limit=1,sort=nearest] UUID
+data modify entity @s AngerTime set value 200
+playsound minecraft:entity.wolf.growl neutral @a[distance=..16] ~ ~ ~ 0.6 1.2
 ''')
 
     # ================================================================ admin
-    adm = [('valery', 'scoreboard players operation #pid dv.tmp = @s dv.pid\nexecute positioned ^ ^ ^4 run function canon:rel/val/summon', 'Traer a Valery'),
-           ('jefe', 'scoreboard players operation #pid dv.tmp = @s dv.pid\nexecute positioned ^ ^ ^10 run function canon:rel/jefe/llega', 'Traer al jefe final'),
+    adm = [('jefe', 'scoreboard players operation #pid dv.tmp = @s dv.pid\nexecute positioned ^ ^ ^10 run function canon:rel/jefe/llega', 'Traer al jefe final'),
            ('paginas', '\n'.join(f'loot give @s loot canon:rel/pag/p{n}' for n in range(1, 14)), 'Las 13 páginas del diario'),
            ('severo', 'scoreboard players operation #pid dv.tmp = @s dv.pid\nexecute positioned ^ ^ ^4 run function canon:rel/sev/summon', 'Traer a Don Severo'),
            ('felipe', 'scoreboard players operation #pid dv.tmp = @s dv.pid\nexecute positioned ^ ^ ^4 run function canon:rel/fel/summon', 'Traer a Felipe'),

@@ -42,7 +42,7 @@ public class Monstruo extends Monster {
         this.setPersistenceRequired();
         this.addTag("dv_horror");
         this.addTag(tipo == Tipo.DIANA ? "dv_jdiana" : "dv_jgigante");
-        this.setCustomName(Component.literal(tipo == Tipo.DIANA ? "Diana" : "???"));
+        this.setCustomName(Component.literal(tipo == Tipo.DIANA ? "Diana" : "El Gigante"));
         this.setCustomNameVisible(false);
     }
 

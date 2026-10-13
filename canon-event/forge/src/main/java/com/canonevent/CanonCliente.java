@@ -83,6 +83,21 @@ public class CanonCliente {
             zumbido = asegurar(zumbido, "gen.drone", 0.01f, (!persecucion && miedo >= 35) ? Math.min(0.6f, (miedo - 30) / 80f) : 0f);
         }
 
+        /** La cámara tiembla cuando algo te persigue y está cerca (más cerca, más tiembla). */
+        @SubscribeEvent
+        public static void camara(net.minecraftforge.client.event.ViewportEvent.ComputeCameraAngles e) {
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.player == null || mc.level == null || mc.options.getCameraType() != net.minecraft.client.CameraType.FIRST_PERSON) return;
+            float f = 0f;
+            if (persecucion && distancia >= 0 && distancia < 12) f = (12 - distancia) / 12f;
+            if (miedoVisto >= 85) f = Math.max(f, (miedoVisto - 85) / 60f);
+            if (f <= 0.01f) return;
+            double t = mc.level.getGameTime() + e.getPartialTick();
+            e.setRoll((float) (e.getRoll() + Math.sin(t * 1.7) * 1.6 * f));
+            e.setPitch((float) (e.getPitch() + Math.sin(t * 2.3 + 1) * 0.9 * f));
+            e.setYaw((float) (e.getYaw() + Math.cos(t * 1.9) * 0.7 * f));
+        }
+
         /** La barra de miedo vieja (arriba) se esconde: ahora va abajo. */
         @SubscribeEvent
         public static void barraVieja(CustomizeGuiOverlayEvent.BossEventProgress e) {
@@ -95,7 +110,7 @@ public class CanonCliente {
     }
 
     @Mod.EventBusSubscriber(modid = CanonEvent.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class Registro {
+    public static class RegistroCliente {
         @SubscribeEvent
         public static void overlays(RegisterGuiOverlaysEvent e) {
             e.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "miedo", (gui, g, pt, w, h) -> dibujar(g, w, h));
@@ -113,7 +128,7 @@ public class CanonCliente {
         // medidor: a la derecha de la barra de ítems
         int x = w / 2 + 98, y = h - 21;
         int tiembla = (k >= 3 && mc.level != null && mc.level.getGameTime() % 4 < 2) ? 1 : 0;
-        g.fill(x - 2, y - 2, x + 64, y + 20, 0x88000000);
+        g.fill(x - 2, y - 2, x + 86, y + 20, 0x88000000);
         g.blit(new ResourceLocation("canon", "textures/font/miedo" + k + ".png"), x + tiembla, y, 0, 0, 16, 16, 16, 16);
         g.drawString(mc.font, "MIEDO", x + 19, y, 0xFFB0B0B0, true);
         g.drawString(mc.font, m + "%", x + 19, y + 9, COLOR[k], true);
