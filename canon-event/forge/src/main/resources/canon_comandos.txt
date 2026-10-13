@@ -99,6 +99,7 @@ terror_puerta|function canon:admin/terror/puerta|Tocan tu puerta
 terror_techo|function canon:admin/terror/techo|Pasos en el techo
 terror_esquina|function canon:admin/terror/esquina|Algo te mira desde una esquina
 terror_cueva|function canon:admin/terror/cueva|Nicolás en la cueva
+vaca|function canon:admin/vaca|Una vaca rara te mira y se acerca cuando no la miras
 zomb_variantes|function canon:admin/zomb/variantes|Invocar zombies (variantes al azar)
 zomb_sangre|function canon:admin/zomb/sangre|Forzar la Luna de sangre
 catalogo_de_todos_los_it|trigger dv.items set 1|Catálogo de todos los ítems del mod (en creativo te los da)
