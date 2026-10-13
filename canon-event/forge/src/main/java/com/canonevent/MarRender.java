@@ -28,6 +28,7 @@ public class MarRender {
         }
 
         @Override public ResourceLocation getTextureLocation(Marina e) { return tex("ahogada"); }
+        @Override protected boolean shouldShowName(Marina e) { return false; }
     }
 
     public static class Leviatan extends MobRenderer<Marina, MarModelos.Leviatan> {
@@ -47,6 +48,7 @@ public class MarRender {
         }
 
         @Override public ResourceLocation getTextureLocation(Marina e) { return tex("leviatan"); }
+        @Override protected boolean shouldShowName(Marina e) { return false; }
     }
 
     @Mod.EventBusSubscriber(modid = CanonEvent.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)

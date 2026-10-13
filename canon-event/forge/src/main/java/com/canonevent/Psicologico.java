@@ -61,6 +61,12 @@ public class Psicologico {
         return sb.getOrCreatePlayerScore(p.getScoreboardName(), o).getScore();
     }
 
+    static int miedoCalma(ServerPlayer p) {
+        Scoreboard sb = p.getServer().getScoreboard();
+        Objective o = sb.getObjective("dv.calma");
+        return (o == null || !sb.hasPlayerScore(p.getScoreboardName(), o)) ? 0 : sb.getOrCreatePlayerScore(p.getScoreboardName(), o).getScore();
+    }
+
     static boolean activo(MinecraftServer s, String clave) {
         Scoreboard sb = s.getScoreboard();
         Objective o = sb.getObjective("dv.cfg");
@@ -138,7 +144,7 @@ public class Psicologico {
         UUID id = p.getUUID();
         int t = eco.getOrDefault(id, 0);
         if (t <= 0) {
-            if (R.nextInt(1500) == 0 && activo(p.getServer(), "psico")) eco.put(id, 600); // 30 segundos de eco
+            if (R.nextInt(1500) == 0 && activo(p.getServer(), "psico") && miedoCalma(p) == 0) eco.put(id, 600); // 30 segundos de eco
             return;
         }
         eco.put(id, t - 6);

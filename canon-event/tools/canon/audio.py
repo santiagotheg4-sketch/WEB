@@ -386,3 +386,25 @@ def rugido_gigante(dur=6.5):
     x += lp(noise(dur, 'brown'), 90) * 0.9
     x = np.tanh(x * 2.2) * env(n, 0.6, 2.5, 2.0)
     return reverb(lp(x, 700), 1.0, 0.55)
+
+
+def tension(dur=24.0):
+    """Música de tensión con eco: cuerdas graves que no resuelven, golpes lejanos y notas sueltas que rebotan."""
+    n = int(SR * dur)
+    tt = np.arange(n) / SR
+    x = np.zeros(n)
+    for f, g in ((55.0, 1.0), (58.3, 0.6), (82.4, 0.5), (110.0, 0.25), (116.5, 0.2)):  # cluster disonante
+        vib = 1 + 0.003 * np.sin(2 * np.pi * (0.2 + f / 500) * tt)
+        x += g * signal.sawtooth(np.cumsum(2 * np.pi * f * vib / SR)) * (0.6 + 0.4 * np.sin(2 * np.pi * tt / dur * 3 + f))
+    x = lp(x, 700) * 0.5
+    for k in range(int(dur / 3)):  # notas sueltas (piano roto) con mucho eco
+        i = int((k * 3 + rng.uniform(0, 2)) * SR)
+        f = rng.choice([440, 466, 523, 554, 622]) * rng.choice([1, 0.5])
+        m = min(int(SR * 2.5), n - i)
+        x[i:i + m] += np.sin(2 * np.pi * f * np.arange(m) / SR) * decay(m, 0.6) * 0.25
+    for k in range(int(dur / 6)):  # golpes graves lejanos
+        i = int((k * 6 + 4) * SR)
+        m = min(int(SR * 1.2), n - i)
+        x[i:i + m] += lp(noise(m / SR), 120) * decay(m, 0.2) * 0.8
+    x = reverb(x, 1.0, 0.55)[:n]
+    return loop(x)

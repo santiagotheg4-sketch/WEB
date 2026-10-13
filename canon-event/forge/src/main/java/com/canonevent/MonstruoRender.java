@@ -36,6 +36,12 @@ public class MonstruoRender extends MobRenderer<Monstruo, MonstruoModelo> {
         ps.scale(escala, escala, escala);
     }
 
+    /** Sin letrero con el nombre encima: da más miedo sin saber qué es. */
+    @Override
+    protected boolean shouldShowName(Monstruo e) {
+        return false;
+    }
+
     @Override
     public ResourceLocation getTextureLocation(Monstruo e) {
         return e.tipo == Monstruo.Tipo.GIGANTE ? GIGANTE : DIANA;

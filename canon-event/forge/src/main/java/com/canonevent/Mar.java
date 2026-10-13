@@ -39,6 +39,7 @@ public class Mar {
         for (ServerPlayer p : ev.getServer().getPlayerList().getPlayers()) {
             if (p.isSpectator() || p.isCreative() || !(p.level() instanceof ServerLevel lv) || lv.dimension() != Level.OVERWORLD) continue;
             if (!activo(lv)) return;
+            if (NicolasMina.puntaje(lv, p.getScoreboardName(), "dv.calma", 0) > 0) continue; // calma después de un susto
             boolean noche = !lv.isDay();
             boolean enAgua = p.isInWater() || p.getVehicle() instanceof Boat;
             if (lv.getEntitiesOfClass(Marina.class, p.getBoundingBox().inflate(96), m -> m.tipo == Marina.Tipo.AHOGADA).isEmpty()) {

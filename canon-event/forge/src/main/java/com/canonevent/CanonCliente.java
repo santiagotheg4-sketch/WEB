@@ -25,7 +25,7 @@ public class CanonCliente {
     static float distancia = -1;
     /** ticks de temblor de pantalla (solo visual: no mueve tu mira) */
     static int temblor = 0;
-    static Bucle musica, viento, zumbido;
+    static Bucle musica, viento, zumbido, tension;
     /** estática en la pantalla (ticks) y ojos en la oscuridad (ticks, posición) */
     static int glitch = 0, ojos = 0, ojosX = 0, ojosY = 0;
     static final java.util.Random AZAR = new java.util.Random();
@@ -86,6 +86,9 @@ public class CanonCliente {
             musica = asegurar(musica, "gen.persecucion", 0.03f, persecucion ? 1.0f : 0f);
             if (persecucion) mc.getMusicManager().stopPlaying();
             viento = asegurar(viento, "gen.viento", 0.01f, (noche && afuera && !persecucion) ? 0.35f : 0f);
+            // música de tensión con eco: sube despacio cuando algo te acecha (no te persigue todavía)
+            float tObj = persecucion ? 0f : !acechador.isEmpty() ? (visto ? 0.6f : 0.45f) : miedo >= 50 ? 0.2f : 0f;
+            tension = asegurar(tension, "gen.tension", 0.004f, tObj);
             zumbido = asegurar(zumbido, "gen.drone", 0.01f, (!persecucion && miedo >= 35) ? Math.min(0.6f, (miedo - 30) / 80f) : 0f);
             // con mucho miedo la pantalla se llena de estática un instante
             if (temblor > 0) temblor--;

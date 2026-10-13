@@ -32,6 +32,12 @@ public class MasaRender extends MobRenderer<Masa, MasaModelo> {
         ps.scale(1.1f, 1.1f, 1.1f);
     }
 
+    /** Sin letrero con el nombre encima: da más miedo sin saber qué es. */
+    @Override
+    protected boolean shouldShowName(Masa e) {
+        return false;
+    }
+
     @Override
     public ResourceLocation getTextureLocation(Masa e) {
         return PIEL;

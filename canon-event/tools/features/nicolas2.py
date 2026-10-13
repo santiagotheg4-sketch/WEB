@@ -8,9 +8,22 @@ from canon import shim
 LETREROS = ['TE VEO', 'SIGUE CAVANDO', 'NO MIRES ATRÁS', 'AQUÍ ABAJO NADIE TE OYE', 'YA CASI', 'ESTOY CONTIGO', 'JAJAJA']
 
 
+def ojos(path):
+    """Los ojos de Nicolás brillan blancos en la oscuridad (calza con la cara de su skin 64x64)."""
+    from PIL import Image
+    im = Image.new('RGBA', (64, 64), (0, 0, 0, 0))
+    for x in (9, 10, 13, 14):
+        im.putpixel((x, 12), (255, 255, 255, 255))
+    im.save(path)
+
+
 def build(c):
     shim.use(c)
+    ojos(c.path('assets/canonevent/textures/entity/nicolas_ojos.png'))
     c.text('entity.canonevent.nicolas', 'Nicolás')
+    # menos seguido: que no sea todo el tiempo (antes 1 en 120 por segundo)
+    c.patch('extra/second', lambda s: s.replace('unless entity @e[tag=dv_nicx,distance=..48] if predicate canon:azar/1en120 run function canon:mej/nico/elegir',
+                                                'unless entity @e[tag=dv_nicx,distance=..48] if predicate canon:azar/1en900 run function canon:mej/nico/elegir'))
     hay = '@e[type=canonevent:nicolas,distance=..96]'
     c.patch('nicolas/summon', lambda s: 'summon canonevent:nicolas ~ ~ ~')
     c.patch('nicolas/try', lambda s: s.replace('@e[type=zombie,tag=dv_nicolas,distance=..96]', hay))
@@ -73,11 +86,12 @@ playsound minecraft:block.stone.hit block @s ^2 ^ ^ 1 0.75
 playsound minecraft:block.stone.break block @s ^2 ^ ^ 0.8 0.6
 title @s actionbar {"text":"Alguien pica la piedra, muy cerca","color":"#8a8a96","italic":true}
 ''')
-    for nm, cmd, desc in [('acecha', 'summon canonevent:nicolas ^ ^ ^12', 'Nicolás te acecha (se esconde si lo miras)'),
+    for nm, cmd, desc in [('lejos', 'summon canonevent:nicolas ^ ^ ^20 {Tags:["dv_nlejos"]}', 'Nicolás te mira desde lejos con los ojos blancos'),
+                          ('acecha', 'summon canonevent:nicolas ^ ^ ^12', 'Nicolás te acecha (se esconde si lo miras)'),
                           ('techo', 'summon canonevent:nicolas ^ ^ ^3 {Tags:["dv_ntecho"]}', 'Nicolás en el techo (cae delante de ti)'),
                           ('corre', 'summon canonevent:nicolas ^ ^ ^10 {Tags:["dv_ncorre"]}', 'Nicolás te persigue'),
                           ('apaga', 'summon canonevent:nicolas ^ ^ ^-10 {Tags:["dv_napaga"]}', 'Nicolás te apaga las antorchas'),
-                          ('pica', 'summon canonevent:nicolas ^ ^ ^-3 {Tags:["dv_npica"]}', 'Nicolás pica la pared y te mira por el hueco'),
+                          ('pica', 'summon canonevent:nicolas ^ ^ ^-3 {Tags:["dv_npica"]}', 'Nicolás golpea la piedra del otro lado de la pared'),
                           ('letrero', 'function canon:nic2/letrero', 'Letras rojas en la pared detrás de ti'),
                           ('grava', 'function canon:nic2/grava', 'Grava que cae detrás de ti')]:
         F(f'admin/nic/{nm}', cmd if cmd.startswith('function') else 'execute rotated ~ 0 run ' + cmd)

@@ -31,13 +31,13 @@ import net.minecraft.world.phys.Vec3;
 
 /**
  * Nicolás, el de las cuevas. Ya no camina a través de las paredes: busca el camino de verdad.
- * Cada vez que aparece hace algo distinto:
+ * Cada vez que aparece hace algo distinto (y nunca rompe bloques):
  * ACECHA (te sigue de lejos y se esconde si lo miras), TECHO (pegado al techo, boca abajo; cae delante de ti),
  * CORRE (te persigue riéndose), APAGA (te apaga las antorchas una por una), PICA (pica la piedra detrás de la pared
  * hasta abrir un hueco y mirarte por él). Si le pegas, se ríe y huye a la oscuridad.
  */
 public class Nicolas extends Monster {
-    public static final int ACECHA = 0, TECHO = 1, CORRE = 2, APAGA = 3, PICA = 4, HUYE = 5, ESCONDE = 6;
+    public static final int ACECHA = 0, TECHO = 1, CORRE = 2, APAGA = 3, PICA = 4, HUYE = 5, ESCONDE = 6, LEJOS = 7, AGARRA = 8, PREVIO = 9;
     private static final EntityDataAccessor<Integer> ESTADO = SynchedEntityData.defineId(Nicolas.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> CARA = SynchedEntityData.defineId(Nicolas.class, EntityDataSerializers.INT);
     static final String[] INSULTOS = {"Nadie te va a extrañar aquí abajo.", "Cava, cava... estás cavando tu propia tumba.",
@@ -46,6 +46,8 @@ public class Nicolas extends Monster {
             "Estoy detrás de la pared. Escucha.", "Corre, gordito... ah no, ese soy yo. Jajaja.", "Sigue bajando. Abajo te espero."};
     private int vida = 0, t = 0, visto = 0, cdHabla = 100, cdGolpe = 0, apagadas = 0, golpes = 0;
     private BlockPos hueco = null;
+    private int previo = 0, elegido = ACECHA;
+    static final String[] VOCES = {"gen.voz_nico_te_veo", "gen.voz_nico_baja", "gen.voz_nico_buscas", "gen.voz_nico_ven", "gen.voz_nicolas_aqui"};
 
     public Nicolas(EntityType<? extends Monster> tipo, Level l) {
         super(tipo, l);
@@ -116,8 +118,10 @@ public class Nicolas extends Monster {
 
     /** Elige qué hace esta vez. */
     public void empezar() {
-        int[] opciones = {ACECHA, ACECHA, TECHO, CORRE, APAGA, PICA};
+        if (getTags().contains("dv_nagarra")) { estado(AGARRA); setNoGravity(true); noPhysics = true; cara(0); return; }
+        int[] opciones = {LEJOS, LEJOS, ACECHA, ACECHA, TECHO, CORRE, APAGA, PICA};
         int e = opciones[this.random.nextInt(opciones.length)];
+        if (getTags().contains("dv_nlejos")) e = LEJOS;
         if (getTags().contains("dv_ntecho")) e = TECHO;
         if (getTags().contains("dv_ncorre")) e = CORRE;
         if (getTags().contains("dv_napaga")) e = APAGA;
@@ -125,8 +129,93 @@ public class Nicolas extends Monster {
         Player p = victima();
         if (e == TECHO && (p == null || !alTecho(p))) e = ACECHA;
         if (e == PICA && (p == null || !aLaPared(p))) e = ACECHA;
+        // nada aparece de golpe: primero se le oye un rato (pasos con eco, risas lejos, respiración) y luego aparece
+        boolean directo = getTags().stream().anyMatch(t -> t.startsWith("dv_n"));
+        if (!directo && e != TECHO && e != PICA) {
+            elegido = e;
+            previo = 160 + this.random.nextInt(240);
+            estado(PREVIO);
+            this.setInvisible(true);
+            this.noPhysics = true;
+            this.setNoGravity(true);
+            return;
+        }
         if (e != TECHO) estado(e);
         if (e == CORRE) arrancar(p);
+    }
+
+    void previo(Player p) {
+        setDeltaMovement(Vec3.ZERO);
+        this.getNavigation().stop();
+        if (p instanceof ServerPlayer sp) {
+            int r = this.random.nextInt(100);
+            if (t % 45 == 0) Monstruo.comando(sp, "playsound canon:gen.paso_tierra hostile @s ^" + (this.random.nextInt(9) - 4) + " ^ ^-" + (6 + this.random.nextInt(6)) + " 0.5 0.8");
+            if (t == previo / 2) Monstruo.comando(sp, "playsound canon:nicolas.risa hostile @s ^-10 ^ ^-6 0.35 0.7");
+            if (t == previo - 40) Monstruo.comando(sp, "playsound " + "canon:" + VOCES[this.random.nextInt(VOCES.length)] + " hostile @s ^4 ^ ^-8 0.6 0.9");
+            if (r == 0) Monstruo.comando(sp, "playsound canon:gen.respira_lenta hostile @s ^ ^ ^-3 0.4 0.8");
+        }
+        if (t >= previo) {
+            this.setInvisible(false);
+            this.noPhysics = false;
+            this.setNoGravity(false);
+            int e = elegido;
+            if (e == LEJOS) { if (!aLoLejos(p)) e = ACECHA; }
+            estado(e);
+            if (e == LEJOS) setNoGravity(false);
+            if (e == CORRE) arrancar(p);
+        }
+    }
+
+    // --- te mira desde lejos, en la oscuridad, con los ojos blancos
+    boolean aLoLejos(Player p) {
+        for (int i = 0; i < 30; i++) {
+            double a = this.random.nextDouble() * Math.PI * 2, r = 16 + this.random.nextInt(14);
+            BlockPos b = BlockPos.containing(p.getX() + Math.cos(a) * r, p.getY() + this.random.nextInt(7) - 3, p.getZ() + Math.sin(a) * r);
+            for (int k = 0; k < 6; k++, b = b.below()) {
+                if (this.level().getBlockState(b).isAir() && this.level().getBlockState(b.above()).isAir() && this.level().getBlockState(b.below()).isSolid()) {
+                    Vec3 pos = Vec3.atBottomCenterOf(b);
+                    HitResult h = this.level().clip(new ClipContext(p.getEyePosition(), pos.add(0, 1.6, 0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, p));
+                    if (h.getType() != HitResult.Type.MISS) break;
+                    if (this.level().getMaxLocalRawBrightness(b) > 7) break;
+                    moveTo(pos.x, pos.y, pos.z, 0, 0);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    void lejos(Player p, double d) {
+        this.getNavigation().stop();
+        if (meMira(p)) visto++;
+        if (t % 90 == 30 && this.random.nextInt(2) == 0) sonar(VOCES[this.random.nextInt(VOCES.length)], 2.2f, 0.9f);
+        if (t % 140 == 70) sonar("nicolas.risa", 1.6f, 0.75f);
+        if (d < 10 || visto > 140 || t > 20 * 45) {
+            // se va caminando de espaldas hacia lo oscuro y desaparece
+            Vec3 lejos = position().add(position().subtract(p.position()).normalize().scale(8));
+            estado(HUYE);
+            this.getNavigation().moveTo(lejos.x, lejos.y, lejos.z, 0.7);
+        }
+    }
+
+    // --- picabas y, al romper el bloque, está ahí: agarrado de los bordes, mirándote por el hueco
+    void agarra(Player p) {
+        setDeltaMovement(Vec3.ZERO);
+        if (t == 1) {
+            sonar("nicolas.risa", 0.7f, 0.6f);
+            if (p instanceof ServerPlayer sp) {
+                Monstruo.comando(sp, "playsound canon:gen.stinger hostile @s ~ ~ ~ 0.9 0.7");
+                Monstruo.comando(sp, "scoreboard players add @s dv.miedo 20");
+            }
+        }
+        if (t == 30) sonar(VOCES[this.random.nextInt(VOCES.length)], 1.2f, 0.85f);
+        if (t == 45) cara(2);
+        if (meMira(p)) visto++;
+        if (visto > 40 || t > 90) {
+            sonar("nicolas.risa", 1.0f, 1.2f);
+            humo(10);
+            this.discard();
+        }
     }
 
     @Override
@@ -140,8 +229,8 @@ public class Nicolas extends Monster {
         Player p = victima();
         if (p == null || vida > 20 * 120) { irse(); return; }
         double d = distanceTo(p);
-        if (estado() != HUYE && estado() != TECHO) this.getLookControl().setLookAt(p, 30f, 30f);
-        if (cdHabla == 0 && estado() != PICA && estado() != TECHO) {
+        if (estado() != HUYE && estado() != TECHO && estado() != AGARRA) this.getLookControl().setLookAt(p, 30f, 30f);
+        if (cdHabla == 0 && estado() != PICA && estado() != TECHO && estado() != PREVIO && estado() != AGARRA && estado() != LEJOS) {
             cdHabla = 220 + this.random.nextInt(200);
             decir(p, INSULTOS[this.random.nextInt(INSULTOS.length)]);
             cara(this.random.nextBoolean() ? 0 : 1);
@@ -154,6 +243,9 @@ public class Nicolas extends Monster {
             case APAGA -> apaga(p, d);
             case PICA -> pica(p, d);
             case HUYE -> { if (t > 50 || this.getNavigation().isDone()) irse(); }
+            case LEJOS -> lejos(p, d);
+            case AGARRA -> agarra(p);
+            case PREVIO -> previo(p);
             default -> estado(ACECHA);
         }
     }
@@ -320,17 +412,12 @@ public class Nicolas extends Monster {
         }
         if (t == 80 && p instanceof ServerPlayer sp)
             Monstruo.comando(sp, "title @s actionbar {\"text\":\"Alguien está picando la piedra... del otro lado\",\"color\":\"#8a8a96\",\"italic\":true}");
+        // él no rompe nada: solo golpea la piedra del otro lado, se ríe bajito... y se va
         if (t == 170) {
-            this.level().destroyBlock(hueco, false);
-            this.setInvisible(false);
-            this.noPhysics = false;
-            this.setNoGravity(false);
-            cara(0);
-            sonar("nicolas.risa", 1.3f, 0.8f);
-            decir(p, "Te encontré.");
+            sonar("nicolas.risa", 0.6f, 0.7f);
+            decir(p, "Sigue picando. Ya casi llegas a mí.");
         }
-        if (t > 170 && meMira(p)) visto++;
-        if (t > 170 && (visto > 30 || t > 400)) { if (this.random.nextBoolean()) arrancar(p); else irse(); }
+        if (t > 200) this.discard();
     }
 
     void irse() {
@@ -341,7 +428,8 @@ public class Nicolas extends Monster {
 
     @Override
     public boolean hurt(DamageSource s, float amt) {
-        if (estado() == PICA && isInvisible()) return false;
+        if ((estado() == PICA || estado() == PREVIO) && isInvisible()) return false;
+        if (estado() == AGARRA) { sonar("nicolas.risa", 1.2f, 1.3f); humo(10); this.discard(); return false; }
         boolean r = super.hurt(s, amt);
         if (r && estado() != HUYE && isAlive()) { // le pegaste: se ríe y huye a la oscuridad
             sonar("nicolas.risa", 1.3f, 1.3f);

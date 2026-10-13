@@ -19,6 +19,11 @@ public class NicolasRender extends MobRenderer<Nicolas, PlayerModel<Nicolas>> {
 
     public NicolasRender(EntityRendererProvider.Context c) {
         super(c, new Modelo(c.bakeLayer(ModelLayers.PLAYER)), 0.5f);
+        // ojos blancos que brillan en la oscuridad
+        this.addLayer(new net.minecraft.client.renderer.entity.layers.EyesLayer<>(this) {
+            final net.minecraft.client.renderer.RenderType t = net.minecraft.client.renderer.RenderType.eyes(new ResourceLocation(CanonEvent.MODID, "textures/entity/nicolas_ojos.png"));
+            @Override public net.minecraft.client.renderer.RenderType renderType() { return t; }
+        });
     }
 
     static class Modelo extends PlayerModel<Nicolas> {
@@ -36,6 +41,18 @@ public class NicolasRender extends MobRenderer<Nicolas, PlayerModel<Nicolas>> {
                 rightArm.xRot = Mth.PI + Mth.sin(edad * 0.1f) * 0.15f;
                 leftArm.xRot = Mth.PI - Mth.sin(edad * 0.1f) * 0.15f;
                 rightLeg.xRot = leftLeg.xRot = 0;
+            } else if (est == Nicolas.AGARRA) { // agarrado de los bordes del hueco, con las dos manos
+                rightArm.xRot = -2.05f + Mth.sin(edad * 0.9f) * 0.03f;
+                leftArm.xRot = -2.05f - Mth.sin(edad * 0.9f) * 0.03f;
+                rightArm.zRot = 0.42f;
+                leftArm.zRot = -0.42f;
+                head.xRot = 0.05f;
+                head.zRot = 0.18f + Mth.sin(edad * 0.15f) * 0.08f;
+            } else if (est == Nicolas.LEJOS) { // quieto, la cabeza ladeándose despacio
+                rightArm.xRot = leftArm.xRot = 0;
+                rightArm.zRot = 0.05f;
+                leftArm.zRot = -0.05f;
+                head.zRot = Mth.sin(edad * 0.04f) * 0.45f;
             } else if (est == Nicolas.APAGA) {
                 rightArm.xRot = -0.9f;
             }
@@ -62,9 +79,44 @@ public class NicolasRender extends MobRenderer<Nicolas, PlayerModel<Nicolas>> {
         if (e.estado() == Nicolas.CORRE) ps.mulPose(Axis.XP.rotationDegrees(-14f)); // corre inclinado hacia adelante
     }
 
+    static final ResourceLocation OJOS = new ResourceLocation(CanonEvent.MODID, "textures/entity/nicolas_ojos.png");
+
+    /** Dos puntitos blancos que brillan: se le ven los ojos desde lejos en la oscuridad. */
+    @Override
+    public void render(Nicolas e, float yaw, float pt, PoseStack ps, net.minecraft.client.renderer.MultiBufferSource b, int luz) {
+        super.render(e, yaw, pt, ps, b, luz);
+        int est = e.estado();
+        if (e.isInvisible() || est == Nicolas.TECHO || est == Nicolas.CORRE) return;
+        float hy = Mth.rotLerp(pt, e.yHeadRotO, e.yHeadRot) * Mth.DEG_TO_RAD;
+        float fx = -Mth.sin(hy), fz = Mth.cos(hy);   // hacia donde mira
+        float rx = fz, rz = -fx;                      // a su lado
+        com.mojang.blaze3d.vertex.VertexConsumer vc = b.getBuffer(net.minecraft.client.renderer.RenderType.eyes(OJOS));
+        float lado = 0.05f, u = 9.5f / 64f, v = 12.5f / 64f;
+        for (float sgn : new float[]{-1f, 1f}) {
+            ps.pushPose();
+            ps.translate(fx * 0.27f + rx * 0.117f * sgn, 1.6f, fz * 0.27f + rz * 0.117f * sgn);
+            ps.mulPose(this.entityRenderDispatcher.cameraOrientation());
+            org.joml.Matrix4f m = ps.last().pose();
+            float[][] q = {{-lado, -lado}, {lado, -lado}, {lado, lado}, {-lado, lado}};
+            for (int cara = 0; cara < 2; cara++)
+                for (int i = 0; i < 4; i++) {
+                    float[] c = q[cara == 0 ? i : 3 - i];
+                    vc.vertex(m, c[0], c[1], 0).color(255, 255, 255, 255).uv(u, v)
+                            .overlayCoords(net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY).uv2(0xF000F0).normal(0, 0, 1).endVertex();
+                }
+            ps.popPose();
+        }
+    }
+
     @Override
     protected void scale(Nicolas e, PoseStack ps, float pt) {
         ps.scale(0.9375f, 0.9375f, 0.9375f);
+    }
+
+    /** Sin letrero con el nombre encima: da más miedo sin saber qué es. */
+    @Override
+    protected boolean shouldShowName(Nicolas e) {
+        return false;
     }
 
     @Override

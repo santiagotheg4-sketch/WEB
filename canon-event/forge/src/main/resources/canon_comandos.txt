@@ -59,11 +59,12 @@ mj_diana|function canon:admin/mj/diana|Diana 3D (se acerca cuando no la miras)
 mj_gigante|function canon:admin/mj/gigante|El Gigante a lo lejos
 spawn_nicolas|function canon:admin/spawn/nicolas|Traer a Nicolás
 susto_mina|function canon:admin/susto_mina|Probar el susto de la mina
+nic_lejos|function canon:admin/nic/lejos|Nicolás te mira desde lejos con los ojos blancos
 nic_acecha|function canon:admin/nic/acecha|Nicolás te acecha (se esconde si lo miras)
 nic_techo|function canon:admin/nic/techo|Nicolás en el techo (cae delante de ti)
 nic_corre|function canon:admin/nic/corre|Nicolás te persigue
 nic_apaga|function canon:admin/nic/apaga|Nicolás te apaga las antorchas
-nic_pica|function canon:admin/nic/pica|Nicolás pica la pared y te mira por el hueco
+nic_pica|function canon:admin/nic/pica|Nicolás golpea la piedra del otro lado de la pared
 nic_letrero|function canon:admin/nic/letrero|Letras rojas en la pared detrás de ti
 nic_grava|function canon:admin/nic/grava|Grava que cae detrás de ti
 npc_ernesto|function canon:admin/npc/ernesto|Traer a Don Ernesto
